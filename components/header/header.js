@@ -47,7 +47,7 @@ const Header = () => {
               </LinkStyled>
             </li>
             <li className="nav-item ms-5">
-              <form style={{ marginTop: '3px' }} className="d-flex">
+              <form style={{ marginTop: '3px' }} className="d-flex ">
                 <input
                   className="form-control me-2"
                   type="search"
