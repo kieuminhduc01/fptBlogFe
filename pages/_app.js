@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import Script from 'next/script';
 import MainLayout from '../components/layout/mainLayout';
 import '../styles/globals.css';
+import '../styles/custom.css';
 import { UrlPath } from '../type/urlPath';
 
 function MyApp({ Component, pageProps }) {

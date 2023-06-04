@@ -5,7 +5,7 @@ const HomeComponentMain = () => {
     <>
       <MainContainer>
         <div
-          className="row"
+          className="row "
           style={{
             marginTop: '200px',
           }}

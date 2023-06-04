@@ -55,15 +55,22 @@ export const LinkStyled = styled(Link)`
   :hover {
     color: #960c0c;
   }
+  :active {
+    color: #960c0c;
+  }
+  :focus {
+    color: #960c0c;
+  }
 `;
 export const InputFieldStyled = styled.input`
   border: none;
-  border-bottom: 2px solid #707070;
+  border-bottom: 2px solid #b3a7a7;
   outline: none;
   border-radius: 0;
   :focus {
     box-shadow: none;
     outline: none;
+    border-color: #960c0c;
   }
   :active {
     outline: none;

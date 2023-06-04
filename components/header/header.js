@@ -6,7 +6,7 @@ import {
   H2Styled,
   HrStyled,
   InputFieldStyled,
-  LinkStyled,
+  LinkStyled
 } from './styledComponent';
 
 const Header = ({ position }) => {
@@ -17,14 +17,12 @@ const Header = ({ position }) => {
           <div className="position-relative">
             <div className="content-container">
               <div className="d-flex justify-content-center">
-                <div className="" style={{ width: '220px' }}>
+                <div className="w-220px-xxl">
                   <H2Styled>Phương kể</H2Styled>
                 </div>
               </div>
               <div className="d-flex justify-content-center">
-                <div
-                  style={{ background: '#fff', width: '260px', zIndex: '100' }}
-                >
+                <div className=" bg-white z-index100 w-260px-xxl ">
                   <H1Styled>Bạn nghe</H1Styled>
                 </div>
               </div>
@@ -52,7 +50,7 @@ const Header = ({ position }) => {
               </LinkStyled>
             </li>
             <li className="nav-item ms-5">
-              <form style={{ marginTop: '3px' }} className="d-flex ">
+              <form className="d-flex mt-1">
                 <InputFieldStyled
                   className="form-control me-1 w-50"
                   type="search"

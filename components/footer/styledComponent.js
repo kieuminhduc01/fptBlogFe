@@ -1,17 +1,5 @@
 import styled from 'styled-components';
 
-export const FooterTextH3Styled = styled.h3`
-  font-family: 'Lexend', sans-serif;
-  font-size: 19px;
-  font-weight: normal;
-  font-style: normal;
-  text-align: left;
-  letter-spacing: 1px;
-  margin-bottom: 0;
-  margin-top: 6px;
-  cursor: pointer;
-  color: #2c2727;
-`;
 export const PStyled = styled.p`
   font-family: 'Lexend', sans-serif;
   font-size: 39px;
@@ -39,3 +27,13 @@ export const DivStyled = styled.div`
     z-index: 100;
   }
 `;
+export const FooterTextstylde=styled.a`
+font-family: 'Lexend', sans-serif;
+  font-size: 19px;
+  font-weight: normal;
+  font-style: normal;
+  text-align: left;
+  letter-spacing: 1px;
+  margin-bottom: 0;
+  margin-top: 6px;
+`

@@ -1,25 +1,17 @@
-import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import Link from 'next/link';
 import { HrStyled } from '../header/styledComponent';
 import FacebookIcon from '../icons/facebookIcon';
 import LinkedinIcon from '../icons/linkedinIcon';
-import { DivStyled, FooterTextH3Styled, PStyled } from './styledComponent';
+import { DivStyled, FooterTextstylde, PStyled } from './styledComponent';
 
 const Footer = () => {
-  const router = useRouter();
-  useEffect(() => {
-    router.prefetch('https://www.facebook.com/phuongwings?mibextid=LQQJ4d');
-  }, [router]);
-  const handleClickFacebook = () => {
-    router.push('https://www.facebook.com/phuongwings?mibextid=LQQJ4d');
-  };
   return (
     <>
-      <div style={{ backgroundColor: '#f2f2f2' }}>
+      <div className="footer-bg">
         <DivStyled>
           <div className="container">
             <div>
-              <div style={{ height: '110px' }}></div>
+              <div className="h-100px-xxl"></div>
               <div className="d-flex justify-content-center">
                 <div className="footer-text-container">
                   <PStyled>Theo dõi thêm về Phương nhé!</PStyled>
@@ -29,33 +21,31 @@ const Footer = () => {
                 <HrStyled left="0" right="0" bottom="26px" height="2px" />
               </div>
             </div>
-            <div
-              className="d-flex justify-content-center mt"
-              style={{
-                marginTop: '39px',
-              }}
-            >
-              <div
-                className="d-flex justify-content-around w"
-                style={{
-                  width: '35%',
-                }}
-              >
-                <div className="d-flex" onClick={handleClickFacebook}>
+            <div className="d-flex justify-content-center mt-38px-xxl">
+              <div className="d-flex justify-content-around w-34pc-xl w-35pc-xxl">
+                <div className="d-flex">
                   <FacebookIcon />
-                  <FooterTextH3Styled className="ms-3">
-                    FACEBOOK
-                  </FooterTextH3Styled>
+                  <Link
+                    legacyBehavior
+                    href="https://www.facebook.com/phuongwings?mibextid=LQQJ4d"
+                    className="ms-1"
+                  >
+                    <FooterTextstylde id="link" target="_blank">
+                      FACEBOOK
+                    </FooterTextstylde>
+                  </Link>
                 </div>
                 <div className="d-flex">
                   <LinkedinIcon />
-                  <FooterTextH3Styled className="ms-3">
-                    LINKEDIN
-                  </FooterTextH3Styled>
+                  <Link legacyBehavior href="#" className="ms-3">
+                    <FooterTextstylde id="link" target="_blank">
+                      LINKEDIN
+                    </FooterTextstylde>
+                  </Link>
                 </div>
               </div>
             </div>
-            <div style={{ height: '102px' }}></div>
+            <div className="h-100px-xxl"></div>
           </div>
         </DivStyled>
       </div>
