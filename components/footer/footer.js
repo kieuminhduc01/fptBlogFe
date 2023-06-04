@@ -7,7 +7,7 @@ import { DivStyled, FooterTextstylde, PStyled } from './styledComponent';
 const Footer = () => {
   return (
     <>
-      <div className="footer-bg">
+      <div className="footer-bg ">
         <DivStyled>
           <div className="container">
             <div>
