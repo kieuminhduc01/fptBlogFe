@@ -1,9 +1,9 @@
-const MainContainer = ({children}) => {
+const MainContainer = ({ children }) => {
   return (
     <>
-      {children}
+      <div className="container">{children}</div>
     </>
   );
-}
+};
 
 export default MainContainer;

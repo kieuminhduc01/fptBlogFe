@@ -3,7 +3,7 @@ const LinkedinIcon = () => {
     <>
       <svg
         version="1.1"
-        width={'37px'}
+        width={'27px'}
         style={{ marginRight: '10px' }}
         id="Capa_1"
         x="0px"

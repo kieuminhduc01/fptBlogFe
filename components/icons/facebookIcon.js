@@ -3,7 +3,7 @@ const FacebookIcon = () => {
     <>
       <svg
         version="1.1"
-        width={'34px'}
+        width={'27px'}
         id="Capa_1"
         x="0px"
         y="0px"

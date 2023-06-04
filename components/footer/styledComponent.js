@@ -2,13 +2,13 @@ import styled from 'styled-components';
 
 export const FooterTextH3Styled = styled.h3`
   font-family: 'Lexend', sans-serif;
-  font-size: 25px;
+  font-size: 19px;
   font-weight: normal;
   font-style: normal;
   text-align: left;
   letter-spacing: 1px;
   margin-bottom: 0;
-  margin-top: 8px;
+  margin-top: 6px;
   cursor: pointer;
   color: #2c2727;
 `;

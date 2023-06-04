@@ -1,10 +1,38 @@
+import 'bootstrap/dist/css/bootstrap.css';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
+import Script from 'next/script';
 import MainLayout from '../components/layout/mainLayout';
 import '../styles/globals.css';
-import Head from 'next/head';
-import 'bootstrap/dist/css/bootstrap.css';
-import Script from 'next/script';
+import { UrlPath } from '../type/urlPath';
 
 function MyApp({ Component, pageProps }) {
+  const router = useRouter();
+  const getTitle = () => {
+    switch (router.pathname) {
+      case UrlPath.growingInThePRWorld.url: {
+        return UrlPath.growingInThePRWorld.title;
+      }
+      case UrlPath.auth.url: {
+        return UrlPath.auth.title;
+      }
+      case UrlPath.detail.url: {
+        return UrlPath.detail.title;
+      }
+      case UrlPath.tag.url: {
+        return UrlPath.tag.title;
+      }
+      case UrlPath.seeThinkShare.url: {
+        return UrlPath.seeThinkShare.title;
+      }
+      case UrlPath.home.url: {
+        return UrlPath.home.title;
+      }
+      case UrlPath.myConner.url: {
+        return UrlPath.myConner.title;
+      }
+    }
+  };
   return (
     <>
       <Head>
@@ -33,6 +61,7 @@ function MyApp({ Component, pageProps }) {
           integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
           crossOrigin="anonymous"
         ></Script>
+        <title>{getTitle()}</title>
       </Head>
       <MainLayout>
         <Component {...pageProps} />

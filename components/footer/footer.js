@@ -1,17 +1,25 @@
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 import { HrStyled } from '../header/styledComponent';
 import FacebookIcon from '../icons/facebookIcon';
 import LinkedinIcon from '../icons/linkedinIcon';
 import { DivStyled, FooterTextH3Styled, PStyled } from './styledComponent';
 
 const Footer = () => {
-  const handleClickFacebook = () => {};
+  const router = useRouter();
+  useEffect(() => {
+    router.prefetch('https://www.facebook.com/phuongwings?mibextid=LQQJ4d');
+  }, [router]);
+  const handleClickFacebook = () => {
+    router.push('https://www.facebook.com/phuongwings?mibextid=LQQJ4d');
+  };
   return (
     <>
       <div style={{ backgroundColor: '#f2f2f2' }}>
         <DivStyled>
           <div className="container">
             <div>
-              <div style={{ height: '155px' }}></div>
+              <div style={{ height: '110px' }}></div>
               <div className="d-flex justify-content-center">
                 <div className="footer-text-container">
                   <PStyled>Theo dõi thêm về Phương nhé!</PStyled>
@@ -24,13 +32,13 @@ const Footer = () => {
             <div
               className="d-flex justify-content-center mt"
               style={{
-                marginTop: '53px',
+                marginTop: '39px',
               }}
             >
               <div
                 className="d-flex justify-content-around w"
                 style={{
-                  width: '40%',
+                  width: '35%',
                 }}
               >
                 <div className="d-flex" onClick={handleClickFacebook}>
@@ -47,7 +55,7 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-            <div style={{ height: '140px' }}></div>
+            <div style={{ height: '102px' }}></div>
           </div>
         </DivStyled>
       </div>
