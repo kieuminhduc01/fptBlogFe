@@ -1,0 +1,235 @@
+// height, width, margin (top left right bottom) 2px  --> 100px  step 2 begin
+@for $i from 2 through 100 {
+  $isMultipleOf2: $i % 2 == 0;
+  @if $isMultipleOf2 {
+    .h-#{$i}px {
+      height: #{$i}px;
+    }
+    .w-#{$i}px {
+      width: #{$i}px;
+    }
+    .mt-#{$i}px {
+      margin-top: #{$i}px;
+    }
+    .mr-#{$i}px {
+      margin-right: #{$i}px;
+    }
+    .ml-#{$i}px {
+      margin-left: #{$i}px;
+    }
+    .mb-#{$i}px {
+      margin-bottom: #{$i}px;
+    }
+
+    @media only screen and (min-width: 576px) {
+      .h-#{$i}px-sm {
+        height: #{$i}px;
+      }
+      .w-#{$i}px-sm {
+        width: #{$i}px;
+      }
+      .mt-#{$i}px-sm {
+        margin-top: #{$i}px;
+      }
+      .mr-#{$i}px-sm {
+        margin-right: #{$i}px;
+      }
+      .ml-#{$i}px-sm {
+        margin-left: #{$i}px;
+      }
+      .mb-#{$i}px-sm {
+        margin-bottom: #{$i}px;
+      }
+    }
+    @media only screen and (min-width: 768px) {
+      .h-#{$i}px-md {
+        height: #{$i}px;
+      }
+      .w-#{$i}px-md {
+        width: #{$i}px;
+      }
+      .mt-#{$i}px-md {
+        margin-top: #{$i}px;
+      }
+      .mr-#{$i}px-md {
+        margin-right: #{$i}px;
+      }
+      .ml-#{$i}px-md {
+        margin-left: #{$i}px;
+      }
+      .mb-#{$i}px-md {
+        margin-bottom: #{$i}px;
+      }
+    }
+    @media only screen and (min-width: 992px) {
+      .h-#{$i}px-lg {
+        height: #{$i}px;
+      }
+      .w-#{$i}px-lg {
+        width: #{$i}px;
+      }
+      .mt-#{$i}px-lg {
+        margin-top: #{$i}px;
+      }
+      .mr-#{$i}px-lg {
+        margin-right: #{$i}px;
+      }
+      .ml-#{$i}px-lg {
+        margin-left: #{$i}px;
+      }
+      .mb-#{$i}px-lg {
+        margin-bottom: #{$i}px;
+      }
+    }
+    @media only screen and (min-width: 1200px) {
+      .h-#{$i}px-xl {
+        height: #{$i}px;
+      }
+      .w-#{$i}px-xl {
+        width: #{$i}px;
+      }
+      .mt-#{$i}px-xl {
+        margin-top: #{$i}px;
+      }
+      .mr-#{$i}px-xl {
+        margin-right: #{$i}px;
+      }
+      .ml-#{$i}px-xl {
+        margin-left: #{$i}px;
+      }
+      .mb-#{$i}px-xl {
+        margin-bottom: #{$i}px;
+      }
+    }
+    @media only screen and (min-width: 1400px) {
+      .h-#{$i}px-xxl {
+        height: #{$i}px;
+      }
+      .w-#{$i}px-xxl {
+        width: #{$i}px;
+      }
+      .mt-#{$i}px-xxl {
+        margin-top: #{$i}px;
+      }
+      .mr-#{$i}px-xxl {
+        margin-right: #{$i}px;
+      }
+      .ml-#{$i}px-xxl {
+        margin-left: #{$i}px;
+      }
+      .mb-#{$i}px-xxl {
+        margin-bottom: #{$i}px;
+      }
+    }
+  }
+}
+// height, width, margin (top left right bottom) 2px  --> 100px  step 2 begin
+
+// font size-2px  --> font size-50px  step 2 begin
+@for $i from 2 through 50 {
+  $isMultipleOf2: $i % 2 == 0;
+  @if $isMultipleOf2 {
+    .fs-#{$i}px {
+      font-size: #{$i}px;
+    }
+    @media only screen and (min-width: 576px) {
+      .fs-#{$i}px-sm {
+        font-size: #{$i}px;
+      }
+    }
+    @media only screen and (min-width: 768px) {
+      .fs-#{$i}px-md {
+        font-size: #{$i}px;
+      }
+    }
+    @media only screen and (min-width: 992px) {
+      .fs-#{$i}px-lg {
+        font-size: #{$i}px;
+      }
+    }
+    @media only screen and (min-width: 1200px) {
+      .fs-#{$i}px-xl {
+        font-size: #{$i}px;
+      }
+    }
+    @media only screen and (min-width: 1400px) {
+      .fs-#{$i}px-xxl {
+        font-size: #{$i}px;
+      }
+    }
+  }
+}
+// font size-2px  --> font size-50px  step 2 begin
+
+// width-200px  --> width-300px  step 2 begin
+@for $i from 200 through 300 {
+  $isMultipleOf2: $i % 2 == 0;
+  @if $isMultipleOf2 {
+    .w-#{$i}px-sm {
+      font-size: #{$i}px;
+    }
+    @media only screen and (min-width: 576px) {
+      .w-#{$i}px-sm {
+        font-size: #{$i}px;
+      }
+    }
+
+    @media only screen and (min-width: 768px) {
+      .w-#{$i}px-md {
+        font-size: #{$i}px;
+      }
+    }
+
+    @media only screen and (min-width: 992px) {
+      .w-#{$i}px-lg {
+        font-size: #{$i}px;
+      }
+    }
+
+    @media only screen and (min-width: 1200px) {
+      .w-#{$i}px-xl {
+        font-size: #{$i}px;
+      }
+    }
+
+    @media only screen and (min-width: 1400px) {
+      .w-#{$i}px-xxl {
+        font-size: #{$i}px;
+      }
+    }
+  }
+}
+// width-200px  --> width-300px  step 2 end
+
+// width-30percent  --> 40 percent  step 1 begin
+@for $i from 30 through 40 {
+  .w-#{$i}pc {
+    width: #{$i}pc;
+  }
+  @media only screen and (min-width: 576px) {
+    .w-#{$i}pc-sm {
+      width: #{$i}pc;
+    }
+  }
+  @media only screen and (min-width: 768px) {
+    .w-#{$i}pc-md {
+      width: #{$i}pc;
+    }
+  }
+  @media only screen and (min-width: 992px) {
+    .w-#{$i}pc-lg {
+      width: #{$i}pc;
+    }
+  }
+  @media only screen and (min-width: 1200px) {
+    .w-#{$i}pc-xl {
+      width: #{$i}pc;
+    }
+  }
+  @media only screen and (min-width: 1400px) {
+    .w-#{$i}pc-xxl {
+      width: #{$i}pc;
+    }
+  }
+}
+// font size-2px  --> font size-50px  step 2 begin

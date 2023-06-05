@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const PStyled = styled.p`
   font-family: 'Lexend', sans-serif;
-  font-size: 39px;
   font-weight: normal;
   font-style: normal;
   letter-spacing: 2px;
@@ -27,8 +26,8 @@ export const DivStyled = styled.div`
     z-index: 100;
   }
 `;
-export const FooterTextstylde=styled.a`
-font-family: 'Lexend', sans-serif;
+export const FooterTextstylde = styled.a`
+  font-family: 'Lexend', sans-serif;
   font-size: 19px;
   font-weight: normal;
   font-style: normal;
@@ -36,4 +35,4 @@ font-family: 'Lexend', sans-serif;
   letter-spacing: 1px;
   margin-bottom: 0;
   margin-top: 6px;
-`
+`;

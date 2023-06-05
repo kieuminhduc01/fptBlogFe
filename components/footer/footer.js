@@ -11,10 +11,12 @@ const Footer = () => {
         <DivStyled>
           <div className="container">
             <div>
-              <div className="h-100px-xxl"></div>
+              <div className="h-10px-xxl h-96px-xl h-80px-lg"></div>
               <div className="d-flex justify-content-center">
                 <div className="footer-text-container">
-                  <PStyled>Theo dõi thêm về Phương nhé!</PStyled>
+                  <PStyled className="fs-38px-xxl fs-36px-xl fs-32px-lg fs-28px-md fs-24px-sm fs-20px">
+                    Theo dõi thêm về Phương nhé!
+                  </PStyled>
                 </div>
               </div>
               <div className="position-relative">
@@ -22,7 +24,7 @@ const Footer = () => {
               </div>
             </div>
             <div className="d-flex justify-content-center mt-38px-xxl">
-              <div className="d-flex justify-content-around w-34pc-xl w-35pc-xxl">
+              <div className="d-flex justify-content-around w-30pc ">
                 <div className="d-flex">
                   <FacebookIcon />
                   <Link
