@@ -2,11 +2,12 @@ const LensIcon = () => {
   return (
     <>
       <svg
-        width={'32px'}
+        width={'26px'}
         version="1.1"
         id="Capa_1"
         x="0px"
         y="0px"
+        style={{ marginTop: '8px' }}
         viewBox="0 0 451 451"
         fill="black"
       >

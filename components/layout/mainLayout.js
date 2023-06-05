@@ -1,13 +1,17 @@
+import { useRouter } from 'next/router';
+import { UrlPath } from '../../type/urlPath';
 import MainContainer from '../content/mainContainer';
 import Footer from '../footer/footer';
 import Header from '../header/header';
 
 const MainLayout = ({ children }) => {
+  const router = useRouter();
+  const isHomeLayout = router.pathname === UrlPath.home.url;
   return (
     <>
-      <Header />
+      {isHomeLayout ? <Header position={'fixed'} /> : <Header />}
       <MainContainer>{children}</MainContainer>
-      <Footer />
+      {isHomeLayout ? <></> : <Footer />}
     </>
   );
 };

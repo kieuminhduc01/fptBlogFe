@@ -1,9 +1,11 @@
+import ComponentMain from '../../components/pageComponent/growingInThePRWorld/componentMain';
+
 const Index = () => {
   return (
-    <div>
-      Enter
-    </div>
+    <>
+      <ComponentMain />
+    </>
   );
-}
+};
 
 export default Index;
