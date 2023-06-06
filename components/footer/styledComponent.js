@@ -4,7 +4,6 @@ export const PStyled = styled.p`
   font-family: 'Lexend', sans-serif;
   font-weight: normal;
   font-style: normal;
-  letter-spacing: 2px;
   color: #960c0c;
 `;
 export const DivStyled = styled.div`
@@ -28,7 +27,6 @@ export const DivStyled = styled.div`
 `;
 export const FooterTextstylde = styled.a`
   font-family: 'Lexend', sans-serif;
-  font-size: 19px;
   font-weight: normal;
   font-style: normal;
   text-align: left;

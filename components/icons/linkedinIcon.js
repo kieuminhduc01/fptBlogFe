@@ -4,7 +4,7 @@ const LinkedinIcon = () => {
       <svg
         version="1.1"
         width={'27px'}
-        style={{ marginRight: '10px' }}
+        className="w-30px-xl w-22px-md w-18px mr-16px-xl mr-12px-md mr-6px"
         id="Capa_1"
         x="0px"
         y="0px"

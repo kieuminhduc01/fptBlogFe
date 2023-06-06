@@ -3,51 +3,63 @@ a {
   text-decoration: none;
   cursor: pointer;
 }
+.color-white {
+  color: #fff;
+}
 .footer-bg {
   background-color: #f2f2f2;
 }
-
-/* xs */
-.z-index100 {
-  z-index: 100;
+.cursor-point {
+  cursor: pointer;
 }
-
+.bg-fafafa {
+  background: #fafafa;
+}
+.right-17vw {
+  right: 17vw;
+}
+.z-index-dropdown {
+  z-index: 1000;
+}
+.z-index-sticky {
+  z-index: 2000;
+}
+.z-index-fixed {
+  z-index: 3000;
+}
+.z-index-modal-backdrop {
+  z-index: 4000;
+}
+.z-index-offcanvas {
+  z-index: 5000;
+}
+.z-index-modal {
+  z-index: 6000;
+}
+.z-index-popover {
+  z-index: 7000;
+}
+.z-index-tooltip {
+  z-index: 8000;
+}
 /*//////////////////////////////////////////////////////////      SM     //////////////////////////////////////////////////// */
 @media screen and (min-width: 576px) {
-  .z-index100-sm {
-    z-index: 100;
+  .right-49vw-sm {
+    right: 49vw;
   }
 }
 /*//////////////////////////////////////////////////////////      MD     //////////////////////////////////////////////////// */
 @media screen and (min-width: 768px) {
-  .z-index100-md {
-    z-index: 100;
-  }
 }
 
 /*//////////////////////////////////////////////////////////      LG     //////////////////////////////////////////////////// */
 @media screen and (min-width: 992px) {
-  .z-index100-lg {
-    z-index: 100;
-  }
 }
 /*//////////////////////////////////////////////////////////      XL     //////////////////////////////////////////////////// */
 
 @media only screen and (min-width: 1200px) {
-  .z-index100-xl {
-    z-index: 100;
-  }
 }
 
 /*//////////////////////////////////////////////////////////      XXL     //////////////////////////////////////////////////// */
 @media only screen and (min-width: 1400px) {
-  .z-index100-xxl {
-    z-index: 100;
-  }
-
-  /* margin top-px begin */
-  .mt-200px-xxl {
-    margin-top: 200px;
-  }
-  /* margin top-px end */
 }
