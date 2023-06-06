@@ -54,7 +54,6 @@ export const InputFieldStyled = styled.input`
   border: none;
   border-bottom: ${(props) => props.borderBottom};
   outline: none;
-  -webkit-border-radius: 0;
   :focus {
     box-shadow: none;
     outline: none;

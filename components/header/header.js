@@ -102,7 +102,7 @@ const Header = ({ position }) => {
     <>
       <div
         ref={sideBarRef}
-        className="d-md-none position-fixed z-index101"
+        className="d-md-none position-fixed z-index1000"
         style={{
           height: '100vh',
           backgroundColor: '#c97b7b',

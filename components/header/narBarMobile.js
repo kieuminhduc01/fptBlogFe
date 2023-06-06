@@ -10,7 +10,7 @@ const NarBarDesktop = ({ onClickTurnOfSidebar }) => {
         </H2Styled>
         <hr className="ml-16px color-white" />
         <ul
-          className="nav mt-4 flex-column z-index102 "
+          className="nav mt-4 flex-column z-index2000 "
           onClick={onClickTurnOfSidebar}
         >
           <li className="nav-item ">
