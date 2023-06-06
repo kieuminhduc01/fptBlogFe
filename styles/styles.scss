@@ -38,6 +38,44 @@
     .br-#{$i}px {
       border-radius: #{$i}px;
     }
+    @media only screen and (min-width: 576px) {
+      .h-#{$i}px-sm {
+        height: #{$i}px;
+      }
+      .w-#{$i}px-sm {
+        width: #{$i}px;
+      }
+      .mt-#{$i}px-sm {
+        margin-top: #{$i}px;
+      }
+      .mr-#{$i}px-sm {
+        margin-right: #{$i}px;
+      }
+      .ml-#{$i}px-sm {
+        margin-left: #{$i}px;
+      }
+      .mb-#{$i}px-sm {
+        margin-bottom: #{$i}px;
+      }
+      .top-#{$i}px-sm {
+        top: #{$i}px;
+      }
+      .left-#{$i}px-sm {
+        left: #{$i}px;
+      }
+      .right-#{$i}px-sm {
+        right: #{$i}px;
+      }
+      .bottom-#{$i}px-sm {
+        bottom: #{$i}px;
+      }
+      .padding-#{$i}px-sm {
+        padding: #{$i}px;
+      }
+      .br-#{$i}px-sm {
+        border-radius: #{$i}px;
+      }
+    }
 
     @media only screen and (min-width: 768px) {
       .h-#{$i}px-md {
@@ -115,6 +153,44 @@
         border-radius: #{$i}px;
       }
     }
+    @media only screen and (min-width: 1400px) {
+      .h-#{$i}px-xxl {
+        height: #{$i}px;
+      }
+      .w-#{$i}px-xxl {
+        width: #{$i}px;
+      }
+      .mt-#{$i}px-xxl {
+        margin-top: #{$i}px;
+      }
+      .mr-#{$i}px-xxl {
+        margin-right: #{$i}px;
+      }
+      .ml-#{$i}px-xxl {
+        margin-left: #{$i}px;
+      }
+      .mb-#{$i}px-xxl {
+        margin-bottom: #{$i}px;
+      }
+      .top-#{$i}px-xxl {
+        top: #{$i}px;
+      }
+      .left-#{$i}px-xxl {
+        left: #{$i}px;
+      }
+      .right-#{$i}px-xxl {
+        right: #{$i}px;
+      }
+      .bottom-#{$i}px-xxl {
+        bottom: #{$i}px;
+      }
+      .padding-#{$i}px-xxl {
+        padding: #{$i}px;
+      }
+      .br-#{$i}px-xxl {
+        border-radius: #{$i}px;
+      }
+    }
   }
 }
 // height, width, margin (top left right bottom) 2px  --> 100px  step 2 begin
@@ -156,52 +232,70 @@
 // font size-2px  --> font size-50px  step 2 begin
 
 // width-30percent  --> 40 percent  step 1 begin
-@for $i from 10 through 36 {
+@for $i from 1 through 100 {
+  $percent: $i * 1%;
   .w-#{$i}pc {
-    width: #{$i}pc;
+    width: $percent;
+  }
+  .w-#{$i}vw {
+    width: #{$i}vw;
+  }
+  .letter-spacing-#{$i}px {
+    letter-spacing: #{$i}px;
   }
   @media only screen and (min-width: 576px) {
     .w-#{$i}pc-sm {
-      width: #{$i}pc;
+      width: $percent;
+    }
+    .w-#{$i}vw-sm {
+      width: #{$i}vw;
+    }
+    .letter-spacing-#{$i}px-sm {
+      letter-spacing: #{$i}px;
     }
   }
   @media only screen and (min-width: 768px) {
     .w-#{$i}pc-md {
-      width: #{$i}pc;
+      width: $percent;
     }
-  }
-  @media only screen and (min-width: 992px) {
-    .w-#{$i}pc-lg {
-      width: #{$i}pc;
+    .w-#{$i}vw-md {
+      width: #{$i}vw;
     }
-  }
-  @media only screen and (min-width: 1200px) {
-    .w-#{$i}pc-xl {
-      width: #{$i}pc;
-    }
-  }
-  @media only screen and (min-width: 1400px) {
-    .w-#{$i}pc-xxl {
-      width: #{$i}pc;
-    }
-  }
-}
-// font size-2px  --> font size-50px  step 2 begin
-
-// letter-spacing 1px  --> 10px   step 1 begin
-@for $i from 1 through 10 {
-  .letter-spacing-#{$i}px {
-    letter-spacing: #{$i}px;
-  }
-  @media only screen and (min-width: 768px) {
     .letter-spacing-#{$i}px-md {
       letter-spacing: #{$i}px;
     }
   }
+  @media only screen and (min-width: 992px) {
+    .w-#{$i}pc-lg {
+      width: $percent;
+    }
+    .w-#{$i}vw-lg {
+      width: #{$i}vw;
+    }
+    .letter-spacing-#{$i}px-lg {
+      letter-spacing: #{$i}px;
+    }
+  }
   @media only screen and (min-width: 1200px) {
+    .w-#{$i}pc-xl {
+      width: $percent;
+    }
+    .w-#{$i}vw-xl {
+      width: #{$i}vw;
+    }
     .letter-spacing-#{$i}px-xl {
       letter-spacing: #{$i}px;
     }
   }
+  @media only screen and (min-width: 1400px) {
+    .w-#{$i}pc-xxl {
+      width: $percent;
+    }
+    .w-#{$i}vw-xxl {
+      width: #{$i}vw;
+    }
+    .letter-spacing-#{$i}px-xxl {
+      letter-spacing: #{$i}px;
+    }
+  }
 }
-// letter-spacing 1px  --> 10px   step 1 begin

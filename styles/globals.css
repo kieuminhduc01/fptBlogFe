@@ -18,92 +18,48 @@ a {
 .right-17vw {
   right: 17vw;
 }
-
-.w-100vw {
-  width: 100vw;
-}
-.w-84vw {
-  width: 84vw;
-}
-.w-90pc {
-  width: 90%;
-}
-.w-95pc {
-  width: 95%;
-}
-.w-85pc {
-  width: 85%;
-}
-.w-80pc {
-  width: 80%;
-}
-.z-index100 {
-  z-index: 100;
-}
-.z-index1000 {
+.z-index-dropdown {
   z-index: 1000;
 }
-.z-index2000 {
+.z-index-sticky {
   z-index: 2000;
 }
-.z-index3000 {
+.z-index-fixed {
   z-index: 3000;
 }
-
+.z-index-modal-backdrop {
+  z-index: 4000;
+}
+.z-index-offcanvas {
+  z-index: 5000;
+}
+.z-index-modal {
+  z-index: 6000;
+}
+.z-index-popover {
+  z-index: 7000;
+}
+.z-index-tooltip {
+  z-index: 8000;
+}
 /*//////////////////////////////////////////////////////////      SM     //////////////////////////////////////////////////// */
 @media screen and (min-width: 576px) {
-  .z-index100-sm {
-    z-index: 100;
-  }
-  .w-50vw-sm {
-    width: 50vw;
-  }
-  .w-51vw-sm {
-    width: 51vw;
-  }
-  .w-95pc-sm {
-    width: 95%;
-  }
-  .w-94pc-sm {
-    width: 94%;
-  }
-  .right-51vw-sm {
-    right: 51vw;
+  .right-49vw-sm {
+    right: 49vw;
   }
 }
 /*//////////////////////////////////////////////////////////      MD     //////////////////////////////////////////////////// */
 @media screen and (min-width: 768px) {
-  .z-index100-md {
-    z-index: 100;
-  }
-  .position-fixed-md {
-    position: fixed;
-  }
 }
 
 /*//////////////////////////////////////////////////////////      LG     //////////////////////////////////////////////////// */
 @media screen and (min-width: 992px) {
-  .z-index100-lg {
-    z-index: 100;
-  }
 }
 /*//////////////////////////////////////////////////////////      XL     //////////////////////////////////////////////////// */
 
 @media only screen and (min-width: 1200px) {
-  .z-index100-xl {
-    z-index: 100;
-  }
 }
 
 /*//////////////////////////////////////////////////////////      XXL     //////////////////////////////////////////////////// */
 @media only screen and (min-width: 1400px) {
-  .z-index100-xxl {
-    z-index: 100;
-  }
-
-  /* margin top-px begin */
-  .mt-200px-xxl {
-    margin-top: 200px;
-  }
-  /* margin top-px end */
 }

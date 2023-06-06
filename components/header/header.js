@@ -11,7 +11,7 @@ import {
   H1Styled,
   H2Styled,
   HrStyled,
-  InputFieldStyled
+  InputFieldStyled,
 } from './styledComponent';
 
 const Header = ({ position }) => {
@@ -29,7 +29,7 @@ const Header = ({ position }) => {
       if (!sideBarRef?.current?.contains(event.target)) {
         setWidthMenuContent(0);
         setDisplayArrorwLeft('none');
-        setRightPxArrowLeft('right-17vw right-51vw-sm');
+        setRightPxArrowLeft('right-17vw right-49vw-sm');
         setIsContentVisiable(false);
       }
     };
@@ -57,7 +57,7 @@ const Header = ({ position }) => {
     if (width <= 576) {
       setWidthMenuContent('84vw');
     } else if (width <= 768) {
-      setWidthMenuContent('50vw');
+      setWidthMenuContent('52vw');
     }
     setTimeout(() => {
       setIsContentVisiable(true);
@@ -102,7 +102,7 @@ const Header = ({ position }) => {
     <>
       <div
         ref={sideBarRef}
-        className="d-md-none position-fixed z-index1000"
+        className="d-md-none position-fixed z-index-fixed"
         style={{
           height: '100vh',
           backgroundColor: '#c97b7b',
@@ -131,7 +131,7 @@ const Header = ({ position }) => {
                 <div className="w-90pc w-94pc-sm">
                   <div className="d-flex d-md-none justify-content-between flex-row ">
                     <div
-                      className="cursor-point z-index100 mt-20px"
+                      className="cursor-point z-index-dropdown mt-20px"
                       onClick={handleClickMenu}
                     >
                       <ThreeLineIcon />
@@ -172,7 +172,7 @@ const Header = ({ position }) => {
                 </div>
               </div>
               <div className=" d-none d-md-flex justify-content-center">
-                <div className="bg-white z-index100 w-260px-xl w-240px-md w-200px">
+                <div className="bg-white z-index-dropdown w-260px-xl w-240px-md w-200px">
                   <H1Styled className="fs-42px-xl fs-38px-md fs-34px letter-spacing-3px-xl letter-spacing-2px-xl letter-spacing-1px float-end">
                     Bạn nghe
                   </H1Styled>
