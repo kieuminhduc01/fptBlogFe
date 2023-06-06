@@ -9,29 +9,18 @@ export const DivStyled = styled.div`
     right: 0;
     left: 0;
   }
-  .content-container {
-    opacity: 1;
-    background-color: #fff;
-  }
 `;
 export const H2Styled = styled.h2`
   font-family: 'Lexend', sans-serif;
-  font-size: 31px;
   font-weight: normal;
   font-style: normal;
-  text-align: left;
-  letter-spacing: 1px;
-  color: #960c0c;
+  color: ${(props) => props.color};
   margin-bottom: 5px;
-  margin-top: 53px;
 `;
 export const H1Styled = styled.h1`
   font-family: 'Lexend', sans-serif;
-  font-size: 42px;
   font-weight: normal;
   font-style: normal;
-  text-align: right;
-  letter-spacing: 3px;
   color: #960c0c;
   margin-bottom: 0px;
 `;
@@ -48,25 +37,24 @@ export const HrStyled = styled.hr`
 `;
 export const LinkStyled = styled(Link)`
   font-family: 'Lexend', sans-serif;
-  font-size: 19px;
   font-weight: normal;
   font-style: normal;
-  color: #2c2727;
+  color: ${(props) => props.color};
   :hover {
-    color: #960c0c;
+    color: ${(props) => props.colorHover};
   }
   :active {
     color: #960c0c;
   }
   :focus {
-    color: #960c0c;
+    color: ${(props) => props.colorFocus};
   }
 `;
 export const InputFieldStyled = styled.input`
   border: none;
-  border-bottom: 2px solid #b3a7a7;
+  border-bottom: ${(props) => props.borderBottom};
   outline: none;
-  border-radius: 0;
+  -webkit-border-radius: 0;
   :focus {
     box-shadow: none;
     outline: none;

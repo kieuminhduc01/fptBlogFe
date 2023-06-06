@@ -1,9 +1,9 @@
-const FacebookIcon = () => {
+const FacebookIcon = ({ props }) => {
   return (
     <>
       <svg
         version="1.1"
-        width={'27px'}
+        className="w-26px-xl w-20px-md w-16px mr-16px-xl mr-10px-md mr-4px"
         id="Capa_1"
         x="0px"
         y="0px"

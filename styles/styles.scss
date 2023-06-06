@@ -1,5 +1,5 @@
 // height, width, margin (top left right bottom) 2px  --> 100px  step 2 begin
-@for $i from 2 through 100 {
+@for $i from 2 through 300 {
   $isMultipleOf2: $i % 2 == 0;
   @if $isMultipleOf2 {
     .h-#{$i}px {
@@ -20,27 +20,25 @@
     .mb-#{$i}px {
       margin-bottom: #{$i}px;
     }
-
-    @media only screen and (min-width: 576px) {
-      .h-#{$i}px-sm {
-        height: #{$i}px;
-      }
-      .w-#{$i}px-sm {
-        width: #{$i}px;
-      }
-      .mt-#{$i}px-sm {
-        margin-top: #{$i}px;
-      }
-      .mr-#{$i}px-sm {
-        margin-right: #{$i}px;
-      }
-      .ml-#{$i}px-sm {
-        margin-left: #{$i}px;
-      }
-      .mb-#{$i}px-sm {
-        margin-bottom: #{$i}px;
-      }
+    .top-#{$i}px {
+      top: #{$i}px;
     }
+    .left-#{$i}px {
+      left: #{$i}px;
+    }
+    .right-#{$i}px {
+      right: #{$i}px;
+    }
+    .bottom-#{$i}px {
+      bottom: #{$i}px;
+    }
+    .padding-#{$i}px {
+      padding: #{$i}px;
+    }
+    .br-#{$i}px {
+      border-radius: #{$i}px;
+    }
+
     @media only screen and (min-width: 768px) {
       .h-#{$i}px-md {
         height: #{$i}px;
@@ -60,25 +58,23 @@
       .mb-#{$i}px-md {
         margin-bottom: #{$i}px;
       }
-    }
-    @media only screen and (min-width: 992px) {
-      .h-#{$i}px-lg {
-        height: #{$i}px;
+      .top-#{$i}px-md {
+        top: #{$i}px;
       }
-      .w-#{$i}px-lg {
-        width: #{$i}px;
+      .left-#{$i}px-md {
+        left: #{$i}px;
       }
-      .mt-#{$i}px-lg {
-        margin-top: #{$i}px;
+      .right-#{$i}px-md {
+        right: #{$i}px;
       }
-      .mr-#{$i}px-lg {
-        margin-right: #{$i}px;
+      .bottom-#{$i}px-md {
+        bottom: #{$i}px;
       }
-      .ml-#{$i}px-lg {
-        margin-left: #{$i}px;
+      .padding-#{$i}px-md {
+        padding: #{$i}px;
       }
-      .mb-#{$i}px-lg {
-        margin-bottom: #{$i}px;
+      .br-#{$i}px-md {
+        border-radius: #{$i}px;
       }
     }
     @media only screen and (min-width: 1200px) {
@@ -100,25 +96,23 @@
       .mb-#{$i}px-xl {
         margin-bottom: #{$i}px;
       }
-    }
-    @media only screen and (min-width: 1400px) {
-      .h-#{$i}px-xxl {
-        height: #{$i}px;
+      .top-#{$i}px-xl {
+        top: #{$i}px;
       }
-      .w-#{$i}px-xxl {
-        width: #{$i}px;
+      .left-#{$i}px-xl {
+        left: #{$i}px;
       }
-      .mt-#{$i}px-xxl {
-        margin-top: #{$i}px;
+      .right-#{$i}px-xl {
+        right: #{$i}px;
       }
-      .mr-#{$i}px-xxl {
-        margin-right: #{$i}px;
+      .bottom-#{$i}px-xl {
+        bottom: #{$i}px;
       }
-      .ml-#{$i}px-xxl {
-        margin-left: #{$i}px;
+      .padding-#{$i}px-xl {
+        padding: #{$i}px;
       }
-      .mb-#{$i}px-xxl {
-        margin-bottom: #{$i}px;
+      .br-#{$i}px-xl {
+        border-radius: #{$i}px;
       }
     }
   }
@@ -161,48 +155,8 @@
 }
 // font size-2px  --> font size-50px  step 2 begin
 
-// width-200px  --> width-300px  step 2 begin
-@for $i from 200 through 300 {
-  $isMultipleOf2: $i % 2 == 0;
-  @if $isMultipleOf2 {
-    .w-#{$i}px-sm {
-      font-size: #{$i}px;
-    }
-    @media only screen and (min-width: 576px) {
-      .w-#{$i}px-sm {
-        font-size: #{$i}px;
-      }
-    }
-
-    @media only screen and (min-width: 768px) {
-      .w-#{$i}px-md {
-        font-size: #{$i}px;
-      }
-    }
-
-    @media only screen and (min-width: 992px) {
-      .w-#{$i}px-lg {
-        font-size: #{$i}px;
-      }
-    }
-
-    @media only screen and (min-width: 1200px) {
-      .w-#{$i}px-xl {
-        font-size: #{$i}px;
-      }
-    }
-
-    @media only screen and (min-width: 1400px) {
-      .w-#{$i}px-xxl {
-        font-size: #{$i}px;
-      }
-    }
-  }
-}
-// width-200px  --> width-300px  step 2 end
-
 // width-30percent  --> 40 percent  step 1 begin
-@for $i from 30 through 40 {
+@for $i from 10 through 36 {
   .w-#{$i}pc {
     width: #{$i}pc;
   }
@@ -233,3 +187,21 @@
   }
 }
 // font size-2px  --> font size-50px  step 2 begin
+
+// letter-spacing 1px  --> 10px   step 1 begin
+@for $i from 1 through 10 {
+  .letter-spacing-#{$i}px {
+    letter-spacing: #{$i}px;
+  }
+  @media only screen and (min-width: 768px) {
+    .letter-spacing-#{$i}px-md {
+      letter-spacing: #{$i}px;
+    }
+  }
+  @media only screen and (min-width: 1200px) {
+    .letter-spacing-#{$i}px-xl {
+      letter-spacing: #{$i}px;
+    }
+  }
+}
+// letter-spacing 1px  --> 10px   step 1 begin

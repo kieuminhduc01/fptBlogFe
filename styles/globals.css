@@ -3,13 +3,51 @@ a {
   text-decoration: none;
   cursor: pointer;
 }
+.color-white {
+  color: #fff;
+}
 .footer-bg {
   background-color: #f2f2f2;
 }
+.cursor-point {
+  cursor: pointer;
+}
+.bg-fafafa {
+  background: #fafafa;
+}
+.right-17vw {
+  right: 17vw;
+}
 
-/* xs */
+.w-100vw {
+  width: 100vw;
+}
+.w-84vw {
+  width: 84vw;
+}
+.w-90pc {
+  width: 90%;
+}
+.w-95pc {
+  width: 95%;
+}
+.w-85pc {
+  width: 85%;
+}
+.w-80pc {
+  width: 80%;
+}
 .z-index100 {
   z-index: 100;
+}
+.z-index101 {
+  z-index: 101;
+}
+.z-index102 {
+  z-index: 102;
+}
+.z-index103 {
+  z-index: 103;
 }
 
 /*//////////////////////////////////////////////////////////      SM     //////////////////////////////////////////////////// */
@@ -17,11 +55,29 @@ a {
   .z-index100-sm {
     z-index: 100;
   }
+  .w-50vw-sm {
+    width: 50vw;
+  }
+  .w-51vw-sm {
+    width: 51vw;
+  }
+  .w-95pc-sm {
+    width: 95%;
+  }
+  .w-94pc-sm {
+    width: 94%;
+  }
+  .right-51vw-sm {
+    right: 51vw;
+  }
 }
 /*//////////////////////////////////////////////////////////      MD     //////////////////////////////////////////////////// */
 @media screen and (min-width: 768px) {
   .z-index100-md {
     z-index: 100;
+  }
+  .position-fixed-md {
+    position: fixed;
   }
 }
 
