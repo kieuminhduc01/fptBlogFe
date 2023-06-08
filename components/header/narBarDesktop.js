@@ -9,9 +9,9 @@ const NarBarDesktop = () => {
         <li className="nav-item ms-5">
           <LinkStyled
             color="#2c2727"
-            colorFocus="#960c0c"
-            colorHover="#960c0c"
-            className="nav-link fs-20px"
+            colorfocus="#960c0c"
+            colorhover="#960c0c"
+            className="nav-link fs-20px-xxl fs-20px-xl fs-20px-lg fs-20px-md"
             href={UrlPath.growingInThePRWorld.url}
           >
             Growing in the PR World
@@ -19,10 +19,10 @@ const NarBarDesktop = () => {
         </li>
         <li className="nav-item ms-5">
           <LinkStyled
-            colorFocus="#960c0c"
-            colorHover="#960c0c"
+            colorfocus="#960c0c"
+            colorhover="#960c0c"
             color="#2c2727"
-            className="nav-link fs-20px"
+            className="nav-link fs-20px-xxl fs-20px-xl fs-20px-lg fs-20px-md"
             href={UrlPath.seeThinkShare.url}
           >
             See think share
@@ -31,9 +31,9 @@ const NarBarDesktop = () => {
         <li className="nav-item ms-5">
           <LinkStyled
             color="#2c2727"
-            colorFocus="#960c0c"
-            colorHover="#960c0c"
-            className="nav-link fs-20px"
+            colorfocus="#960c0c"
+            colorhover="#960c0c"
+            className="nav-link fs-20px-xxl fs-20px-xl fs-20px-lg fs-20px-md"
             href={UrlPath.myConner.url}
           >
             My conner

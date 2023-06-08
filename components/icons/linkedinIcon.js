@@ -3,8 +3,7 @@ const LinkedinIcon = () => {
     <>
       <svg
         version="1.1"
-        width={'27px'}
-        className="w-30px-xl w-22px-md w-18px mr-16px-xl mr-12px-md mr-6px"
+        className="w-26px-xxl w-26px-xl w-26px-lg w-22px-md w-20px-sm w-16px mr-20px-xxl mr-18px-xl mr-16px-lg mr-12px-md mr-10px-sm mr-6px"
         id="Capa_1"
         x="0px"
         y="0px"

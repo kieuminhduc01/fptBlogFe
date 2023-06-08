@@ -41,13 +41,13 @@ export const LinkStyled = styled(Link)`
   font-style: normal;
   color: ${(props) => props.color};
   :hover {
-    color: ${(props) => props.colorHover};
+    color: ${(props) => props.colorhover};
   }
   :active {
     color: #960c0c;
   }
   :focus {
-    color: ${(props) => props.colorFocus};
+    color: ${(props) => props.colorfocus};
   }
 `;
 export const InputFieldStyled = styled.input`

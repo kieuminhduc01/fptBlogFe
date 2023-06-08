@@ -3,8 +3,23 @@ a {
   text-decoration: none;
   cursor: pointer;
 }
+.vertical-line::before {
+  content: '';
+  border-left: 3px solid #890c0c;
+  height: 230px;
+  display: block;
+}
 .color-white {
   color: #fff;
+}
+.color-960C0C {
+  color: #960c0c;
+}
+.color-960D0D {
+  color: #960d0d;
+}
+.text-align {
+  text-align: justify;
 }
 .footer-bg {
   background-color: #f2f2f2;
@@ -17,6 +32,13 @@ a {
 }
 .right-17vw {
   right: 17vw;
+}
+
+.ff-lexend {
+  font-family: 'Lexend', sans-serif;
+}
+.z-index--1000 {
+  z-index: -1000;
 }
 .z-index-dropdown {
   z-index: 1000;
@@ -44,22 +66,33 @@ a {
 }
 /*//////////////////////////////////////////////////////////      SM     //////////////////////////////////////////////////// */
 @media screen and (min-width: 576px) {
-  .right-49vw-sm {
-    right: 49vw;
-  }
 }
 /*//////////////////////////////////////////////////////////      MD     //////////////////////////////////////////////////// */
 @media screen and (min-width: 768px) {
+  .mt-260px-md {
+    margin-top: 260px;
+  }
+  .top--116vh-md {
+    top: -116vh;
+  }
+  .padding-12px-16px-md {
+    padding: 12px 16px;
+  }
 }
 
 /*//////////////////////////////////////////////////////////      LG     //////////////////////////////////////////////////// */
 @media screen and (min-width: 992px) {
+  .mt-200px-lg {
+    margin-top: 200px;
+  }
 }
 /*//////////////////////////////////////////////////////////      XL     //////////////////////////////////////////////////// */
 
 @media only screen and (min-width: 1200px) {
 }
-
+.top--116vh-xl {
+  top: -116vh;
+}
 /*//////////////////////////////////////////////////////////      XXL     //////////////////////////////////////////////////// */
 @media only screen and (min-width: 1400px) {
 }

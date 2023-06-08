@@ -53,6 +53,9 @@ const Header = ({ position }) => {
       };
     }
   }, []);
+  const handleClickLogo = () => {
+    router.push(UrlPath.home.url);
+  };
   const handleClickMenu = () => {
     if (width <= 576) {
       setWidthMenuContent('84vw');
@@ -111,7 +114,7 @@ const Header = ({ position }) => {
         }}
       >
         <div
-          className={`position-fixed d-md-none ${rightPxArrowLeft} top-30px`}
+          className={`position-fixed d-md-none ${rightPxArrowLeft} top-24px-sm top-30px`}
           style={{ display: displayArrorwLeft }}
           onClick={handleClickArrowLeft}
         >
@@ -124,34 +127,40 @@ const Header = ({ position }) => {
         </div>
       </div>
       <DivStyled>
-        <div className="header-container" style={{ position: position }}>
+        <div
+          className="header-container z-index-fixed"
+          style={{ position: position }}
+        >
           <div className="position-relative">
             <div className="bg-white opacity-100">
               <div className="bg-white opacity-100 d-flex justify-content-center">
-                <div className="w-90pc w-94pc-sm">
+                <div className="w-89pc w-92pc-sm w-90pc-md w-90pc-lg w-88pc-xl w-88pc-xxl">
                   <div className="d-flex d-md-none justify-content-between flex-row ">
                     <div
-                      className="cursor-point z-index-dropdown mt-20px"
+                      className="cursor-point z-index-dropdown mt-22px-sm mt-20px"
                       onClick={handleClickMenu}
                     >
                       <ThreeLineIcon />
                     </div>
-                    <div>
-                      <H2Styled color="#960c0c" className="fs-20px mt-20px">
+                    <div onClick={handleClickLogo}>
+                      <H2Styled
+                        color="#960c0c"
+                        className="fs-22px-sm fs-20px mt-22px-sm mt-20px"
+                      >
                         Phương kể bạn nghe
                       </H2Styled>
                     </div>
                   </div>
-                  <div className=" d-md-none float-start mt-60px mb-20px fw-bold fs-1">
+                  <div className=" d-md-none float-start mt-62px-sm mt-60px mb-22px-sm mb-20px fw-bold fs-1">
                     {getTitle(router.pathname)}
                   </div>
-                  <div className="d-md-none d-flex w-100  mb-20px">
-                    <div className="d-flex padding-10px w-100 br-14px bg-fafafa ">
-                      <div className="cursor-pointer mr-8px">
+                  <div className="d-md-none d-flex w-100  mb-22px-sm mb-20px">
+                    <div className="d-flex padding-12px-sm padding-10px w-100 br-14px-sm br-14px bg-fafafa ">
+                      <div className="cursor-pointer mr-8px-sm mr-8px">
                         <LensIcon />
                       </div>
                       <InputFieldStyled
-                        className="w-90pc bg-fafafa"
+                        className="w-90pc-sm w-90pc bg-fafafa"
                         type="search"
                         placeholder="Tìm kiếm"
                         aria-label="Search"
@@ -161,21 +170,23 @@ const Header = ({ position }) => {
                 </div>
               </div>
 
-              <div className="d-none d-md-flex justify-content-center">
-                <div className="w-220px-xl w-200px-md w-200px">
-                  <H2Styled
-                    color="#960c0c"
-                    className="fs-32px-xl fs-28px-md fs-24px mt-50px-xl mt-40px-md mt-20px float-start  "
-                  >
-                    Phương kể
-                  </H2Styled>
+              <div onClick={handleClickLogo}>
+                <div className="d-none d-md-flex justify-content-center">
+                  <div className="w-250px-xxl w-250px-xl w-240px-lg w-200px-md">
+                    <H2Styled
+                      color="#960c0c"
+                      className="fs-34px-xxl fs-32px-xl fs-30px-lg fs-28px-md mt-52px-xxl mt-50px-xl mt-48px-lg mt-40px-md float-start cursor-point "
+                    >
+                      Phương kể
+                    </H2Styled>
+                  </div>
                 </div>
-              </div>
-              <div className=" d-none d-md-flex justify-content-center">
-                <div className="bg-white z-index-dropdown w-260px-xl w-240px-md w-200px">
-                  <H1Styled className="fs-42px-xl fs-38px-md fs-34px letter-spacing-3px-xl letter-spacing-2px-xl letter-spacing-1px float-end">
-                    Bạn nghe
-                  </H1Styled>
+                <div className=" d-none d-md-flex justify-content-center">
+                  <div className="bg-white z-index-dropdown w-270px-xxl w-260px-xl w-250px-lg w-230px-md">
+                    <H1Styled className=" cursor-point fs-42px-xl fs-38px-md fs-34px letter-spacing-3px-xxl letter-spacing-3px-xl letter-spacing-2px-lg letter-spacing-1px-mdfloat-end">
+                      Bạn nghe
+                    </H1Styled>
+                  </div>
                 </div>
               </div>
             </div>
