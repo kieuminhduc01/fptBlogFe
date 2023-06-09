@@ -96,9 +96,6 @@ const Header = ({ position }) => {
       case UrlPath.home.url: {
         return UrlPath.home.title;
       }
-      case UrlPath.tag.url: {
-        return UrlPath.tag.title;
-      }
     }
   };
   return (

@@ -22,9 +22,6 @@ function MyApp({ Component, pageProps }) {
       case UrlPath.detail.url: {
         return UrlPath.detail.title;
       }
-      case UrlPath.tag.url: {
-        return UrlPath.tag.title;
-      }
       case UrlPath.seeThinkShare.url: {
         return UrlPath.seeThinkShare.title;
       }
