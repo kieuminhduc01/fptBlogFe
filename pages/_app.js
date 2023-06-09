@@ -5,6 +5,8 @@ import Script from 'next/script';
 import MainLayout from '../components/layout/mainLayout';
 import '../styles/globals.css';
 import '../styles/styles.scss';
+import 'swiper/css';
+import 'swiper/css/pagination';
 import { UrlPath } from '../type/urlPath';
 
 function MyApp({ Component, pageProps }) {
@@ -19,9 +21,6 @@ function MyApp({ Component, pageProps }) {
       }
       case UrlPath.detail.url: {
         return UrlPath.detail.title;
-      }
-      case UrlPath.tag.url: {
-        return UrlPath.tag.title;
       }
       case UrlPath.seeThinkShare.url: {
         return UrlPath.seeThinkShare.title;

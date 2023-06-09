@@ -1,17 +1,29 @@
+import axios from 'axios';
+import { BASE_URL } from '../api/request';
 import HomeComponentMain from '../components/pageComponent/home/homeComponentMain';
 
 export async function getServerSideProps() {
-  const res = await fetch(
-    `https://api-gateway.fullstack.edu.vn/api/blog-posts/phan-1-tao-du-an-reactjs-voi-webpack-va-babel`,
-  );
-  const data = await res.json();
+  const res = await axios.post(`${BASE_URL}BlogPost/Paging`, {
+    perPage: 10,
+    currentPage: 1,
+    shortBy: {
+      title: 'Created',
+      isIncrease: false,
+    },
+    filter: {
+      categoryIds: [],
+      tagIds: [],
+    },
+    keyWord: '',
+  });
+  const data = res.data.result;
   return { props: { data } };
 }
 
 const Index = ({ data }) => {
   return (
     <>
-      <HomeComponentMain />
+      <HomeComponentMain data={data} />
     </>
   );
 };

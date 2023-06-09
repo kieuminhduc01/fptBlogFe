@@ -2,7 +2,7 @@ const LensIcon = () => {
   return (
     <>
       <svg
-        className="w-24px-md w-18px"
+        className="w-24px-xxl w-24px-xl w-24px-lg w-24px-md w-20px-sm w-20px"
         version="1.1"
         strokeWidth={3}
         id="Capa_1"

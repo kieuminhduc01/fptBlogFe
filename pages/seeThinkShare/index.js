@@ -1,9 +1,5 @@
 const Index = () => {
-  return (
-    <div>
-      Enter
-    </div>
-  );
-}
+  return <div>see think share</div>;
+};
 
 export default Index;
