@@ -183,7 +183,7 @@ const Header = ({ position }) => {
                 </div>
                 <div className=" d-none d-md-flex justify-content-center">
                   <div className="bg-white z-index-dropdown w-270px-xxl w-260px-xl w-250px-lg w-230px-md">
-                    <H1Styled className=" cursor-point fs-42px-xl fs-38px-md fs-34px letter-spacing-3px-xxl letter-spacing-3px-xl letter-spacing-2px-lg letter-spacing-1px-mdfloat-end">
+                    <H1Styled className=" cursor-point fs-42px-xl fs-38px-md fs-34px letter-spacing-3px-xxl letter-spacing-3px-xl letter-spacing-2px-lg letter-spacing-1px-md float-end">
                       Bạn nghe
                     </H1Styled>
                   </div>
