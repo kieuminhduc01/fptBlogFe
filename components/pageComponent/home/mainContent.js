@@ -16,7 +16,7 @@ const MainContent = ({ index, data }) => {
                 {data[index].summary}
               </p>
               <LinkStyled
-                href={`${UrlPath.detail.url}`}
+                href={`${UrlPath.home.url}${data[index].category}/${data[index].slug}`}
                 style={{}}
                 className="bg-body d-inline-block color-960D0D fs-22px-xxl fs-20px-xl fs-20px-lg fs-18px-md fs-18px-sm fs-16px  mt-42px-md"
               >

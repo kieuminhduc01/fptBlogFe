@@ -16,12 +16,6 @@ function MyApp({ Component, pageProps }) {
       case UrlPath.growingInThePRWorld.url: {
         return UrlPath.growingInThePRWorld.title;
       }
-      case UrlPath.auth.url: {
-        return UrlPath.auth.title;
-      }
-      case UrlPath.detail.url: {
-        return UrlPath.detail.title;
-      }
       case UrlPath.seeThinkShare.url: {
         return UrlPath.seeThinkShare.title;
       }
@@ -30,6 +24,15 @@ function MyApp({ Component, pageProps }) {
       }
       case UrlPath.myConner.url: {
         return UrlPath.myConner.title;
+      }
+      case `${UrlPath.seeThinkShare.url}/[slug]`: {
+        return 'Chi tiết bài viết';
+      }
+      case `${UrlPath.growingInThePRWorld.url}/[slug]`: {
+        return 'Chi tiết bài viết';
+      }
+      case `${UrlPath.myConner.url}/[slug]`: {
+        return 'Chi tiết bài viết';
       }
     }
   };
