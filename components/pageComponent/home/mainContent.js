@@ -1,3 +1,4 @@
+import { Server } from '../../../api/request';
 import { UrlPath } from '../../../type/urlPath';
 import { LinkStyled } from './styledComponent';
 
@@ -24,7 +25,11 @@ const MainContent = ({ index, data }) => {
             </div>
             <div className=" col-12 col-md-7 position-relative ">
               <div className="mt-20px-xxl mt-20px-xl mt-20px-lg mt-20px-md mt-30px-sm mt-20px float-end w-40vw-xxl w-40vw-xl w-40vw-lg w-44vw-md">
-                <img className="w-100" alt="" src={data[index].image}></img>
+                <img
+                  className="w-100"
+                  alt=""
+                  src={`${Server}${data[index].image}`}
+                ></img>
               </div>
             </div>
           </div>
