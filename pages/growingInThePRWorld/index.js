@@ -3,7 +3,7 @@ import ComponentMain from '../../components/pageComponent/growingInThePRWorld/co
 const Index = () => {
   return (
     <>
-      <ComponentMain />
+      {/* <ComponentMain /> */}
     </>
   );
 };

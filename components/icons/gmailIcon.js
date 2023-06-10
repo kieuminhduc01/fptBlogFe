@@ -4,7 +4,8 @@ const GmailIcon = () => {
       <svg
         version="1.1"
         id="Capa_1"
-        className=" w-30px-xxl w-28px-xl w-26px-lg w-24px-md w-20px-sm w-16px"
+        style={{ marginTop: '4px' }}
+        className=" w-30px-xxl w-28px-xl w-26px-lg w-24px-md w-20px-sm w-20px "
         x="0px"
         y="0px"
         fill="black"

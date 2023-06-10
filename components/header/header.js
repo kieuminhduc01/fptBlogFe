@@ -54,7 +54,7 @@ const Header = ({ position }) => {
     }
   }, []);
   const handleClickLogo = () => {
-    router.push(UrlPath.home.url);
+    router.replace(UrlPath.home.url);
   };
   const handleClickMenu = () => {
     if (width <= 576) {
@@ -81,13 +81,14 @@ const Header = ({ position }) => {
 
   const getTitle = (url) => {
     switch (url) {
-      case UrlPath.growingInThePRWorld.url: {
+      case UrlPath.growingInThePRWorld.url &&
+        `${UrlPath.growingInThePRWorld.url}/[slug]`: {
         return UrlPath.growingInThePRWorld.title;
       }
-      case UrlPath.seeThinkShare.url: {
+      case UrlPath.seeThinkShare.url && `${UrlPath.seeThinkShare.url}/[slug]`: {
         return UrlPath.seeThinkShare.title;
       }
-      case UrlPath.myConner.url: {
+      case UrlPath.myConner.url && `${UrlPath.myConner.url}/[slug]`: {
         return UrlPath.myConner.title;
       }
       case UrlPath.home.url: {
