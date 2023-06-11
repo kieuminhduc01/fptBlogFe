@@ -40,7 +40,6 @@ const Index = ({ dataOri }) => {
   return (
     <>
       <HomeComponentMain dataOri={dataOri} />
-      {console.log('aaa', dataOri)}
     </>
   );
 };

@@ -634,6 +634,11 @@ react-modal@^3.16.1:
     react-lifecycles-compat "^3.0.0"
     warning "^4.0.3"
 
+react-status-alert@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/react-status-alert/-/react-status-alert-1.2.1.tgz#05de19c40c31407d0d9f3d71fa162da93198c218"
+  integrity sha512-zt2Vk+cYgvPFRYT1b9dj+4Fd0kAJ8mK4NXKfzVP7kdsU7w7SqOEASFNG2btLTqHIzIKnXwb25cOJakZTF8HHZQ==
+
 react@18.2.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react/-/react-18.2.0.tgz"

@@ -521,3 +521,56 @@
     }
   }
 }
+@for $i from 409 through 1000 {
+  $isMultipleOf10: $i % 10 == 0;
+  @if $isMultipleOf10 {
+    @media (width<= 576px) {
+      .h-#{$i}px {
+        height: #{$i}px;
+      }
+      .w-#{$i}px {
+        width: #{$i}px;
+      }
+    }
+    @media (576px<width<= 768px) {
+      .h-#{$i}px-sm {
+        height: #{$i}px;
+      }
+      .w-#{$i}px-sm {
+        width: #{$i}px;
+      }
+    }
+    @media (768px<width<= 992px) {
+      .h-#{$i}px-md {
+        height: #{$i}px;
+      }
+      .w-#{$i}px-md {
+        width: #{$i}px;
+      }
+    }
+    @media (992px<width<= 1200px) {
+      .h-#{$i}px-lg {
+        height: #{$i}px;
+      }
+      .w-#{$i}px-lg {
+        width: #{$i}px;
+      }
+    }
+    @media (1200px<width<= 1400px) {
+      .h-#{$i}px-xl {
+        height: #{$i}px;
+      }
+      .w-#{$i}px-xl {
+        width: #{$i}px;
+      }
+    }
+    @media (1400px<width) {
+      .h-#{$i}px-xxl {
+        height: #{$i}px;
+      }
+      .w-#{$i}px-xxl {
+        width: #{$i}px;
+      }
+    }
+  }
+}

@@ -1,19 +1,19 @@
-import { request } from './requet'
+import { request } from './request';
+
 const Comment = {
-  base: 'Comment'
-}
+  base: 'Comment',
+};
 export const CreateCommentApi = (data) => {
   return request({
     url: Comment.base,
     method: 'post',
-    data
-  })
-}
+    data,
+  });
+};
 export const ReadCommentApi = (data) => {
   return request({
     url: Comment.base,
     method: 'get',
-    data
-  })
-}
-
+    data,
+  });
+};

@@ -1,49 +1,78 @@
 import axios from 'axios';
-import Cookies from 'js-cookie';
 import { useEffect, useState } from 'react';
 import { CreateCommentApi } from '../../../api/commentAPI';
 import { BASE_URL } from '../../../api/request';
-import { UrlPath } from '../../../type/urlPath';
 import AvatarIcon from '../../icons/avatarIcon';
 import AvatarIconSubCM from '../../icons/avatarIconSubCM';
 import { ButtonTagStyled } from './styledComponent';
-
+import StatusAlert, { StatusAlertService } from 'react-status-alert';
 const Comment = ({ BlogPost }) => {
   const [commentData, setCommentData] = useState([]);
   const [commentText, setCommentText] = useState('');
-  
+  const [commentReplyText, setCommentReplyText] = useState();
+  const [commentIdParent, setCommentIdParent] = useState();
+
   useEffect(() => {
     const getComment = async () => {
       await axios
         .get(`${BASE_URL}Comment?blogPostId=${BlogPost.id}`)
         .then((res) => {
           setCommentData(res.data.result.comments);
-          console.log('aaaa', commentData);
         });
     };
     getComment();
   }, []);
-  const handeBlurCommentText=(e)=>{
-    setCommentText(e.target.value)
-  }
+  const handeBlurCommentText = (e) => {
+    setCommentText(e.target.value);
+  };
+  const handleBlurCommentReplyText = (e) => {
+    setCommentReplyText(e.target.value);
+    console.log('targe.value', e.target.value);
+  };
+  const handleClickReply = (commentId) => {
+    setCommentIdParent(commentId);
+  };
+  const handleClickSubmitReply = () => {
+    const dataReq = {
+      accountId: '1d218f46-655f-4168-932c-13f1539de4e9',
+      blogPostId: BlogPost.id,
+      parentId: commentIdParent,
+      content: commentReplyText,
+    };
+    console.log('dataReq', dataReq);
+    CreateCommentApi(dataReq)
+      .then((res) => {
+        StatusAlertService.showSuccess('Trả lời thành công!');
+      })
+      .catch((err) => {
+        StatusAlertService.showError(err);
+      })
+      .finally(() => {
+        setCommentIdParent();
+      });
+  };
+
   const handleClickComment = () => {
     const dataReq = {
-      accountId: "string",
-      blogPostId: "string",
-      parentId: "string",
-      content: commentText
+      accountId: '1d218f46-655f-4168-932c-13f1539de4e9',
+      blogPostId: BlogPost.id,
+      content: commentText,
     };
     CreateCommentApi(dataReq)
       .then((res) => {
-
+        StatusAlertService.showSuccess('Bình luận thành công!');
       })
-      .catch(() => {
-
+      .catch((err) => {
+        StatusAlertService.showError(err);
+      })
+      .finally(() => {
+        setCommentIdParent();
       });
   };
   return (
     <>
       <div>
+        <StatusAlert />
         <div>
           <div className="ff-lexend fs-24px-xxl fs-24px-xl fs-24px-lg fs-24px-md fs-24px-sm fs-22px fw-bold">
             Bình luận
@@ -67,9 +96,32 @@ const Comment = ({ BlogPost }) => {
                       </div>
                     </div>
                     <div>
-                      <button className="mx-2 fw-bolder border-0 bg-body ff-lexend fs-16px-xxl fs-16px-xl fs-16px-lg fs-16px-md fs-16px-sm fs-14px">
+                      <button
+                        onClick={() => handleClickReply(comment.commentId)}
+                        className="mx-2 fw-bolder border-0 bg-body ff-lexend fs-16px-xxl fs-16px-xl fs-16px-lg fs-16px-md fs-16px-sm fs-14px"
+                      >
                         Reply
                       </button>
+                      {commentIdParent === comment.commentId && (
+                        <div key={index}>
+                          <div className="input-group mb-3">
+                            <input
+                              type="text"
+                              // className="form-control"
+                              placeholder="Nhập"
+                              value={commentReplyText}
+                              onBlur={handleBlurCommentReplyText}
+                            />
+                            <button
+                              onClick={handleClickSubmitReply}
+                              type="submit"
+                              className="btn btn-primary"
+                            >
+                              Submit
+                            </button>
+                          </div>
+                        </div>
+                      )}
                     </div>
                     {comment.subComments?.map((subComments, index) => {
                       return (
@@ -104,20 +156,18 @@ const Comment = ({ BlogPost }) => {
           </div>
         </div>
         <br />
-        <div className="row">
-          <div className="form-group">
+        <div>
+          <div>
             <input
               type="text"
               placeholder="Nhập bình luận"
               className="form-control form-control-lg"
               value={commentText}
               onBlur={handeBlurCommentText}
-
             />
           </div>
         </div>
         <br />
-
         <div className="d-flex justify-content-center mt-2 mb-5">
           <ButtonTagStyled
             onClick={handleClickComment}

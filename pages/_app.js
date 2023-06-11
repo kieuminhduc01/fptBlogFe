@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import Script from 'next/script';
+import 'react-status-alert/dist/status-alert.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../styles/globals.css';
 import MainLayout from '../components/layout/mainLayout';

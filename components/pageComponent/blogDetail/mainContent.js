@@ -16,6 +16,7 @@ const MainContent = ({ BlogPost, TagAll }) => {
   const router = useRouter();
   const [totalComment, setTotalComment] = useState();
   const [renderedContent, setRenderedContent] = useState('');
+  const [fillLike, setFillLike] = useState(false);
   useEffect(() => {
     setRenderedContent(marked(BlogPost.content));
   }, []);
@@ -29,6 +30,9 @@ const MainContent = ({ BlogPost, TagAll }) => {
     };
     getComment();
   }, []);
+  const handlelClickLike = () => {
+    setFillLike(!fillLike);
+  };
   return (
     <>
       <div>
@@ -67,9 +71,12 @@ const MainContent = ({ BlogPost, TagAll }) => {
                     {totalComment} Bình luận
                   </div>
                 </div>
-                <div className="ff-lexend fs-20px-xxl fs-20px-xl fs-20px-lg fs-20px-md fs-20px-sm fs-18px color-2c2727">
+                <div
+                  onClick={handlelClickLike}
+                  className="ff-lexend fs-20px-xxl fs-20px-xl fs-20px-lg fs-20px-md fs-20px-sm fs-18px color-2c2727"
+                >
                   {BlogPost.likes}
-                  <HeartIcon />
+                  <HeartIcon fillLike={fillLike} />
                 </div>
               </div>
               <HrStyled />
