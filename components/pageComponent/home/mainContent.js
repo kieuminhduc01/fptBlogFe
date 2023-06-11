@@ -2,7 +2,7 @@ import { Server } from '../../../api/request';
 import { UrlPath } from '../../../type/urlPath';
 import { LinkStyled } from './styledComponent';
 
-const MainContent = ({ index, data }) => {
+const MainContent = ({ index, dataOri }) => {
   return (
     <>
       <div>
@@ -10,13 +10,14 @@ const MainContent = ({ index, data }) => {
           <div className="w-94pc w-95pc-sm w-90pc-md w-90pc-lg w-88pc-xl w-88pc-xxl row mt-50px-xxl mt-50px-xl mt-48px-lg  mt-46px-md">
             <div className=" col-12 col-md-5">
               <h1 className="fs-50px-xxl fs-50px-xl fs-46px-lg fs-40px-md fs-34px-sm fs-30px fw-normal ff-lexend color-960C0C ">
-                {data[index].title}
+                {dataOri[index]?.title}
+                {/* {console.log('aaaáds', dataOri)} */}
               </h1>
               <p className="fs-22px-xxl fs-20px-xl fs-20px-lg fs-18px-md fs-18px-sm fs-16px text-align ff-lexend">
-                {data[index].summary}
+                {dataOri[index]?.summary}
               </p>
               <LinkStyled
-                href={`${UrlPath.home.url}${data[index].category}/${data[index].slug}`}
+                href={`${UrlPath.home.url}${dataOri[index]?.category}/${dataOri[index]?.slug}`}
                 style={{}}
                 className="bg-body d-inline-block color-960D0D fs-22px-xxl fs-20px-xl fs-20px-lg fs-18px-md fs-18px-sm fs-16px  mt-42px-md"
               >
@@ -28,7 +29,7 @@ const MainContent = ({ index, data }) => {
                 <img
                   className="w-100"
                   alt=""
-                  src={`${Server}${data[index].image}`}
+                  src={`${Server}${dataOri[index]?.image}`}
                 ></img>
               </div>
             </div>

@@ -6,7 +6,7 @@ import FacebookIcon from '../../icons/facebookIcon';
 import GmailIcon from '../../icons/gmailIcon';
 import LinkedinIcon from '../../icons/linkedinIcon';
 import MainContent from './mainContent';
-const HomeComponentMain = ({ data }) => {
+const HomeComponentMain = ({ dataOri }) => {
   return (
     <>
       <div className="position-relative d-none d-md-block">
@@ -15,19 +15,19 @@ const HomeComponentMain = ({ data }) => {
       <MainContainer>
         <Swiper pagination={true} modules={[Pagination]}>
           <SwiperSlide>
-            <MainContent data={data.items} index={0} />
+            <MainContent dataOri={dataOri.items} index={0} />
           </SwiperSlide>
           <SwiperSlide>
-            <MainContent data={data.items} index={1} />
+            <MainContent dataOri={dataOri.items} index={1} />
           </SwiperSlide>
           <SwiperSlide>
-            <MainContent data={data.items} index={2} />
+            <MainContent dataOri={dataOri.items} index={2} />
           </SwiperSlide>
           <SwiperSlide>
-            <MainContent data={data.items} index={3} />
+            <MainContent dataOri={dataOri.items} index={3} />
           </SwiperSlide>
           <SwiperSlide>
-            <MainContent data={data.items} index={4} />
+            <MainContent dataOri={dataOri.items} index={4} />
           </SwiperSlide>
         </Swiper>
         <div className="position-relative d-none d-md-block">

@@ -2,7 +2,7 @@ const AvatarIcon = () => {
   return (
     <>
       <svg
-        className="w-40px-xxl w-38px-xl w-36px-xxl w-34px-lg w-32px-md w-30px-sm w-30px"
+        className="w-60px-xxl w-58px-xl w-56px-lg w-50px-md w-48px-sm w-46px"
         fill="none"
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg "

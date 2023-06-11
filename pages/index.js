@@ -20,6 +20,18 @@ export async function getServerSideProps() {
     })
     .then((res) => {
       dataOri = res.data.result;
+    })
+    .catch((err) => {
+      return (
+        <div class="alert alert-danger alert-dismissible fade show">
+          <strong>Error!</strong> {err}
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="alert"
+          ></button>
+        </div>
+      );
     });
   return { props: { dataOri } };
 }
@@ -27,7 +39,8 @@ export async function getServerSideProps() {
 const Index = ({ dataOri }) => {
   return (
     <>
-      <HomeComponentMain data={dataOri} /> 
+      <HomeComponentMain dataOri={dataOri} />
+      {console.log('aaa', dataOri)}
     </>
   );
 };

@@ -1,21 +1,33 @@
+import axios from 'axios';
 import { marked } from 'marked';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import { BASE_URL } from '../../../api/request';
 import ArrowRight from '../../icons/arrowRight';
-import AvatarIcon from '../../icons/avatarIcon';
 import FacebookIcon from '../../icons/facebookIcon';
 import GmailIcon from '../../icons/gmailIcon';
 import HeartIcon from '../../icons/heartIcon';
 import LinkedinIcon from '../../icons/linkedinIcon';
+import BlogTagList from './blogTagList';
+import Comment from './comment';
 import { ButtonTagStyled, DivBlockStyled, HrStyled } from './styledComponent';
 
 const MainContent = ({ BlogPost, TagAll }) => {
   const router = useRouter();
-
+  const [totalComment, setTotalComment] = useState();
   const [renderedContent, setRenderedContent] = useState('');
   useEffect(() => {
     setRenderedContent(marked(BlogPost.content));
-    // console.log('aaa', TagAll);
+  }, []);
+  useEffect(() => {
+    const getComment = async () => {
+      await axios
+        .get(`${BASE_URL}Comment?blogPostId=${BlogPost.id}`)
+        .then((res) => {
+          setTotalComment(res.data.result.total);
+        });
+    };
+    getComment();
   }, []);
   return (
     <>
@@ -52,7 +64,7 @@ const MainContent = ({ BlogPost, TagAll }) => {
                     {BlogPost.views} Views
                   </div>
                   <div className="col-7 ff-lexend fs-20px-xxl fs-20px-xl fs-20px-lg fs-20px-md fs-20px-sm fs-18px color-2c2727">
-                    {BlogPost.likes} Bình luận
+                    {totalComment} Bình luận
                   </div>
                 </div>
                 <div className="ff-lexend fs-20px-xxl fs-20px-xl fs-20px-lg fs-20px-md fs-20px-sm fs-18px color-2c2727">
@@ -63,7 +75,7 @@ const MainContent = ({ BlogPost, TagAll }) => {
               <HrStyled />
               <div className="d-flex ">
                 <div className="ff-lexend fs-24px-xxl fs-24px-xl fs-24px-lg fs-24px-md fs-24px-sm fs-22px fw-bold">
-                  Chia sẻ bài viết:{' '}
+                  Chia sẻ bài viết:
                 </div>
                 <a href="#" className="cursor-point ms-3">
                   <FacebookIcon />
@@ -83,7 +95,7 @@ const MainContent = ({ BlogPost, TagAll }) => {
                 <div>
                   {TagAll.map((tag, index) => (
                     <ButtonTagStyled
-                      className=" mt-2 mt-md-3 color-1d1b1b ms-1 ms-md-2 ms-lg-2 ms-xl-3 bg-body ff-lexend fs-20px-xxl fs-20px-xl fs-20px-lg fs-20px-md fs-20px-sm fs-18px"
+                      className=" mt-3 mt-md-3 color-1d1b1b ms-1 ms-md-2 ms-lg-2 ms-xl-3 bg-body ff-lexend fs-20px-xxl fs-20px-xl fs-20px-lg fs-20px-md fs-20px-sm fs-18px"
                       key={index}
                     >
                       {tag.title}
@@ -92,18 +104,10 @@ const MainContent = ({ BlogPost, TagAll }) => {
                 </div>
               </div>
               <HrStyled />
-              <div>
-                <div className="ff-lexend fs-24px-xxl fs-24px-xl fs-24px-lg fs-24px-md fs-24px-sm fs-22px fw-bold">
-                  Bình luận
-                </div>
-                <div className="row">
-                  <div className="col-2">
-                    <AvatarIcon />
-                  </div>
-                  <div className="col-10">content</div>
-                </div>
-              </div>
+              <Comment BlogPost={BlogPost} />
             </div>
+            <HrStyled />
+            <BlogTagList />
           </div>
         </div>
       </div>

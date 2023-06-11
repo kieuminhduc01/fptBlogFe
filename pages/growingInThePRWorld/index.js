@@ -1,9 +1,9 @@
-import ComponentMain from '../../components/pageComponent/growingInThePRWorld/componentMain';
+import MainContent from '../../components/pageComponent/blogList/mainContent';
 
 const Index = () => {
   return (
     <>
-      {/* <ComponentMain /> */}
+      <MainContent />
     </>
   );
 };
