@@ -11,7 +11,7 @@ import {
   H1Styled,
   H2Styled,
   HrStyled,
-  InputFieldStyled
+  InputFieldStyled,
 } from './styledComponent';
 
 const Header = ({ position }) => {
@@ -54,7 +54,7 @@ const Header = ({ position }) => {
     }
   }, []);
   const handleClickLogo = () => {
-    router.replace(UrlPath.home.url);
+    router.push(UrlPath.home.url);
   };
   const handleClickMenu = () => {
     if (width <= 576) {
@@ -81,14 +81,13 @@ const Header = ({ position }) => {
 
   const getTitle = (url) => {
     switch (url) {
-      case UrlPath.growingInThePRWorld.url &&
-        `${UrlPath.growingInThePRWorld.url}/[slug]`: {
+      case UrlPath.growingInThePRWorld.url: {
         return UrlPath.growingInThePRWorld.title;
       }
-      case UrlPath.seeThinkShare.url && `${UrlPath.seeThinkShare.url}/[slug]`: {
+      case UrlPath.seeThinkShare.url: {
         return UrlPath.seeThinkShare.title;
       }
-      case UrlPath.myConner.url && `${UrlPath.myConner.url}/[slug]`: {
+      case UrlPath.myConner.url: {
         return UrlPath.myConner.title;
       }
       case UrlPath.home.url: {

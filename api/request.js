@@ -2,7 +2,6 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 
 export const Server = process.env.NEXT_PUBLIC_API_ENPOINT;
-// export const BASE_URL = 'https://localhost:44390/api/'
 export const BASE_URL = `${process.env.NEXT_PUBLIC_API_ENPOINT}api/`;
 
 export const request = axios.create({
