@@ -1,7 +1,7 @@
 const Index = () => {
   return (
     <div>
-      tag
+      Enter
     </div>
   );
 }

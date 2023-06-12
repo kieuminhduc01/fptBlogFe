@@ -1,8 +1,10 @@
+import MainContent from "../../components/pageComponent/auth/mainContent";
+
 const Index = () => {
   return (
-    <div>
-      auth
-    </div>
+    <>
+      <MainContent/>
+    </>
   );
 }
 

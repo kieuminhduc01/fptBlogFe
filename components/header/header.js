@@ -11,7 +11,7 @@ import {
   H1Styled,
   H2Styled,
   HrStyled,
-  InputFieldStyled
+  InputFieldStyled,
 } from './styledComponent';
 
 const Header = ({ position }) => {
@@ -84,14 +84,11 @@ const Header = ({ position }) => {
       case UrlPath.growingInThePRWorld.url: {
         return UrlPath.growingInThePRWorld.title;
       }
-      case `${UrlPath.seeThinkShare.url}`: {
+      case UrlPath.seeThinkShare.url: {
         return UrlPath.seeThinkShare.title;
       }
       case UrlPath.myConner.url: {
         return UrlPath.myConner.title;
-      }
-      case UrlPath.detail.url: {
-        return UrlPath.detail.title;
       }
       case UrlPath.home.url: {
         return UrlPath.home.title;

@@ -11,16 +11,4 @@ export const LinkStyled = styled(Link)`
     padding: 12px 16px;
     border: 2px solid #930c0c;
   }
-  @media (min-width: 992px) {
-    padding: 12px 16px;
-    border: 2px solid #930c0c;
-  }
-  @media (min-width: 1200px) {
-    padding: 12px 16px;
-    border: 2px solid #930c0c;
-  }
-  @media (min-width: 1400px) {
-    padding: 12px 16px;
-    border: 2px solid #930c0c;
-  }
 `;
