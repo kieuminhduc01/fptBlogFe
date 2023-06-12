@@ -2,7 +2,10 @@ import axios from 'axios';
 import { marked } from 'marked';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import StatusAlert, { StatusAlertService } from 'react-status-alert';
+import { LikeApi } from '../../../api/likeAPI';
 import { BASE_URL } from '../../../api/request';
+import { getCookie } from '../../../cookie/cookie';
 import ArrowRight from '../../icons/arrowRight';
 import FacebookIcon from '../../icons/facebookIcon';
 import GmailIcon from '../../icons/gmailIcon';
@@ -30,12 +33,27 @@ const MainContent = ({ BlogPost, TagAll }) => {
     };
     getComment();
   }, []);
-  const handlelClickLike = () => {
+  const handlelToggleLike = () => {
     setFillLike(!fillLike);
+    console.log(getCookie('accountId'));
+    const dataReq = {
+      accountId: getCookie('accountId'),
+      blogPostId: BlogPost.id,
+      isLike: fillLike,
+    };
+    LikeApi(dataReq)
+      .then(() => {
+        StatusAlertService.showSuccess('Like thành công!');
+      })
+      .catch((err) => {
+        StatusAlertService.showError(err);
+      })
+      .finally(() => {});
   };
   return (
     <>
       <div>
+        <StatusAlert />
         <div className="bg-white opacity-100 d-flex justify-content-center">
           <div className="w-89pc w-92pc-sm w-80pc-md w-60pc-lg w-60pc-xl w-60pc-xxl">
             <div className="d-flex mt-50px-xxl mt-50px-xl mt-46px-lg mt-40px-md mt-30px-sm">
@@ -72,7 +90,7 @@ const MainContent = ({ BlogPost, TagAll }) => {
                   </div>
                 </div>
                 <div
-                  onClick={handlelClickLike}
+                  onClick={handlelToggleLike}
                   className="ff-lexend fs-20px-xxl fs-20px-xl fs-20px-lg fs-20px-md fs-20px-sm fs-18px color-2c2727"
                 >
                   {BlogPost.likes}

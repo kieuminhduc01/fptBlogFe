@@ -21,7 +21,6 @@ const Index = ({ data, tagAll }) => {
   return (
     <div>
       <MainContent data={data} />
-      {console.log('tagAll', tagAll)}
     </div>
   );
 };

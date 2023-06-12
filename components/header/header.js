@@ -11,7 +11,7 @@ import {
   H1Styled,
   H2Styled,
   HrStyled,
-  InputFieldStyled,
+  InputFieldStyled
 } from './styledComponent';
 
 const Header = ({ position }) => {

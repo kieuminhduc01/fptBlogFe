@@ -1,11 +1,11 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import StatusAlert, { StatusAlertService } from 'react-status-alert';
 import { CreateCommentApi } from '../../../api/commentAPI';
 import { BASE_URL } from '../../../api/request';
 import AvatarIcon from '../../icons/avatarIcon';
 import AvatarIconSubCM from '../../icons/avatarIconSubCM';
 import { ButtonTagStyled } from './styledComponent';
-import StatusAlert, { StatusAlertService } from 'react-status-alert';
 const Comment = ({ BlogPost }) => {
   const [commentData, setCommentData] = useState([]);
   const [commentText, setCommentText] = useState('');
@@ -34,7 +34,7 @@ const Comment = ({ BlogPost }) => {
   };
   const handleClickSubmitReply = () => {
     const dataReq = {
-      accountId: '1d218f46-655f-4168-932c-13f1539de4e9',
+      accountId: getCookie('accountId'),
       blogPostId: BlogPost.id,
       parentId: commentIdParent,
       content: commentReplyText,
@@ -54,7 +54,7 @@ const Comment = ({ BlogPost }) => {
 
   const handleClickComment = () => {
     const dataReq = {
-      accountId: '1d218f46-655f-4168-932c-13f1539de4e9',
+      accountId: getCookie('accountId'),
       blogPostId: BlogPost.id,
       content: commentText,
     };
@@ -84,7 +84,7 @@ const Comment = ({ BlogPost }) => {
                   <div>
                     <AvatarIcon />
                   </div>
-                  <div className="ms-2 ">
+                  <div className="ms-2 mb-1">
                     <div className="bg-body-secondary p-3 rounded-4">
                       <div className="ff-lexend fs-22px-xxl fs-22px-xl fs-22px-lg fs-22px-md fs-22px-sm fs-20px fw-bold">
                         {comment.accountName}
@@ -129,7 +129,7 @@ const Comment = ({ BlogPost }) => {
                           <div>
                             <AvatarIconSubCM />
                           </div>
-                          <div className="ms-1">
+                          <div className="ms-1 mt-1 mt-md-2 mb-1 mb-md-2">
                             <div className="bg-body-secondary p-3 rounded-4">
                               <div className="ff-lexend fs-22px-xxl fs-22px-xl fs-22px-lg fs-22px-md fs-22px-sm fs-20px fw-bold">
                                 {subComments.accountName}
@@ -139,11 +139,6 @@ const Comment = ({ BlogPost }) => {
                                   {subComments.commentContent}
                                 </div>
                               </div>
-                            </div>
-                            <div>
-                              <button className="mx-2 fw-bolder border-0 bg-body ff-lexend fs-16px-xxl fs-16px-xl fs-16px-lg fs-16px-md fs-16px-sm fs-14px">
-                                Reply
-                              </button>
                             </div>
                           </div>
                         </div>

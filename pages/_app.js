@@ -1,12 +1,12 @@
+import 'bootstrap/dist/css/bootstrap.css';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import 'react-status-alert/dist/status-alert.css';
-import 'bootstrap/dist/css/bootstrap.css';
-import '../styles/globals.css';
-import MainLayout from '../components/layout/mainLayout';
-import '../styles/styles.scss';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import MainLayout from '../components/layout/mainLayout';
+import '../styles/globals.css';
+import '../styles/styles.scss';
 import { UrlPath } from '../type/urlPath';
 
 function MyApp({ Component, pageProps }) {

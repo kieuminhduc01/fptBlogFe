@@ -46,12 +46,18 @@ a {
 .right-17vw {
   right: 17vw;
 }
+.right-0 {
+  right: 0;
+}
 .right-46vw-global {
   right: 46vw;
 }
 
 .ff-lexend {
   font-family: 'Lexend', sans-serif;
+}
+.z-index--100 {
+  z-index: -1000;
 }
 .z-index--1000 {
   z-index: -1000;

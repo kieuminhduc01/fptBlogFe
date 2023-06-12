@@ -1,4 +1,5 @@
 import axios from 'axios';
+import StatusAlert, { StatusAlertService } from 'react-status-alert';
 import { BASE_URL } from '../api/request';
 import HomeComponentMain from '../components/pageComponent/home/homeComponentMain';
 
@@ -22,16 +23,7 @@ export async function getServerSideProps() {
       dataOri = res.data.result;
     })
     .catch((err) => {
-      return (
-        <div class="alert alert-danger alert-dismissible fade show">
-          <strong>Error!</strong> {err}
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="alert"
-          ></button>
-        </div>
-      );
+      StatusAlertService.showError(err);
     });
   return { props: { dataOri } };
 }
@@ -39,6 +31,7 @@ export async function getServerSideProps() {
 const Index = ({ dataOri }) => {
   return (
     <>
+      <StatusAlert />
       <HomeComponentMain dataOri={dataOri} />
     </>
   );
