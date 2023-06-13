@@ -13,10 +13,14 @@ import FacebookIcon from '@/components/icons/facebookIcon';
 import GmailIcon from '@/components/icons/gmailIcon';
 import HeartIcon from '@/components/icons/heartIcon';
 import LinkedinIcon from '@/components/icons/linkedinIcon';
-import { messageUnauthorizedAtom } from '@/atom/store';
+import { blogTitleAtom, messageUnauthorizedAtom } from '@/atom/store';
 import BlogTagList from '@/components/pageComponent/blogDetail/blogTagList';
 import Comment from '@/components/pageComponent/blogDetail/comment';
-import { ButtonTagStyled, DivBlockStyled, HrStyled } from '@/components/pageComponent/blogDetail/styledComponent';
+import {
+  ButtonTagStyled,
+  DivBlockStyled,
+  HrStyled,
+} from '@/components/pageComponent/blogDetail/styledComponent';
 
 const MainContent = ({ BlogPost, TagAll }) => {
   const router = useRouter();
@@ -24,8 +28,10 @@ const MainContent = ({ BlogPost, TagAll }) => {
   const [renderedContent, setRenderedContent] = useState('');
   const [fillLike, setFillLike] = useState(false);
   const [, setMessageUnauthorized] = useAtom(messageUnauthorizedAtom);
+  const [, setBlogTitle] = useAtom(blogTitleAtom);
   useEffect(() => {
     setRenderedContent(marked(BlogPost.content));
+    setBlogTitle(BlogPost.title);
   }, []);
   useEffect(() => {
     const getComment = async () => {
@@ -37,7 +43,7 @@ const MainContent = ({ BlogPost, TagAll }) => {
     };
     getComment();
   }, []);
-  const handlelToggleLike = () => {
+  const handleToggleLike = () => {
     setFillLike(!fillLike);
     const dataReq = {
       accountId: getCookie('accountId'),
@@ -73,9 +79,15 @@ const MainContent = ({ BlogPost, TagAll }) => {
                 </div>
               )}
               {router.pathname === '/GrowingInThePRWorld/[slug]' && (
-                <div>Growing in the PR world</div>
+                <div className="cursor-point ff-lexend fs-20px-xxl fs-20px-xl fs-20px-lg fs-20px-md fs-20px-sm fs-18px color-6C6C6C">
+                  Growing in the PR world
+                </div>
               )}
-              {router.pathname === '/MyCorner/[slug]' && <div>My corner</div>}
+              {router.pathname === '/MyCorner/[slug]' && (
+                <div className="cursor-point ff-lexend fs-20px-xxl fs-20px-xl fs-20px-lg fs-20px-md fs-20px-sm fs-18px color-6C6C6C">
+                  My corner
+                </div>
+              )}
 
               <div>
                 <ArrowRight />
@@ -100,7 +112,7 @@ const MainContent = ({ BlogPost, TagAll }) => {
                   </div>
                 </div>
                 <div
-                  onClick={handlelToggleLike}
+                  onClick={handleToggleLike}
                   className="ff-lexend fs-20px-xxl fs-20px-xl fs-20px-lg fs-20px-md fs-20px-sm fs-18px color-2c2727"
                 >
                   {BlogPost.likes}
