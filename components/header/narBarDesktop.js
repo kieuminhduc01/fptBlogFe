@@ -37,9 +37,9 @@ const NarBarDesktop = () => {
             colorfocus="#960c0c"
             colorhover="#960c0c"
             className="nav-link fs-20px-xxl fs-20px-xl fs-20px-lg fs-20px-md"
-            href={UrlPath.myConner.url}
+            href={UrlPath.myCorner.url}
           >
-            My conner
+            My corner
           </LinkStyled>
         </li>
         <li className="nav-item ms-5">

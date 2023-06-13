@@ -44,9 +44,9 @@ const NarBarDesktop = ({ onClickTurnOfSidebar }) => {
               colorfocus="#B5CCC7"
               colorhover="#B5CCC7"
               className="nav-link fs-20px-sm fs-20px"
-              href={UrlPath.myConner.url}
+              href={UrlPath.myCorner.url}
             >
-              My conner
+              My corner
             </LinkStyled>
           </li>
         </ul>

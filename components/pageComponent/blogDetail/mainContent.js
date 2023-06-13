@@ -75,7 +75,7 @@ const MainContent = ({ BlogPost, TagAll }) => {
               {router.pathname === '/GrowingInThePRWorld/[slug]' && (
                 <div>Growing in the PR world</div>
               )}
-              {router.pathname === '/MyConner/[slug]' && <div>My conner</div>}
+              {router.pathname === '/MyCorner/[slug]' && <div>My corner</div>}
 
               <div>
                 <ArrowRight />

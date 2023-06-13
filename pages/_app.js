@@ -22,8 +22,8 @@ function MyApp({ Component, pageProps }) {
       case UrlPath.home.url: {
         return UrlPath.home.title;
       }
-      case UrlPath.myConner.url: {
-        return UrlPath.myConner.title;
+      case UrlPath.myCorner.url: {
+        return UrlPath.myCorner.title;
       }
       case UrlPath.auth.url: {
         return UrlPath.auth.title;
@@ -37,7 +37,7 @@ function MyApp({ Component, pageProps }) {
       case `${UrlPath.growingInThePRWorld.url}/[slug]`: {
         return 'Chi tiết bài viết';
       }
-      case `${UrlPath.myConner.url}/[slug]`: {
+      case `${UrlPath.myCorner.url}/[slug]`: {
         return 'Chi tiết bài viết';
       }
     }

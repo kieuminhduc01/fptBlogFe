@@ -1,26 +1,28 @@
-import axios from 'axios';
-import { useEffect } from 'react';
 import { BASE_URL } from '@/api/request';
 import MainContent from '@/components/pageComponent/blogDetail/mainContent';
+import axios from 'axios';
+import { useEffect } from 'react';
 
 export async function getServerSideProps(context) {
   const routerData = context.query;
-  const res = await axios.get(`${BASE_URL}BlogPost/${routerData.slug}`);
+  const blogPost = await axios.get(`${BASE_URL}BlogPost/${routerData.slug}`);
   const tagAll = await axios.get(`${BASE_URL}Tag/all`);
-  const data = res.data.result;
+  const BlogPost = await blogPost.data.result;
+  const TagAll = await tagAll.data.result;
+
   return {
     props: {
-      data,
-      tagAll,
+      BlogPost,
+      TagAll,
     },
   };
 }
 
-const Index = ({ data, tagAll }) => {
+const Index = ({ BlogPost, TagAll }) => {
   useEffect(() => {}, []);
   return (
     <div>
-      <MainContent data={data} />
+      <MainContent BlogPost={BlogPost} TagAll={TagAll} />
     </div>
   );
 };
