@@ -45,7 +45,7 @@ const MainContent = ({ BlogPost, TagAll }) => {
         StatusAlertService.showSuccess('Like thành công!');
       })
       .catch((err) => {
-        if (err.response.status) {
+        if (err.response.status === 401) {
           StatusAlertService.showError(
             'Bạn chưa đăng nhập, vui lòng đăng nhập để like',
           );

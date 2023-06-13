@@ -46,7 +46,7 @@ const Comment = ({ BlogPost }) => {
         StatusAlertService.showSuccess('Trả lời thành công!');
       })
       .catch((err) => {
-        if (err.response.status) {
+        if (err.response.status===401) {
           StatusAlertService.showError(
             'Bạn chưa đăng nhập, vui lòng đăng nhập để bình luận',
           );
@@ -70,7 +70,7 @@ const Comment = ({ BlogPost }) => {
         StatusAlertService.showSuccess('Bình luận thành công!');
       })
       .catch((err) => {
-        if (err.response.status) {
+        if (err.response.status ===401) {
           StatusAlertService.showError(
             'Bạn chưa đăng nhập, vui lòng đăng nhập để bình luận',
           );
