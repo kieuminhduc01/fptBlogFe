@@ -10,10 +10,3 @@ export const CreateCommentApi = (data) => {
     data,
   });
 };
-export const ReadCommentApi = (data) => {
-  return request({
-    url: Comment.base,
-    method: 'get',
-    data,
-  });
-};

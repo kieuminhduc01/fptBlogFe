@@ -9,10 +9,14 @@ import Header from '../header/header';
 const MainLayout = ({ children }) => {
   const router = useRouter();
   const [isHomeLayout, setIsHomeLayout] = useState(false);
+  const [isAuthPage, setIsAuthPage] = useState(false);
+  const [isRegisterPage, setIsRegisterPage] = useState(false);
   const [isNotMobile, setIsNotMobile] = useState(false);
 
   useEffect(() => {
     setIsHomeLayout(router.pathname === UrlPath.home.url);
+    setIsAuthPage(router.pathname === UrlPath.auth.url);
+    setIsRegisterPage(router.pathname === UrlPath.register.url);
   });
 
   useEffect(() => {
@@ -32,9 +36,21 @@ const MainLayout = ({ children }) => {
 
   return (
     <>
-      {isHomeLayout && isNotMobile ? <Header position={'fixed'} /> : <Header />}
+      {isAuthPage || isRegisterPage ? (
+        <></>
+      ) : isHomeLayout && isNotMobile ? (
+        <Header position={'fixed'} />
+      ) : (
+        <Header />
+      )}
       <MainContainer>{children}</MainContainer>
-      {isHomeLayout && isNotMobile ? <></> : <Footer />}
+      {isAuthPage || isRegisterPage ? (
+        <></>
+      ) : isHomeLayout && isNotMobile ? (
+        <></>
+      ) : (
+        <Footer />
+      )}
     </>
   );
 };
