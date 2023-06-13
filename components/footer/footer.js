@@ -1,9 +1,13 @@
 import Link from 'next/link';
-import { Profile } from '../../type/urlPath';
-import { HrStyled } from '../header/styledComponent';
-import FacebookIcon from '../icons/facebookIcon';
-import LinkedinIcon from '../icons/linkedinIcon';
-import { DivStyled, FooterTextstylde, PStyled } from './styledComponent';
+import { Profile } from '@/type/urlPath';
+import { HrStyled } from '@/components/header/styledComponent';
+import FacebookIcon from '@/components/icons/facebookIcon';
+import LinkedinIcon from '@/components/icons/linkedinIcon';
+import {
+  DivStyled,
+  FooterTextstylde,
+  PStyled,
+} from '@/components/footer/styledComponent';
 
 const Footer = () => {
   return (

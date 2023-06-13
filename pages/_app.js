@@ -4,10 +4,10 @@ import { useRouter } from 'next/router';
 import 'react-status-alert/dist/status-alert.css';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import MainLayout from '../components/layout/mainLayout';
-import '../styles/globals.css';
-import '../styles/styles.scss';
-import { UrlPath } from '../type/urlPath';
+import MainLayout from '@/components/layout/mainLayout';
+import '@/styles/globals.css';
+import '@/styles/styles.scss';
+import { UrlPath } from '@/type/urlPath';
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -59,6 +59,7 @@ function MyApp({ Component, pageProps }) {
         <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@200;300&display=swap"></link>
         <title>{getTitle()}</title>
       </Head>
+
       <MainLayout>
         <Component {...pageProps} />
       </MainLayout>

@@ -1,8 +1,7 @@
+import { BASE_URL } from '@/api/request';
+import MainContent from '@/components/pageComponent/blogDetail/mainContent';
 import axios from 'axios';
-import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import { BASE_URL } from '../../api/request';
-import MainContent from '../../components/pageComponent/blogDetail/mainContent';
 
 export async function getServerSideProps(context) {
   const routerData = context.query;

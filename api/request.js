@@ -1,6 +1,5 @@
+import { getCookie } from '@/cookie/cookie';
 import axios from 'axios';
-import Cookies from 'js-cookie';
-import { getCookie } from '../cookie/cookie';
 
 export const Server = process.env.NEXT_PUBLIC_API_ENPOINT;
 export const BASE_URL = `${process.env.NEXT_PUBLIC_API_ENPOINT}api/`;

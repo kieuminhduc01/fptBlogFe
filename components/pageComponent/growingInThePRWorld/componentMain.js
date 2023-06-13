@@ -1,11 +1,10 @@
-import MainContainer from '../../content/mainContainer';
-import TestMarked from './testMarked';
+import MainContainer from '@/components/content/mainContainer';
 const ComponentMain = () => {
   return (
     <>
       <MainContainer>
         <div>
-          <TestMarked />
+
         </div>
       </MainContainer>
     </>

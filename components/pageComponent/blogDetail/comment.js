@@ -1,18 +1,23 @@
 import axios from 'axios';
+import { useAtom } from 'jotai';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import StatusAlert, { StatusAlertService } from 'react-status-alert';
-import { CreateCommentApi } from '../../../api/commentAPI';
-import { BASE_URL } from '../../../api/request';
-import { getCookie } from '../../../cookie/cookie';
-import AvatarIcon from '../../icons/avatarIcon';
-import AvatarIconSubCM from '../../icons/avatarIconSubCM';
-import { ButtonTagStyled } from './styledComponent';
+import { StatusAlertService } from 'react-status-alert';
+import { CreateCommentApi } from '@/api/commentAPI';
+import { BASE_URL } from '@/api/request';
+import { getCookie } from '@/cookie/cookie';
+import { UrlPath } from '@/type/urlPath';
+import AvatarIcon from '@/components/icons/avatarIcon';
+import AvatarIconSubCM from '@/components/icons/avatarIconSubCM';
+import { messageUnauthorizedAtom } from '@/atom/store';
+import { ButtonTagStyled } from '@/components/pageComponent/blogDetail/styledComponent';
 const Comment = ({ BlogPost }) => {
   const [commentData, setCommentData] = useState([]);
-  const [commentText, setCommentText] = useState('');
+  const [commentText, setCommentText] = useState();
   const [commentReplyText, setCommentReplyText] = useState();
   const [commentIdParent, setCommentIdParent] = useState();
-
+  const [, setMessageUnauthorized] = useAtom(messageUnauthorizedAtom);
+  const router = useRouter();
   useEffect(() => {
     const getComment = async () => {
       await axios
@@ -23,10 +28,10 @@ const Comment = ({ BlogPost }) => {
     };
     getComment();
   }, []);
-  const handeBlurCommentText = (e) => {
+  const handeChangeCommentText = (e) => {
     setCommentText(e.target.value);
   };
-  const handleBlurCommentReplyText = (e) => {
+  const handleChangeCommentReplyText = (e) => {
     setCommentReplyText(e.target.value);
     console.log('targe.value', e.target.value);
   };
@@ -46,10 +51,11 @@ const Comment = ({ BlogPost }) => {
         StatusAlertService.showSuccess('Trả lời thành công!');
       })
       .catch((err) => {
-        if (err.response.status===401) {
-          StatusAlertService.showError(
-            'Bạn chưa đăng nhập, vui lòng đăng nhập để bình luận',
+        if (err.response.status === 401) {
+          setMessageUnauthorized(
+            'Bạn chưa đăng nhập, vui lòng đăng nhập để trả lời bình luận',
           );
+          router.push(UrlPath.auth.url);
         } else {
           StatusAlertService.showError(err.response.data.Detail);
         }
@@ -70,10 +76,11 @@ const Comment = ({ BlogPost }) => {
         StatusAlertService.showSuccess('Bình luận thành công!');
       })
       .catch((err) => {
-        if (err.response.status ===401) {
-          StatusAlertService.showError(
+        if (err.response.status === 401) {
+          setMessageUnauthorized(
             'Bạn chưa đăng nhập, vui lòng đăng nhập để bình luận',
           );
+          router.push(UrlPath.auth.url);
         } else {
           StatusAlertService.showError(err.response.data.Detail);
         }
@@ -85,7 +92,6 @@ const Comment = ({ BlogPost }) => {
   return (
     <>
       <div>
-        <StatusAlert />
         <div>
           <div className="ff-lexend fs-24px-xxl fs-24px-xl fs-24px-lg fs-24px-md fs-24px-sm fs-22px fw-bold">
             Bình luận
@@ -123,7 +129,7 @@ const Comment = ({ BlogPost }) => {
                               // className="form-control"
                               placeholder="Nhập"
                               value={commentReplyText}
-                              onBlur={handleBlurCommentReplyText}
+                              onChange={handleChangeCommentReplyText}
                             />
                             <button
                               onClick={handleClickSubmitReply}
@@ -165,15 +171,13 @@ const Comment = ({ BlogPost }) => {
         </div>
         <br />
         <div>
-          <div>
-            <input
-              type="text"
-              placeholder="Nhập bình luận"
-              className="form-control form-control-lg"
-              value={commentText}
-              onBlur={handeBlurCommentText}
-            />
-          </div>
+          <input
+            type="text"
+            placeholder="Nhập bình luận"
+            className="form-control form-control-lg"
+            value={commentText}
+            onChange={handeChangeCommentText}
+          />
         </div>
         <br />
         <div className="d-flex justify-content-center mt-2 mb-5">

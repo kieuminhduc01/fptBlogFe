@@ -1,6 +1,6 @@
-import { Server } from '../../../api/request';
-import { UrlPath } from '../../../type/urlPath';
-import { LinkStyled } from './styledComponent';
+import { Server } from '@/api/request';
+import { UrlPath } from '@/type/urlPath';
+import { LinkStyled } from '@/components/pageComponent/home/styledComponent';
 
 const MainContent = ({ index, dataOri }) => {
   return (

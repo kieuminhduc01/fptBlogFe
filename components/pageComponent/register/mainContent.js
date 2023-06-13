@@ -2,9 +2,9 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import StatusAlert, { StatusAlertService } from 'react-status-alert';
-import { CreateAccountApi } from '../../../api/authAPI';
-import { UrlPath } from '../../../type/urlPath';
-import HashLoaderCus from '../spins/hashLoader';
+import { CreateAccountApi } from '@/api/authAPI';
+import { UrlPath } from '@/type/urlPath';
+import HashLoaderCus from '@/components/spins/hashLoader';
 
 const MainContent = () => {
   const router = useRouter();
