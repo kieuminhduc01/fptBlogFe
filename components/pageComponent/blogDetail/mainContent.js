@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { useAtom } from 'jotai';
 import { marked } from 'marked';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
@@ -6,11 +7,13 @@ import StatusAlert, { StatusAlertService } from 'react-status-alert';
 import { LikeApi } from '../../../api/likeAPI';
 import { BASE_URL } from '../../../api/request';
 import { getCookie } from '../../../cookie/cookie';
+import { UrlPath } from '../../../type/urlPath';
 import ArrowRight from '../../icons/arrowRight';
 import FacebookIcon from '../../icons/facebookIcon';
 import GmailIcon from '../../icons/gmailIcon';
 import HeartIcon from '../../icons/heartIcon';
 import LinkedinIcon from '../../icons/linkedinIcon';
+import { messageUnauthorizedAtom } from '../atom/store';
 import BlogTagList from './blogTagList';
 import Comment from './comment';
 import { ButtonTagStyled, DivBlockStyled, HrStyled } from './styledComponent';
@@ -20,6 +23,7 @@ const MainContent = ({ BlogPost, TagAll }) => {
   const [totalComment, setTotalComment] = useState();
   const [renderedContent, setRenderedContent] = useState('');
   const [fillLike, setFillLike] = useState(false);
+  const [, setMessageUnauthorized] = useAtom(messageUnauthorizedAtom);
   useEffect(() => {
     setRenderedContent(marked(BlogPost.content));
   }, []);
@@ -46,9 +50,10 @@ const MainContent = ({ BlogPost, TagAll }) => {
       })
       .catch((err) => {
         if (err.response.status === 401) {
-          StatusAlertService.showError(
+          setMessageUnauthorized(
             'Bạn chưa đăng nhập, vui lòng đăng nhập để like',
           );
+          router.push(UrlPath.auth.url);
         } else {
           StatusAlertService.showError(err.response.data.Detail);
         }

@@ -1,16 +1,21 @@
+import { useAtom } from 'jotai';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react';
 import StatusAlert, { StatusAlertService } from 'react-status-alert';
 import { LoginApi } from '../../../api/authAPI';
 import { setCookie } from '../../../cookie/cookie';
 import { UrlPath } from '../../../type/urlPath';
+import { messageUnauthorizedAtom } from '../atom/store';
 import HashLoaderCus from '../spins/hashLoader';
 
 const MainContent = () => {
+  const router = useRouter();
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
   const [loadingSpin, setLoadingSpin] = useState(false);
+  const [messageUnauthorized] = useAtom(messageUnauthorizedAtom);
   const handleUserNameChange = (e) => {
     setUserName(e.target.value);
   };
@@ -22,7 +27,11 @@ const MainContent = () => {
   const handleRememberMeChange = (e) => {
     setRememberMe(e.target.checked);
   };
-
+  useEffect(() => {
+    messageUnauthorized === ''
+      ? ''
+      : StatusAlertService.showError(messageUnauthorized);
+  }, [messageUnauthorized]);
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoadingSpin(true);
@@ -33,13 +42,16 @@ const MainContent = () => {
     LoginApi(dataReq)
       .then((res) => {
         setCookie('accountId', res.data.result.accountId, { expires: 7 });
-        setCookie('jwt_token', res.data.result.token, { secure: true });
+        setCookie('jwt_token', res.data.result.token, {
+          expires: 7,
+        });
         console.log('jwt', res);
 
         StatusAlertService.showSuccess('Đăng nhập thành công!');
-        if (router.path === 'á') {
-        } else {
+        if (messageUnauthorized === '') {
           router.push(UrlPath.home.url);
+        } else {
+          router.back();
         }
       })
       .catch((err) => {

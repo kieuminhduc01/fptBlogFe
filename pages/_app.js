@@ -59,6 +59,7 @@ function MyApp({ Component, pageProps }) {
         <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@200;300&display=swap"></link>
         <title>{getTitle()}</title>
       </Head>
+
       <MainLayout>
         <Component {...pageProps} />
       </MainLayout>
