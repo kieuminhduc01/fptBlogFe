@@ -1,11 +1,22 @@
-import { request } from './requet'
-const AdminAuthUrl = {
-  base: '/Account/Auth'
-}
+import { request } from './request';
+
+const Auth = {
+  base: '/Account/Auth',
+};
+const CreateAccount = {
+  base: '/Account/Create/Client',
+};
 export const LoginApi = (data) => {
   return request({
-    url: AdminAuthUrl.base,
+    url: Auth.base,
     method: 'post',
-    data
-  })
-}
+    data,
+  });
+};
+export const CreateAccountApi = (data) => {
+  return request({
+    url: CreateAccount.base,
+    method: 'post',
+    data,
+  });
+};

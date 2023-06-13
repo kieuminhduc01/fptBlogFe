@@ -7,6 +7,7 @@ export const UrlPath = {
   seeThinkShare: { url: '/SeeThinkShare', title: 'See Think Share' },
   myConner: { url: '/MyConner', title: 'My Conner' },
   auth: { url: '/auth', title: 'Đăng nhập' },
+  register: { url: '/register', title: 'Đăng kí tài khoản' },
 };
 export const Profile = {
   Fb: 'https://www.facebook.com/phuongwings?mibextid=LQQJ4d',

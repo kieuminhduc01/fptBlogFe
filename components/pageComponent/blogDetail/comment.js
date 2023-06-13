@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import StatusAlert, { StatusAlertService } from 'react-status-alert';
 import { CreateCommentApi } from '../../../api/commentAPI';
 import { BASE_URL } from '../../../api/request';
+import { getCookie } from '../../../cookie/cookie';
 import AvatarIcon from '../../icons/avatarIcon';
 import AvatarIconSubCM from '../../icons/avatarIconSubCM';
 import { ButtonTagStyled } from './styledComponent';
@@ -45,7 +46,13 @@ const Comment = ({ BlogPost }) => {
         StatusAlertService.showSuccess('Trả lời thành công!');
       })
       .catch((err) => {
-        StatusAlertService.showError(err);
+        if (err.response.status) {
+          StatusAlertService.showError(
+            'Bạn chưa đăng nhập, vui lòng đăng nhập để bình luận',
+          );
+        } else {
+          StatusAlertService.showError('Lỗi');
+        }
       })
       .finally(() => {
         setCommentIdParent();
@@ -63,7 +70,13 @@ const Comment = ({ BlogPost }) => {
         StatusAlertService.showSuccess('Bình luận thành công!');
       })
       .catch((err) => {
-        StatusAlertService.showError(err);
+        if (err.response.status) {
+          StatusAlertService.showError(
+            'Bạn chưa đăng nhập, vui lòng đăng nhập để bình luận',
+          );
+        } else {
+          StatusAlertService.showError('Lỗi');
+        }
       })
       .finally(() => {
         setCommentIdParent();

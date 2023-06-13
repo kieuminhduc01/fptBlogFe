@@ -28,6 +28,9 @@ function MyApp({ Component, pageProps }) {
       case UrlPath.auth.url: {
         return UrlPath.auth.title;
       }
+      case UrlPath.register.url: {
+        return UrlPath.register.title;
+      }
       case `${UrlPath.seeThinkShare.url}/[slug]`: {
         return 'Chi tiết bài viết';
       }

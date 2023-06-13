@@ -23,7 +23,7 @@ const MainContent = ({ index, dataOri }) => {
                 Đọc thêm bài viết
               </LinkStyled>
             </div>
-            <div className=" col-12 col-md-7 position-relative ">
+            <div className=" col-12 col-md-7 position-relative">
               <div className="mt-20px-xxl mt-20px-xl mt-20px-lg mt-20px-md mt-30px-sm mt-20px float-end w-96pc-xxl w-96pc-xl w-96pc-lg w-96pc-md">
                 <img
                   className="w-100"

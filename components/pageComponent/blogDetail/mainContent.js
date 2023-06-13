@@ -35,7 +35,6 @@ const MainContent = ({ BlogPost, TagAll }) => {
   }, []);
   const handlelToggleLike = () => {
     setFillLike(!fillLike);
-    console.log(getCookie('accountId'));
     const dataReq = {
       accountId: getCookie('accountId'),
       blogPostId: BlogPost.id,
@@ -46,7 +45,13 @@ const MainContent = ({ BlogPost, TagAll }) => {
         StatusAlertService.showSuccess('Like thành công!');
       })
       .catch((err) => {
-        StatusAlertService.showError(err);
+        if (err.response.status) {
+          StatusAlertService.showError(
+            'Bạn chưa đăng nhập, vui lòng đăng nhập để like',
+          );
+        } else {
+          StatusAlertService.showError('Lỗi');
+        }
       })
       .finally(() => {});
   };
