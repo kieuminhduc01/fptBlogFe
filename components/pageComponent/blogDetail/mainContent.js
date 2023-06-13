@@ -50,7 +50,7 @@ const MainContent = ({ BlogPost, TagAll }) => {
             'Bạn chưa đăng nhập, vui lòng đăng nhập để like',
           );
         } else {
-          StatusAlertService.showError('Lỗi');
+          StatusAlertService.showError(err.response.data.Detail);
         }
       })
       .finally(() => {});

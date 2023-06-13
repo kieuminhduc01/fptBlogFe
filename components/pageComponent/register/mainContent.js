@@ -64,7 +64,7 @@ const MainContent = () => {
         router.push(UrlPath.auth.url);
       })
       .catch((err) => {
-        StatusAlertService.showError('Đăng kí thất bại!');
+        StatusAlertService.showError(err.response.data.Detail);
       })
       .finally(() => {
         setLoadingSpin(false);

@@ -51,7 +51,7 @@ const Comment = ({ BlogPost }) => {
             'Bạn chưa đăng nhập, vui lòng đăng nhập để bình luận',
           );
         } else {
-          StatusAlertService.showError('Lỗi');
+          StatusAlertService.showError(err.response.data.Detail);
         }
       })
       .finally(() => {
@@ -75,7 +75,7 @@ const Comment = ({ BlogPost }) => {
             'Bạn chưa đăng nhập, vui lòng đăng nhập để bình luận',
           );
         } else {
-          StatusAlertService.showError('Lỗi');
+          StatusAlertService.showError(err.response.data.Detail);
         }
       })
       .finally(() => {
