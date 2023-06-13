@@ -1,18 +1,18 @@
 import { useRouter } from 'next/router';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { UrlPath } from '../../type/urlPath';
-import ArrowLeft from '../icons/arrowLeft';
-import LensIcon from '../icons/lensIcon';
-import ThreeLineIcon from '../icons/threeLineIcon';
-import NarBarDesktop from './narBarDesktop';
-import NarBarMobile from './narBarMobile';
+import { UrlPath } from '@/type/urlPath';
+import ArrowLeft from '@/components/icons/arrowLeft';
+import LensIcon from '@/components/icons/lensIcon';
+import ThreeLineIcon from '@/components/icons/threeLineIcon';
+import NarBarDesktop from '@/components/header/narBarDesktop';
+import NarBarMobile from '@/components/header/narBarMobile';
 import {
   DivStyled,
   H1Styled,
   H2Styled,
   HrStyled,
   InputFieldStyled,
-} from './styledComponent';
+} from '@/components/header/styledComponent';
 
 const Header = ({ position }) => {
   const [widthMenuContent, setWidthMenuContent] = useState(0);

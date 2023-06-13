@@ -1,4 +1,4 @@
-import MainContent from '../../components/pageComponent/blogList/mainContent';
+import MainContent from '@/components/pageComponent/blogList/mainContent';
 
 const Index = () => {
   return (

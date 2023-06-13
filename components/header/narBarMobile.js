@@ -1,5 +1,5 @@
-import { UrlPath } from '../../type/urlPath';
-import { H2Styled, LinkStyled } from './styledComponent';
+import { UrlPath } from '@/type/urlPath';
+import { H2Styled, LinkStyled } from '@/components/header/styledComponent';
 
 const NarBarDesktop = ({ onClickTurnOfSidebar }) => {
   return (

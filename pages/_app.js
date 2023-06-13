@@ -4,10 +4,10 @@ import { useRouter } from 'next/router';
 import 'react-status-alert/dist/status-alert.css';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import MainLayout from '../components/layout/mainLayout';
-import '../styles/globals.css';
-import '../styles/styles.scss';
-import { UrlPath } from '../type/urlPath';
+import MainLayout from '@/components/layout/mainLayout';
+import '@/styles/globals.css';
+import '@/styles/styles.scss';
+import { UrlPath } from '@/type/urlPath';
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();

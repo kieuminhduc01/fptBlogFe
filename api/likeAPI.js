@@ -1,4 +1,4 @@
-import { request } from './request';
+import { request } from '@/api/request';
 
 const Like = {
   base: 'BlogPost/Update-Like',
@@ -10,4 +10,3 @@ export const LikeApi = (data) => {
     data,
   });
 };
-

@@ -1,6 +1,9 @@
-import { UrlPath } from '../../type/urlPath';
-import LensIcon from '../icons/lensIcon';
-import { InputFieldStyled, LinkStyled } from './styledComponent';
+import { UrlPath } from '@/type/urlPath';
+import LensIcon from '@/components/icons/lensIcon';
+import {
+  InputFieldStyled,
+  LinkStyled,
+} from '@/components/header/styledComponent';
 
 const NarBarDesktop = () => {
   return (

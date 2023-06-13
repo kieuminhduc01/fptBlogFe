@@ -3,11 +3,11 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import StatusAlert, { StatusAlertService } from 'react-status-alert';
-import { LoginApi } from '../../../api/authAPI';
-import { setCookie } from '../../../cookie/cookie';
-import { UrlPath } from '../../../type/urlPath';
-import { messageUnauthorizedAtom } from '../atom/store';
-import HashLoaderCus from '../spins/hashLoader';
+import { LoginApi } from '@/api/authAPI';
+import { setCookie } from '@/cookie/cookie';
+import { UrlPath } from '@/type/urlPath';
+import { messageUnauthorizedAtom } from '@/atom/store';
+import HashLoaderCus from '@/components/spins/hashLoader';
 
 const MainContent = () => {
   const router = useRouter();

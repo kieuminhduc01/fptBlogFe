@@ -1,4 +1,4 @@
-import MainContent from '../../components/pageComponent/register/mainContent';
+import MainContent from '@/components/pageComponent/register/mainContent';
 
 const Index = () => {
   return (
