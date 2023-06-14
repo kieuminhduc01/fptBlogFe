@@ -8,12 +8,12 @@ import MainLayout from '@/components/layout/mainLayout';
 import '@/styles/globals.css';
 import '@/styles/styles.scss';
 import { UrlPath } from '@/type/urlPath';
-import { blogTitleAtom } from '@/components/atom/store';
 import { useAtom } from 'jotai';
+import { blogTitleAtom } from '@/components/atom/store';
 
 function MyApp({ Component, pageProps }) {
-  const router = useRouter();
   const [blogTitle] = useAtom(blogTitleAtom);
+  const router = useRouter();
   const getTitle = () => {
     switch (router.pathname) {
       case UrlPath.growingInThePRWorld.url: {

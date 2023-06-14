@@ -14,9 +14,6 @@
       "@/cookie/*": [
         "cookie/*"
       ],
-      "@/atom/*": [
-        "components/atom/*"
-      ],
       "@/share/*": [
         "share/*"
       ],
