@@ -87,8 +87,8 @@ const Header = ({ position }) => {
       case UrlPath.seeThinkShare.url: {
         return UrlPath.seeThinkShare.title;
       }
-      case UrlPath.myConner.url: {
-        return UrlPath.myConner.title;
+      case UrlPath.myCorner.url: {
+        return UrlPath.myCorner.title;
       }
       case UrlPath.home.url: {
         return UrlPath.home.title;

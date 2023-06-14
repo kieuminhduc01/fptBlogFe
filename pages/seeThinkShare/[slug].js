@@ -23,7 +23,6 @@ const Index = ({ BlogPost, TagAll }) => {
   return (
     <div>
       <MainContent BlogPost={BlogPost} TagAll={TagAll} />
-      {/* {console.log('tagAll', TagAll)} */}
     </div>
   );
 };

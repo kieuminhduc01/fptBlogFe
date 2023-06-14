@@ -8,9 +8,12 @@ import MainLayout from '@/components/layout/mainLayout';
 import '@/styles/globals.css';
 import '@/styles/styles.scss';
 import { UrlPath } from '@/type/urlPath';
+import { blogTitleAtom } from '@/components/atom/store';
+import { useAtom } from 'jotai';
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
+  const [blogTitle] = useAtom(blogTitleAtom);
   const getTitle = () => {
     switch (router.pathname) {
       case UrlPath.growingInThePRWorld.url: {
@@ -22,8 +25,8 @@ function MyApp({ Component, pageProps }) {
       case UrlPath.home.url: {
         return UrlPath.home.title;
       }
-      case UrlPath.myConner.url: {
-        return UrlPath.myConner.title;
+      case UrlPath.myCorner.url: {
+        return UrlPath.myCorner.title;
       }
       case UrlPath.auth.url: {
         return UrlPath.auth.title;
@@ -32,13 +35,13 @@ function MyApp({ Component, pageProps }) {
         return UrlPath.register.title;
       }
       case `${UrlPath.seeThinkShare.url}/[slug]`: {
-        return 'Chi tiết bài viết';
+        return blogTitle;
       }
       case `${UrlPath.growingInThePRWorld.url}/[slug]`: {
-        return 'Chi tiết bài viết';
+        return blogTitle;
       }
-      case `${UrlPath.myConner.url}/[slug]`: {
-        return 'Chi tiết bài viết';
+      case `${UrlPath.myCorner.url}/[slug]`: {
+        return blogTitle;
       }
     }
   };

@@ -5,7 +5,7 @@ export const UrlPath = {
     title: 'Growing In The PR World',
   },
   seeThinkShare: { url: '/SeeThinkShare', title: 'See Think Share' },
-  myConner: { url: '/MyConner', title: 'My Conner' },
+  myCorner: { url: '/MyCorner', title: 'My Corner' },
   auth: { url: '/auth', title: 'Đăng nhập' },
   register: { url: '/register', title: 'Đăng kí tài khoản' },
 };

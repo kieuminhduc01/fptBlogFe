@@ -4,19 +4,27 @@ import { marked } from 'marked';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import StatusAlert, { StatusAlertService } from 'react-status-alert';
+
 import { LikeApi } from '@/api/likeAPI';
 import { BASE_URL } from '@/api/request';
 import { getCookie } from '@/cookie/cookie';
 import { UrlPath } from '@/type/urlPath';
+
 import ArrowRight from '@/components/icons/arrowRight';
 import FacebookIcon from '@/components/icons/facebookIcon';
 import GmailIcon from '@/components/icons/gmailIcon';
 import HeartIcon from '@/components/icons/heartIcon';
 import LinkedinIcon from '@/components/icons/linkedinIcon';
-import { messageUnauthorizedAtom } from '@/atom/store';
+
+import { blogTitleAtom, messageUnauthorizedAtom } from '@/atom/store';
+
 import BlogTagList from '@/components/pageComponent/blogDetail/blogTagList';
 import Comment from '@/components/pageComponent/blogDetail/comment';
-import { ButtonTagStyled, DivBlockStyled, HrStyled } from '@/components/pageComponent/blogDetail/styledComponent';
+import {
+  ButtonTagStyled,
+  DivBlockStyled,
+  HrStyled,
+} from '@/components/pageComponent/blogDetail/styledComponent';
 
 const MainContent = ({ BlogPost, TagAll }) => {
   const router = useRouter();
@@ -24,42 +32,51 @@ const MainContent = ({ BlogPost, TagAll }) => {
   const [renderedContent, setRenderedContent] = useState('');
   const [fillLike, setFillLike] = useState(false);
   const [, setMessageUnauthorized] = useAtom(messageUnauthorizedAtom);
+  const [, setBlogTitle] = useAtom(blogTitleAtom);
+
   useEffect(() => {
     setRenderedContent(marked(BlogPost.content));
+    setBlogTitle(BlogPost.title);
   }, []);
+
   useEffect(() => {
     const getComment = async () => {
-      await axios
-        .get(`${BASE_URL}Comment?blogPostId=${BlogPost.id}`)
-        .then((res) => {
-          setTotalComment(res.data.result.total);
-        });
+      try {
+        const res = await axios.get(
+          `${BASE_URL}Comment?blogPostId=${BlogPost.id}`,
+        );
+        setTotalComment(res.data.result.total);
+      } catch (err) {
+        console.error(err);
+      }
     };
+
     getComment();
   }, []);
-  const handlelToggleLike = () => {
+
+  const handleToggleLike = async () => {
     setFillLike(!fillLike);
     const dataReq = {
       accountId: getCookie('accountId'),
       blogPostId: BlogPost.id,
       isLike: fillLike,
     };
-    LikeApi(dataReq)
-      .then(() => {
-        StatusAlertService.showSuccess('Like thành công!');
-      })
-      .catch((err) => {
-        if (err.response.status === 401) {
-          setMessageUnauthorized(
-            'Bạn chưa đăng nhập, vui lòng đăng nhập để like',
-          );
-          router.push(UrlPath.auth.url);
-        } else {
-          StatusAlertService.showError(err.response.data.Detail);
-        }
-      })
-      .finally(() => {});
+
+    try {
+      await LikeApi(dataReq);
+      StatusAlertService.showSuccess('Like thành công!');
+    } catch (err) {
+      if (err.response.status === 401) {
+        setMessageUnauthorized(
+          'Bạn chưa đăng nhập, vui lòng đăng nhập để like',
+        );
+        router.push(UrlPath.auth.url);
+      } else {
+        StatusAlertService.showError(err.response.data.Detail);
+      }
+    }
   };
+
   return (
     <>
       <div>
@@ -73,9 +90,15 @@ const MainContent = ({ BlogPost, TagAll }) => {
                 </div>
               )}
               {router.pathname === '/GrowingInThePRWorld/[slug]' && (
-                <div>Growing in the PR world</div>
+                <div className="cursor-point ff-lexend fs-20px-xxl fs-20px-xl fs-20px-lg fs-20px-md fs-20px-sm fs-18px color-6C6C6C">
+                  Growing in the PR world
+                </div>
               )}
-              {router.pathname === '/MyConner/[slug]' && <div>My conner</div>}
+              {router.pathname === '/MyCorner/[slug]' && (
+                <div className="cursor-point ff-lexend fs-20px-xxl fs-20px-xl fs-20px-lg fs-20px-md fs-20px-sm fs-18px color-6C6C6C">
+                  My corner
+                </div>
+              )}
 
               <div>
                 <ArrowRight />
@@ -100,7 +123,7 @@ const MainContent = ({ BlogPost, TagAll }) => {
                   </div>
                 </div>
                 <div
-                  onClick={handlelToggleLike}
+                  onClick={handleToggleLike}
                   className="ff-lexend fs-20px-xxl fs-20px-xl fs-20px-lg fs-20px-md fs-20px-sm fs-18px color-2c2727"
                 >
                   {BlogPost.likes}

@@ -1,20 +1,19 @@
-import axios from 'axios';
-import StatusAlert, { StatusAlertService } from 'react-status-alert';
 import { BASE_URL } from '@/api/request';
-import HomeComponentMain from '@/components/pageComponent/home/homeComponentMain';
+import MainContent from '@/components/pageComponent/blogList/mainContent';
+import axios from 'axios';
 
 export async function getServerSideProps() {
   let dataOri;
   await axios
     .post(`${BASE_URL}BlogPost/Paging`, {
-      perPage: 4,
+      perPage: 7,
       currentPage: 1,
       shortBy: {
         title: 'Created',
         isIncrease: false,
       },
       filter: {
-        categoryIds: [],
+        categoryIds: ['MyCorner'],
         tagIds: [],
       },
       keyWord: '',
@@ -30,10 +29,9 @@ export async function getServerSideProps() {
 
 const Index = ({ dataOri }) => {
   return (
-    <>
-      <StatusAlert />
-      <HomeComponentMain dataOri={dataOri} />
-    </>
+    <div>
+      <MainContent dataOri={dataOri} />
+    </div>
   );
 };
 
