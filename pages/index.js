@@ -7,7 +7,7 @@ export async function getServerSideProps() {
   let dataOri;
   await axios
     .post(`${BASE_URL}BlogPost/Paging`, {
-      perPage: 10,
+      perPage: 4,
       currentPage: 1,
       shortBy: {
         title: 'Created',

@@ -16,3 +16,14 @@ export const DivStyled = styled.div`
     padding-bottom: 70%;
   }
 `;
+export const ButtonTagStyled = styled.button`
+  border: 1px solid #930c0c;
+  padding: 6px 8px;
+  @media (min-width: 576px) {
+    padding: 6px 8px;
+  }
+  @media (min-width: 768px) {
+    padding: 6px 12px;
+    border: 2px solid #930c0c;
+  }
+`;

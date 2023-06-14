@@ -11,41 +11,50 @@ import AvatarIcon from '@/components/icons/avatarIcon';
 import AvatarIconSubCM from '@/components/icons/avatarIconSubCM';
 import { messageUnauthorizedAtom } from '@/atom/store';
 import { ButtonTagStyled } from '@/components/pageComponent/blogDetail/styledComponent';
+
 const Comment = ({ BlogPost }) => {
   const [commentData, setCommentData] = useState([]);
-  const [commentText, setCommentText] = useState();
-  const [commentReplyText, setCommentReplyText] = useState();
-  const [commentIdParent, setCommentIdParent] = useState();
+  const [commentText, setCommentText] = useState('');
+  const [commentReplyText, setCommentReplyText] = useState('');
+  const [commentIdParent, setCommentIdParent] = useState(null);
   const [, setMessageUnauthorized] = useAtom(messageUnauthorizedAtom);
   const router = useRouter();
+
   useEffect(() => {
     const getComment = async () => {
-      await axios
-        .get(`${BASE_URL}Comment?blogPostId=${BlogPost.id}`)
-        .then((res) => {
-          setCommentData(res.data.result.comments);
-        });
+      try {
+        const res = await axios.get(
+          `${BASE_URL}Comment?blogPostId=${BlogPost.id}`,
+        );
+        setCommentData(res.data.result.comments);
+      } catch (err) {
+        console.error(err);
+      }
     };
+
     getComment();
   }, []);
-  const handeChangeCommentText = (e) => {
+
+  const handleChangeCommentText = (e) => {
     setCommentText(e.target.value);
   };
+
   const handleChangeCommentReplyText = (e) => {
     setCommentReplyText(e.target.value);
-    console.log('targe.value', e.target.value);
   };
+
   const handleClickReply = (commentId) => {
     setCommentIdParent(commentId);
   };
-  const handleClickSubmitReply = () => {
+
+  const handleSubmitReply = () => {
     const dataReq = {
       accountId: getCookie('accountId'),
       blogPostId: BlogPost.id,
       parentId: commentIdParent,
       content: commentReplyText,
     };
-    console.log('dataReq', dataReq);
+
     CreateCommentApi(dataReq)
       .then((res) => {
         StatusAlertService.showSuccess('Trả lời thành công!');
@@ -61,7 +70,7 @@ const Comment = ({ BlogPost }) => {
         }
       })
       .finally(() => {
-        setCommentIdParent();
+        setCommentIdParent(null);
       });
   };
 
@@ -71,6 +80,7 @@ const Comment = ({ BlogPost }) => {
       blogPostId: BlogPost.id,
       content: commentText,
     };
+
     CreateCommentApi(dataReq)
       .then((res) => {
         StatusAlertService.showSuccess('Bình luận thành công!');
@@ -86,9 +96,10 @@ const Comment = ({ BlogPost }) => {
         }
       })
       .finally(() => {
-        setCommentIdParent();
+        setCommentIdParent(null);
       });
   };
+
   return (
     <>
       <div>
@@ -97,76 +108,71 @@ const Comment = ({ BlogPost }) => {
             Bình luận
           </div>
           <div>
-            {commentData.map((comment, index) => {
-              return (
-                <div key={index} className="d-flex ">
-                  <div>
-                    <AvatarIcon />
-                  </div>
-                  <div className="ms-2 mb-1">
-                    <div className="bg-body-secondary p-3 rounded-4">
-                      <div className="ff-lexend fs-22px-xxl fs-22px-xl fs-22px-lg fs-22px-md fs-22px-sm fs-20px fw-bold">
-                        {comment.accountName}
-                      </div>
-                      <div>
-                        <div className="ff-lexend fs-20px-xxl fs-20px-xl fs-20px-lg fs-20px-md fs-20px-sm fs-18px">
-                          {comment.commentContent}
-                        </div>
-                      </div>
+            {commentData.map((comment, index) => (
+              <div key={index} className="d-flex">
+                <div>
+                  <AvatarIcon />
+                </div>
+                <div className="ms-2 mb-1">
+                  <div className="bg-body-secondary p-3 rounded-4">
+                    <div className="ff-lexend fs-22px-xxl fs-22px-xl fs-22px-lg fs-22px-md fs-22px-sm fs-20px fw-bold">
+                      {comment.accountName}
                     </div>
                     <div>
-                      <button
-                        onClick={() => handleClickReply(comment.commentId)}
-                        className="mx-2 fw-bolder border-0 bg-body ff-lexend fs-16px-xxl fs-16px-xl fs-16px-lg fs-16px-md fs-16px-sm fs-14px"
-                      >
-                        Reply
-                      </button>
-                      {commentIdParent === comment.commentId && (
-                        <div key={index}>
-                          <div className="input-group mb-3">
-                            <input
-                              type="text"
-                              // className="form-control"
-                              placeholder="Nhập"
-                              value={commentReplyText}
-                              onChange={handleChangeCommentReplyText}
-                            />
-                            <button
-                              onClick={handleClickSubmitReply}
-                              type="submit"
-                              className="btn btn-primary"
-                            >
-                              Submit
-                            </button>
-                          </div>
-                        </div>
-                      )}
+                      <div className="ff-lexend fs-20px-xxl fs-20px-xl fs-20px-lg fs-20px-md fs-20px-sm fs-18px">
+                        {comment.commentContent}
+                      </div>
                     </div>
-                    {comment.subComments?.map((subComments, index) => {
-                      return (
-                        <div key={index} className="d-flex ">
-                          <div>
-                            <AvatarIconSubCM />
+                  </div>
+                  <div>
+                    <button
+                      onClick={() => handleClickReply(comment.commentId)}
+                      className="mx-2 fw-bolder border-0 bg-body ff-lexend fs-16px-xxl fs-16px-xl fs-16px-lg fs-16px-md fs-16px-sm fs-14px"
+                    >
+                      Reply
+                    </button>
+                    {commentIdParent === comment.commentId && (
+                      <div key={index}>
+                        <div className="input-group mb-3">
+                          <input
+                            type="text"
+                            placeholder="Nhập"
+                            value={commentReplyText}
+                            onChange={handleChangeCommentReplyText}
+                          />
+                          <button
+                            onClick={handleSubmitReply}
+                            type="submit"
+                            className="btn btn-primary"
+                          >
+                            Submit
+                          </button>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                  {comment.subComments?.map((subComments, index) => (
+                    <div key={index} className="d-flex">
+                      <div>
+                        <AvatarIconSubCM />
+                      </div>
+                      <div className="ms-1 mt-1 mt-md-2 mb-1 mb-md-2">
+                        <div className="bg-body-secondary p-3 rounded-4">
+                          <div className="ff-lexend fs-22px-xxl fs-22px-xl fs-22px-lg fs-22px-md fs-22px-sm fs-20px fw-bold">
+                            {subComments.accountName}
                           </div>
-                          <div className="ms-1 mt-1 mt-md-2 mb-1 mb-md-2">
-                            <div className="bg-body-secondary p-3 rounded-4">
-                              <div className="ff-lexend fs-22px-xxl fs-22px-xl fs-22px-lg fs-22px-md fs-22px-sm fs-20px fw-bold">
-                                {subComments.accountName}
-                              </div>
-                              <div>
-                                <div className="ff-lexend fs-20px-xxl fs-20px-xl fs-20px-lg fs-20px-md fs-20px-sm fs-18px">
-                                  {subComments.commentContent}
-                                </div>
-                              </div>
+                          <div>
+                            <div className="ff-lexend fs-20px-xxl fs-20px-xl fs-20px-lg fs-20px-md fs-20px-sm fs-18px">
+                              {subComments.commentContent}
                             </div>
                           </div>
                         </div>
-                      );
-                    })}
-                  </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         </div>
         <br />
@@ -176,7 +182,7 @@ const Comment = ({ BlogPost }) => {
             placeholder="Nhập bình luận"
             className="form-control form-control-lg"
             value={commentText}
-            onChange={handeChangeCommentText}
+            onChange={handleChangeCommentText}
           />
         </div>
         <br />
