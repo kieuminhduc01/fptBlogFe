@@ -16,10 +16,7 @@ import GmailIcon from '@/components/icons/gmailIcon';
 import HeartIcon from '@/components/icons/heartIcon';
 import LinkedinIcon from '@/components/icons/linkedinIcon';
 
-import {
-  blogTitleAtom,
-  messageUnauthorizedAtom,
-} from '@/components/atom/store';
+import { blogTitleAtom, messageUnauthorizedAtom } from '@/atom/store';
 
 import BlogListTag from '@/components/pageComponent/blogDetail/blogListTag';
 import Comment from '@/components/pageComponent/blogDetail/comment';

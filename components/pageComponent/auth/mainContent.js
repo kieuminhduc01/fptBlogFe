@@ -6,7 +6,7 @@ import StatusAlert, { StatusAlertService } from 'react-status-alert';
 import { LoginApi } from '@/api/authAPI';
 import { setCookie } from '@/cookie/cookie';
 import { UrlPath } from '@/type/urlPath';
-import { messageUnauthorizedAtom } from '@/components/atom/store';
+import { messageUnauthorizedAtom } from '@/atom/store';
 import HashLoaderCus from '@/components/spins/hashLoader';
 
 const MainContent = () => {

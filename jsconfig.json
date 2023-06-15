@@ -20,6 +20,9 @@
       "@/styles/*": [
         "styles/*"
       ],
+      "@/atom/*": [
+        "atom/*"
+      ],
     },
     "lib": [
       "dom",

@@ -1,6 +1,6 @@
 import { CreateCommentApi } from '@/api/commentAPI';
 import { BASE_URL } from '@/api/request';
-import { messageUnauthorizedAtom } from '@/components/atom/store';
+import { messageUnauthorizedAtom } from '@/atom/store';
 import AvatarIcon from '@/components/icons/avatarIcon';
 import AvatarIconSubCM from '@/components/icons/avatarIconSubCM';
 import { ButtonTagStyled } from '@/components/pageComponent/blogDetail/styledComponent';

@@ -9,7 +9,7 @@ import '@/styles/globals.css';
 import '@/styles/styles.scss';
 import { UrlPath } from '@/type/urlPath';
 import { useAtom } from 'jotai';
-import { blogTitleAtom } from '@/components/atom/store';
+import { blogTitleAtom } from '@/atom/store';
 
 function MyApp({ Component, pageProps }) {
   const [blogTitle] = useAtom(blogTitleAtom);
