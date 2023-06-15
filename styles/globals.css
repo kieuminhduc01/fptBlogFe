@@ -6,7 +6,7 @@ a {
 .square-container {
   width: 80%;
   padding-bottom: 80%;
-  
+
   position: relative;
   overflow: hidden;
 }
@@ -19,7 +19,9 @@ a {
   width: 100%;
   height: auto;
 }
-
+.mr-24vw-global {
+  margin-right: 24vw;
+}
 .pb-100pc-global {
   padding-bottom: 100%;
 }
