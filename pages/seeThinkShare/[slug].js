@@ -2,6 +2,7 @@ import { BASE_URL } from '@/api/request';
 import MainContent from '@/components/pageComponent/blogDetail/mainContent';
 import axios from 'axios';
 import { useEffect } from 'react';
+import { StatusAlertService } from 'react-status-alert';
 
 export async function getServerSideProps(context) {
   const routerData = context.query;

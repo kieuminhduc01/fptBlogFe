@@ -1,6 +1,7 @@
 import { BASE_URL } from '@/api/request';
 import MainContent from '@/components/pageComponent/blogList/mainContent';
 import axios from 'axios';
+import { StatusAlertService } from 'react-status-alert';
 
 export async function getServerSideProps() {
   let dataOri;

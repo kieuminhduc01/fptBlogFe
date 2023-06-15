@@ -28,7 +28,7 @@ const Comment = ({ BlogPost }) => {
         );
         setCommentData(res.data.result.comments);
       } catch (err) {
-        console.error(err);
+        StatusAlertService.showError(err.response.data.Detail);
       }
     };
 

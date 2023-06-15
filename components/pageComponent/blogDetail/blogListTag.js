@@ -1,9 +1,10 @@
 import { BASE_URL, Server } from '@/api/request';
+import { ButtonTagStyled } from '@/components/pageComponent/blogList/styledComponent';
 import { UrlPath } from '@/type/urlPath';
 import axios from 'axios';
 import Link from 'next/link';
 import { useState } from 'react';
-import { ButtonTagStyled } from '@/components/pageComponent/blogList/styledComponent';
+import { StatusAlertService } from 'react-status-alert';
 
 const BlogListTag = ({ tagBlogList }) => {
   const [currentPage, setCurrentPage] = useState(2);
@@ -30,8 +31,7 @@ const BlogListTag = ({ tagBlogList }) => {
       setLoadedPosts((prevPosts) => [...prevPosts, ...newPosts]);
       setCurrentPage((prevPage) => prevPage + 1);
     } catch (err) {
-      console.error(err);
-      // Handle error
+      StatusAlertService.showError(err.response.data.Detail);
     }
   };
 

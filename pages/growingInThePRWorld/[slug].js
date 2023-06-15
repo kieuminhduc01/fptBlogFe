@@ -1,6 +1,7 @@
 import { BASE_URL } from '@/api/request';
 import MainContent from '@/components/pageComponent/blogDetail/mainContent';
 import axios from 'axios';
+import { StatusAlertService } from 'react-status-alert';
 
 export async function getServerSideProps(context) {
   const routerData = context.query;
@@ -41,7 +42,6 @@ export async function getServerSideProps(context) {
 const Index = ({ BlogPost, TagAll, dataOri }) => {
   return (
     <div>
-      {console.log('aádas', dataOri)}
       <MainContent BlogPost={BlogPost} TagAll={TagAll} dataOri={dataOri} />
     </div>
   );

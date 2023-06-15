@@ -4,14 +4,15 @@ import { UrlPath } from '@/type/urlPath';
 import axios from 'axios';
 import Link from 'next/link';
 import { useState } from 'react';
+import { StatusAlertService } from 'react-status-alert';
 
 const BlogListContent = ({ dataOri }) => {
   const [currentPage, setCurrentPage] = useState(2);
   const [displayedPosts, setDisplayedPosts] = useState(
     dataOri?.items.slice(1, 7),
   );
-  const handlePaging = async () => {
-    await axios
+  const handlePaging = () => {
+    axios
       .post(`${BASE_URL}BlogPost/Paging`, {
         perPage: 6,
         currentPage: currentPage,

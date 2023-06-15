@@ -23,7 +23,7 @@ import Comment from '@/components/pageComponent/blogDetail/comment';
 import {
   ButtonTagStyled,
   DivBlockStyled,
-  HrStyled,
+  HrStyled
 } from '@/components/pageComponent/blogDetail/styledComponent';
 
 const MainContent = ({ BlogPost, TagAll, dataOri }) => {
@@ -49,7 +49,7 @@ const MainContent = ({ BlogPost, TagAll, dataOri }) => {
         );
         setTotalComment(res.data.result.total);
       } catch (err) {
-        console.error(err);
+        StatusAlertService.showError(err.response.data.Detail);
       }
     };
 
@@ -78,9 +78,8 @@ const MainContent = ({ BlogPost, TagAll, dataOri }) => {
       }
     }
   };
-  const handleClickTag = async (tagId) => {
-    console.log('aa');
-    await axios
+  const handleClickTag = (tagId) => {
+    axios
       .post(`${BASE_URL}BlogPost/Paging`, {
         perPage: 6,
         currentPage: 1,
@@ -96,7 +95,6 @@ const MainContent = ({ BlogPost, TagAll, dataOri }) => {
       })
       .then((res) => {
         const newPosts = res.data.result;
-        console.log('103', newPosts);
         setTagBlogList(newPosts);
         setIsTag(!isTag);
       })
