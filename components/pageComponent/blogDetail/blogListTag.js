@@ -7,7 +7,9 @@ import { ButtonTagStyled } from '@/components/pageComponent/blogList/styledCompo
 
 const BlogListTag = ({ tagBlogList }) => {
   const [currentPage, setCurrentPage] = useState(2);
-  const [loadedPosts, setLoadedPosts] = useState(tagBlogList.items.slice(0, 6));
+  const [loadedPosts, setLoadedPosts] = useState(
+    tagBlogList?.items.slice(0, 6),
+  );
 
   const handlePaging = async () => {
     try {
@@ -35,7 +37,7 @@ const BlogListTag = ({ tagBlogList }) => {
 
   return (
     <>
-      {loadedPosts.map((item, index) => (
+      {loadedPosts?.map((item, index) => (
         <div className="col-6 col-md-4" key={index}>
           <div className="pb-100pc-global w-100 height-0 position-relative overflow-hidden">
             <img

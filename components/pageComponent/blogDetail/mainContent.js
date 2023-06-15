@@ -18,7 +18,7 @@ import LinkedinIcon from '@/components/icons/linkedinIcon';
 
 import {
   blogTitleAtom,
-  messageUnauthorizedAtom
+  messageUnauthorizedAtom,
 } from '@/components/atom/store';
 
 import BlogListTag from '@/components/pageComponent/blogDetail/blogListTag';
@@ -26,7 +26,7 @@ import Comment from '@/components/pageComponent/blogDetail/comment';
 import {
   ButtonTagStyled,
   DivBlockStyled,
-  HrStyled
+  HrStyled,
 } from '@/components/pageComponent/blogDetail/styledComponent';
 
 const MainContent = ({ BlogPost, TagAll, dataOri }) => {
