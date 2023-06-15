@@ -18,22 +18,24 @@ import LinkedinIcon from '@/components/icons/linkedinIcon';
 
 import { blogTitleAtom, messageUnauthorizedAtom } from '@/atom/store';
 
-import BlogTagList from '@/components/pageComponent/blogDetail/blogTagList';
+import BlogListTag from '@/components/pageComponent/blogDetail/blogListTag';
 import Comment from '@/components/pageComponent/blogDetail/comment';
 import {
   ButtonTagStyled,
   DivBlockStyled,
-  HrStyled,
+  HrStyled
 } from '@/components/pageComponent/blogDetail/styledComponent';
 
-const MainContent = ({ BlogPost, TagAll }) => {
+const MainContent = ({ BlogPost, TagAll, dataOri }) => {
   const router = useRouter();
   const [totalComment, setTotalComment] = useState();
   const [renderedContent, setRenderedContent] = useState('');
   const [fillLike, setFillLike] = useState(false);
   const [, setMessageUnauthorized] = useAtom(messageUnauthorizedAtom);
   const [, setBlogTitle] = useAtom(blogTitleAtom);
-
+  const [currentPage, setCurrentPage] = useState(1);
+  const [tagBlogList, setTagBlogList] = useState();
+  const [isTag, setIsTag] = useState(false);
   useEffect(() => {
     setRenderedContent(marked(BlogPost.content));
     setBlogTitle(BlogPost.title);
@@ -47,7 +49,7 @@ const MainContent = ({ BlogPost, TagAll }) => {
         );
         setTotalComment(res.data.result.total);
       } catch (err) {
-        console.error(err);
+        StatusAlertService.showError(err.response.data.Detail);
       }
     };
 
@@ -76,7 +78,33 @@ const MainContent = ({ BlogPost, TagAll }) => {
       }
     }
   };
-
+  const handleClickTag = (tagId) => {
+    axios
+      .post(`${BASE_URL}BlogPost/Paging`, {
+        perPage: 6,
+        currentPage: 1,
+        shortBy: {
+          title: 'Created',
+          isIncrease: false,
+        },
+        filter: {
+          categoryIds: [dataOri?.items[0].category],
+          tagIds: [tagId],
+        },
+        keyWord: '',
+      })
+      .then((res) => {
+        const newPosts = res.data.result;
+        setTagBlogList(newPosts);
+        setIsTag(!isTag);
+      })
+      .catch((err) => {
+        StatusAlertService.showError(err.response.data.Detail);
+      })
+      .finally(() => {
+        setCurrentPage((prevPage) => prevPage + 1);
+      });
+  };
   return (
     <>
       <div>
@@ -153,6 +181,7 @@ const MainContent = ({ BlogPost, TagAll }) => {
                 <div>
                   {TagAll.map((tag, index) => (
                     <ButtonTagStyled
+                      onClick={() => handleClickTag(tag.id)}
                       className=" mt-3 mt-md-3 color-1d1b1b ms-1 ms-md-2 ms-lg-2 ms-xl-3 bg-body ff-lexend fs-20px-xxl fs-20px-xl fs-20px-lg fs-20px-md fs-20px-sm fs-18px"
                       key={index}
                     >
@@ -161,11 +190,19 @@ const MainContent = ({ BlogPost, TagAll }) => {
                   ))}
                 </div>
               </div>
+              <div className="d-flex justify-content-center mt-3">
+                <div className="w-89pc w-92pc-sm w-90pc-md w-90pc-lg w-88pc-xl w-88pc-xxl row">
+                  {isTag === true ? (
+                    <BlogListTag tagBlogList={tagBlogList} />
+                  ) : (
+                    <></>
+                  )}
+                </div>
+              </div>
               <HrStyled />
               <Comment BlogPost={BlogPost} />
             </div>
             <HrStyled />
-            <BlogTagList />
           </div>
         </div>
       </div>

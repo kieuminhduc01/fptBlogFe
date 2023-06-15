@@ -1,16 +1,16 @@
+import { CreateCommentApi } from '@/api/commentAPI';
+import { BASE_URL } from '@/api/request';
+import { messageUnauthorizedAtom } from '@/atom/store';
+import AvatarIcon from '@/components/icons/avatarIcon';
+import AvatarIconSubCM from '@/components/icons/avatarIconSubCM';
+import { ButtonTagStyled } from '@/components/pageComponent/blogDetail/styledComponent';
+import { getCookie } from '@/cookie/cookie';
+import { UrlPath } from '@/type/urlPath';
 import axios from 'axios';
 import { useAtom } from 'jotai';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { StatusAlertService } from 'react-status-alert';
-import { CreateCommentApi } from '@/api/commentAPI';
-import { BASE_URL } from '@/api/request';
-import { getCookie } from '@/cookie/cookie';
-import { UrlPath } from '@/type/urlPath';
-import AvatarIcon from '@/components/icons/avatarIcon';
-import AvatarIconSubCM from '@/components/icons/avatarIconSubCM';
-import { messageUnauthorizedAtom } from '@/atom/store';
-import { ButtonTagStyled } from '@/components/pageComponent/blogDetail/styledComponent';
 
 const Comment = ({ BlogPost }) => {
   const [commentData, setCommentData] = useState([]);
@@ -28,7 +28,7 @@ const Comment = ({ BlogPost }) => {
         );
         setCommentData(res.data.result.comments);
       } catch (err) {
-        console.error(err);
+        StatusAlertService.showError(err.response.data.Detail);
       }
     };
 

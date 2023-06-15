@@ -14,14 +14,14 @@
       "@/cookie/*": [
         "cookie/*"
       ],
-      "@/atom/*": [
-        "components/atom/*"
-      ],
       "@/share/*": [
         "share/*"
       ],
       "@/styles/*": [
         "styles/*"
+      ],
+      "@/atom/*": [
+        "atom/*"
       ],
     },
     "lib": [

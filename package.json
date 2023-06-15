@@ -27,6 +27,5 @@
   },
   "devDependencies": {
     "babel-plugin-styled-components": "^2.1.3"
-
   }
 }
