@@ -1,13 +1,13 @@
+import { ForgotPassApi, LoginApi } from '@/api/authAPI';
+import { messageUnauthorizedAtom } from '@/atom/store';
+import HashLoaderCus from '@/components/spins/hashLoader';
+import { setCookie } from '@/cookie/cookie';
+import { UrlPath } from '@/type/urlPath';
 import { useAtom } from 'jotai';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import StatusAlert, { StatusAlertService } from 'react-status-alert';
-import { ForgotPassApi, LoginApi } from '@/api/authAPI';
-import { setCookie } from '@/cookie/cookie';
-import { UrlPath } from '@/type/urlPath';
-import { messageUnauthorizedAtom } from '@/atom/store';
-import HashLoaderCus from '@/components/spins/hashLoader';
 
 const MainContent = () => {
   const router = useRouter();
