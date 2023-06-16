@@ -8,6 +8,7 @@ export const UrlPath = {
   myCorner: { url: '/MyCorner', title: 'My Corner' },
   auth: { url: '/auth', title: 'Đăng nhập' },
   register: { url: '/register', title: 'Đăng kí tài khoản' },
+  search: { url: '/search', title: 'Tìm kiếm' },
 };
 export const Profile = {
   Fb: 'https://www.facebook.com/phuongwings?mibextid=LQQJ4d',

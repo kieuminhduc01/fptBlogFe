@@ -1,3 +1,4 @@
+import { isPagingSearchAtom } from '@/atom/store';
 import NarBarDesktop from '@/components/header/narBarDesktop';
 import NarBarMobile from '@/components/header/narBarMobile';
 import {
@@ -5,13 +6,14 @@ import {
   H1Styled,
   H2Styled,
   HrStyled,
-  InputFieldStyled
+  InputFieldStyled,
 } from '@/components/header/styledComponent';
 import AccountIcon from '@/components/icons/accountIcon';
 import ArrowLeft from '@/components/icons/arrowLeft';
 import LensIcon from '@/components/icons/lensIcon';
 import ThreeLineIcon from '@/components/icons/threeLineIcon';
 import { UrlPath } from '@/type/urlPath';
+import { useAtom } from 'jotai';
 import { useRouter } from 'next/router';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import StatusAlert from 'react-status-alert';
@@ -23,6 +25,8 @@ const Header = ({ position }) => {
   const [displayArrorwLeft, setDisplayArrorwLeft] = useState('none');
   const [rightPxArrowLeft, setRightPxArrowLeft] = useState();
   const [isClickAccount, setIsClickAccount] = useState(false);
+  const [search, setSearch] = useState('');
+  const [, setIsPagingSearch] = useAtom(isPagingSearchAtom);
   const router = useRouter();
   const [width, setWidth] = useState(0);
   const sideBarRef = useRef(null);
@@ -83,6 +87,10 @@ const Header = ({ position }) => {
   }, []);
   const handleClickAccount = () => {
     setIsClickAccount(!isClickAccount);
+  };
+  const handleSearch = () => {
+    setIsPagingSearch(false);
+    router.push(`${UrlPath.search.url}?keyword=${search}`);
   };
   const getTitle = (url) => {
     switch (url) {
@@ -156,7 +164,10 @@ const Header = ({ position }) => {
                   </div>
                   <div className="d-md-none d-flex w-100  mb-22px-sm mb-20px">
                     <div className="d-flex padding-12px-sm padding-10px w-100 br-14px-sm br-14px bg-fafafa ">
-                      <div className="cursor-pointer mr-8px-sm mr-8px">
+                      <div
+                        onClick={handleSearch}
+                        className="cursor-point mr-8px-sm mr-8px"
+                      >
                         <LensIcon />
                       </div>
                       <InputFieldStyled
@@ -164,6 +175,8 @@ const Header = ({ position }) => {
                         type="search"
                         placeholder="Tìm kiếm"
                         aria-label="Search"
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
                       ></InputFieldStyled>
                     </div>
                   </div>

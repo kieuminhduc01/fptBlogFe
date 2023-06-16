@@ -49,7 +49,7 @@ const MainContent = ({ dataOri }) => {
             </div>
           </div>
 
-          <BlogListContent dataOri={dataOri} />
+          <BlogListContent dataOri={dataOri} start={1} end={7} />
         </div>
       </div>
     </div>

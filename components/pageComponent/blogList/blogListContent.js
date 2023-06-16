@@ -7,11 +7,11 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { StatusAlertService } from 'react-status-alert';
 
-const BlogListContent = ({ dataOri }) => {
+const BlogListContent = ({ dataOri,start,end }) => {
   const router = useRouter();
   const [currentPage, setCurrentPage] = useState(2);
   const [displayedPosts, setDisplayedPosts] = useState(
-    dataOri?.items.slice(1, 7),
+    dataOri?.items.slice(start, end),
   );
   const handleClickImg = (item) => {
     router.push(`${UrlPath.home.url}${item?.category}/${item?.slug}`);
@@ -41,6 +41,7 @@ const BlogListContent = ({ dataOri }) => {
       .finally(() => {
         setCurrentPage((prevPage) => prevPage + 1);
       });
+
   };
   return (
     <>

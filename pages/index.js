@@ -1,7 +1,7 @@
-import axios from 'axios';
-import StatusAlert, { StatusAlertService } from 'react-status-alert';
 import { BASE_URL } from '@/api/request';
 import HomeComponentMain from '@/components/pageComponent/home/homeComponentMain';
+import axios from 'axios';
+import StatusAlert, { StatusAlertService } from 'react-status-alert';
 
 export async function getServerSideProps() {
   let dataOri;

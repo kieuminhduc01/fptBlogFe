@@ -1,15 +1,15 @@
+import { blogTitleAtom } from '@/atom/store';
+import MainLayout from '@/components/layout/mainLayout';
+import '@/styles/globals.css';
+import '@/styles/styles.scss';
+import { UrlPath } from '@/type/urlPath';
 import 'bootstrap/dist/css/bootstrap.css';
+import { useAtom } from 'jotai';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import 'react-status-alert/dist/status-alert.css';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import MainLayout from '@/components/layout/mainLayout';
-import '@/styles/globals.css';
-import '@/styles/styles.scss';
-import { UrlPath } from '@/type/urlPath';
-import { useAtom } from 'jotai';
-import { blogTitleAtom } from '@/atom/store';
 
 function MyApp({ Component, pageProps }) {
   const [blogTitle] = useAtom(blogTitleAtom);
@@ -33,6 +33,9 @@ function MyApp({ Component, pageProps }) {
       }
       case UrlPath.register.url: {
         return UrlPath.register.title;
+      }
+      case UrlPath.search.url: {
+        return UrlPath.search.title;
       }
       case `${UrlPath.seeThinkShare.url}/[slug]`: {
         return blogTitle;
