@@ -56,6 +56,10 @@ const MainContent = () => {
         ? LoginApi(dataReqLogin)
             .then((res) => {
               setCookie('accountId', res.data.result.accountId, { expires: 7 });
+              setCookie('email', res.data.result.accountEmail, { expires: 7 });
+              setCookie('accountName', res.data.result.accountName, {
+                expires: 7,
+              });
               setCookie('jwt_token', res.data.result.token, {
                 expires: 7,
               });

@@ -10,7 +10,15 @@ a {
   position: relative;
   overflow: hidden;
 }
-
+.ReactModal__Overlay.ReactModal__Overlay--after-open {
+  z-index: 5000;
+}
+.ml--114px-global {
+  margin-left: -114px;
+}
+.white-space-noWrap {
+  white-space: nowrap;
+}
 .square-container img {
   position: absolute;
   top: 50%;

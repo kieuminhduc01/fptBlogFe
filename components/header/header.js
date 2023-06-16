@@ -15,6 +15,7 @@ import {
 } from '@/components/header/styledComponent';
 import AccountIcon from '@/components/icons/accountIcon';
 import DropDown from './dropDown';
+import StatusAlert from 'react-status-alert';
 
 const Header = ({ position }) => {
   const [widthMenuContent, setWidthMenuContent] = useState(0);
@@ -80,7 +81,9 @@ const Header = ({ position }) => {
     setDisplayArrorwLeft('none');
     setIsContentVisiable(false);
   }, []);
-  const handleClickAccount = () => {setIsClickAccount(!isClickAccount)};
+  const handleClickAccount = () => {
+    setIsClickAccount(!isClickAccount);
+  };
   const getTitle = (url) => {
     switch (url) {
       case UrlPath.growingInThePRWorld.url: {
@@ -123,6 +126,7 @@ const Header = ({ position }) => {
         </div>
       </div>
       <DivStyled>
+        <StatusAlert />
         <div
           className="header-container z-index-fixed"
           style={{ position: position }}
@@ -174,7 +178,7 @@ const Header = ({ position }) => {
                   <DropDown isClickAccount={isClickAccount} />
                 </div>
                 <div className="d-none d-md-flex justify-content-center">
-                  <div className="w-250px-xxl w-250px-xl w-240px-lg w-200px-md">
+                  <div className="w-170px-xxl w-160px-xl w-160px-lg w-160px-md">
                     <H2Styled
                       color="#960c0c"
                       onClick={handleClickLogo}
@@ -185,7 +189,7 @@ const Header = ({ position }) => {
                   </div>
                 </div>
                 <div className=" d-none d-md-flex justify-content-center">
-                  <div className="bg-white z-index-dropdown w-270px-xxl w-260px-xl w-250px-lg w-230px-md">
+                  <div className="bg-white z-index-dropdown w-220px-xxl w-220px-xl w-210px-lg w-210px-md">
                     <H1Styled
                       onClick={handleClickLogo}
                       className=" cursor-point fs-42px-xl fs-38px-md fs-34px letter-spacing-3px-xxl letter-spacing-3px-xl letter-spacing-2px-lg letter-spacing-1px-md float-end"
