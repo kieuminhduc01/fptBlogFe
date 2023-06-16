@@ -1,9 +1,3 @@
-import { useRouter } from 'next/router';
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { UrlPath } from '@/type/urlPath';
-import ArrowLeft from '@/components/icons/arrowLeft';
-import LensIcon from '@/components/icons/lensIcon';
-import ThreeLineIcon from '@/components/icons/threeLineIcon';
 import NarBarDesktop from '@/components/header/narBarDesktop';
 import NarBarMobile from '@/components/header/narBarMobile';
 import {
@@ -11,15 +5,24 @@ import {
   H1Styled,
   H2Styled,
   HrStyled,
-  InputFieldStyled,
+  InputFieldStyled
 } from '@/components/header/styledComponent';
+import AccountIcon from '@/components/icons/accountIcon';
+import ArrowLeft from '@/components/icons/arrowLeft';
+import LensIcon from '@/components/icons/lensIcon';
+import ThreeLineIcon from '@/components/icons/threeLineIcon';
+import { UrlPath } from '@/type/urlPath';
+import { useRouter } from 'next/router';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import StatusAlert from 'react-status-alert';
+import DropDown from './dropDown';
 
 const Header = ({ position }) => {
   const [widthMenuContent, setWidthMenuContent] = useState(0);
   const [isContentVisiable, setIsContentVisiable] = useState(false);
   const [displayArrorwLeft, setDisplayArrorwLeft] = useState('none');
   const [rightPxArrowLeft, setRightPxArrowLeft] = useState();
-
+  const [isClickAccount, setIsClickAccount] = useState(false);
   const router = useRouter();
   const [width, setWidth] = useState(0);
   const sideBarRef = useRef(null);
@@ -78,7 +81,9 @@ const Header = ({ position }) => {
     setDisplayArrorwLeft('none');
     setIsContentVisiable(false);
   }, []);
-
+  const handleClickAccount = () => {
+    setIsClickAccount(!isClickAccount);
+  };
   const getTitle = (url) => {
     switch (url) {
       case UrlPath.growingInThePRWorld.url: {
@@ -121,6 +126,7 @@ const Header = ({ position }) => {
         </div>
       </div>
       <DivStyled>
+        <StatusAlert />
         <div
           className="header-container z-index-fixed"
           style={{ position: position }}
@@ -139,7 +145,7 @@ const Header = ({ position }) => {
                     <div onClick={handleClickLogo}>
                       <H2Styled
                         color="#960c0c"
-                        className="fs-22px-sm fs-20px mt-22px-sm mt-20px"
+                        className="fs-22px-sm fs-20px mt-22px-sm mt-20px mr-24vw-global"
                       >
                         Phương kể bạn nghe
                       </H2Styled>
@@ -164,11 +170,18 @@ const Header = ({ position }) => {
                 </div>
               </div>
 
-              <div onClick={handleClickLogo}>
+              <div>
+                <div className="float-end me-md-5 mt-md-5 mt--222px mt--240px-sm mr-30px mr-30px-sm position-relative">
+                  <div onClick={handleClickAccount} className="cursor-point">
+                    <AccountIcon height="40px" width="40px" />
+                  </div>
+                  <DropDown isClickAccount={isClickAccount} />
+                </div>
                 <div className="d-none d-md-flex justify-content-center">
-                  <div className="w-250px-xxl w-250px-xl w-240px-lg w-200px-md">
+                  <div className="w-170px-xxl w-160px-xl w-160px-lg w-160px-md">
                     <H2Styled
                       color="#960c0c"
+                      onClick={handleClickLogo}
                       className="fs-34px-xxl fs-32px-xl fs-30px-lg fs-28px-md mt-52px-xxl mt-50px-xl mt-48px-lg mt-40px-md float-start cursor-point "
                     >
                       Phương kể
@@ -176,8 +189,11 @@ const Header = ({ position }) => {
                   </div>
                 </div>
                 <div className=" d-none d-md-flex justify-content-center">
-                  <div className="bg-white z-index-dropdown w-270px-xxl w-260px-xl w-250px-lg w-230px-md">
-                    <H1Styled className=" cursor-point fs-42px-xl fs-38px-md fs-34px letter-spacing-3px-xxl letter-spacing-3px-xl letter-spacing-2px-lg letter-spacing-1px-md float-end">
+                  <div className="bg-white z-index-dropdown w-220px-xxl w-220px-xl w-210px-lg w-210px-md">
+                    <H1Styled
+                      onClick={handleClickLogo}
+                      className=" cursor-point fs-42px-xl fs-38px-md fs-34px letter-spacing-3px-xxl letter-spacing-3px-xl letter-spacing-2px-lg letter-spacing-1px-md float-end"
+                    >
                       Bạn nghe
                     </H1Styled>
                   </div>

@@ -574,3 +574,38 @@
     }
   }
 }
+@for $i from -300 through 0 {
+  $isMultipleOf2: $i % 2 == 0;
+  @if $isMultipleOf2 {
+    @media (width<= 576px) {
+      .mt-#{$i}px {
+        margin-top: #{$i}px;
+      }
+    }
+    @media (576px<width<= 768px) {
+      .mt-#{$i}px-sm {
+        margin-top: #{$i}px;
+      }
+    }
+    @media (768px<width<= 992px) {
+      .mt-#{$i}px-md {
+        margin-top: #{$i}px;
+      }
+    }
+    @media (992px<width<= 1200px) {
+      .mt-#{$i}px-lg {
+        margin-top: #{$i}px;
+      }
+    }
+    @media (1200px<width<= 1400px) {
+      .mt-#{$i}px-xl {
+        margin-top: #{$i}px;
+      }
+    }
+    @media (1400px<width) {
+      .mt-#{$i}px-xxl {
+        margin-top: #{$i}px;
+      }
+    }
+  }
+}

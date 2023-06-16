@@ -1,11 +1,11 @@
-import { Pagination } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Profile } from '@/type/urlPath';
 import MainContainer from '@/components/content/mainContainer';
 import FacebookIcon from '@/components/icons/facebookIcon';
 import GmailIcon from '@/components/icons/gmailIcon';
 import LinkedinIcon from '@/components/icons/linkedinIcon';
 import MainContent from '@/components/pageComponent/home/mainContent';
+import { Profile } from '@/type/urlPath';
+import { Pagination } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 const HomeComponentMain = ({ dataOri }) => {
   return (

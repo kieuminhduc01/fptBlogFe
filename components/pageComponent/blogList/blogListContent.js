@@ -3,14 +3,19 @@ import { ButtonTagStyled } from '@/components/pageComponent/blogList/styledCompo
 import { UrlPath } from '@/type/urlPath';
 import axios from 'axios';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { StatusAlertService } from 'react-status-alert';
 
 const BlogListContent = ({ dataOri }) => {
+  const router = useRouter();
   const [currentPage, setCurrentPage] = useState(2);
   const [displayedPosts, setDisplayedPosts] = useState(
     dataOri?.items.slice(1, 7),
   );
+  const handleClickImg = (item) => {
+    router.push(`${UrlPath.home.url}${item?.category}/${item?.slug}`);
+  };
   const handlePaging = () => {
     axios
       .post(`${BASE_URL}BlogPost/Paging`, {
@@ -60,7 +65,10 @@ const BlogListContent = ({ dataOri }) => {
       ))}
 
       <div className="d-flex justify-content-center mt-4">
-        <ButtonTagStyled onClick={handlePaging} className="bg-body">
+        <ButtonTagStyled
+          onClick={handlePaging}
+          className="bg-body fs-22px-xxl fs-20px-xl fs-20px-lg fs-18px-md fs-18px-sm fs-16px ff-lexend mb-3 color-960C0C"
+        >
           Đọc thêm bài viết
         </ButtonTagStyled>
       </div>
