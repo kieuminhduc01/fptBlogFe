@@ -1,6 +1,6 @@
 a {
-  color: #2c2727;
-  text-decoration: none;
+  color: #2c2727 !important;
+  text-decoration: none !important;
   cursor: pointer;
 }
 .square-container {

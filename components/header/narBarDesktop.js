@@ -26,7 +26,7 @@ const NarBarDesktop = () => {
             color="#2c2727"
             colorfocus="#960c0c"
             colorhover="#960c0c"
-            className="nav-link fs-20px-xxl fs-20px-xl fs-20px-lg fs-20px-md"
+            className="nav-link fs-5"
             href={UrlPath.growingInThePRWorld.url}
           >
             Growing in the PR World
@@ -37,7 +37,7 @@ const NarBarDesktop = () => {
             colorfocus="#960c0c"
             colorhover="#960c0c"
             color="#2c2727"
-            className="nav-link fs-20px-xxl fs-20px-xl fs-20px-lg fs-20px-md"
+            className="nav-link fs-5"
             href={UrlPath.seeThinkShare.url}
           >
             See think share
@@ -48,7 +48,7 @@ const NarBarDesktop = () => {
             color="#2c2727"
             colorfocus="#960c0c"
             colorhover="#960c0c"
-            className="nav-link fs-20px-xxl fs-20px-xl fs-20px-lg fs-20px-md"
+            className="nav-link fs-5"
             href={UrlPath.myCorner.url}
           >
             My corner
