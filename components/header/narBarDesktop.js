@@ -23,10 +23,14 @@ const NarBarDesktop = () => {
       <ul className="nav mt-2 justify-content-center d-none d-md-flex">
         <li className="nav-item ms-5">
           <LinkStyled
-            color="#2c2727"
-            colorfocus="#960c0c"
-            colorhover="#960c0c"
-            className="nav-link fs-5"
+            color={
+              router.pathname === UrlPath.growingInThePRWorld.url
+                ? '#b10c0c'
+                : '#2c2727'
+            }
+            colorfocus="#b10c0c"
+            colorhover="#b10c0c"
+            className="nav-link fs-4"
             href={UrlPath.growingInThePRWorld.url}
           >
             Growing in the PR World
@@ -34,10 +38,14 @@ const NarBarDesktop = () => {
         </li>
         <li className="nav-item ms-5">
           <LinkStyled
-            colorfocus="#960c0c"
-            colorhover="#960c0c"
-            color="#2c2727"
-            className="nav-link fs-5"
+            colorfocus="#b10c0c"
+            colorhover="#b10c0c"
+            color={
+              router.pathname === UrlPath.seeThinkShare.url
+                ? '#b10c0c'
+                : '#2c2727'
+            }
+            className="nav-link fs-4"
             href={UrlPath.seeThinkShare.url}
           >
             See think share
@@ -45,10 +53,12 @@ const NarBarDesktop = () => {
         </li>
         <li className="nav-item ms-5">
           <LinkStyled
-            color="#2c2727"
-            colorfocus="#960c0c"
-            colorhover="#960c0c"
-            className="nav-link fs-5"
+            color={
+              router.pathname === UrlPath.myCorner.url ? '#b10c0c' : '#2c2727'
+            }
+            colorfocus="#b10c0c"
+            colorhover="#b10c0c"
+            className="nav-link fs-4"
             href={UrlPath.myCorner.url}
           >
             My corner
@@ -58,7 +68,7 @@ const NarBarDesktop = () => {
           <form className="d-flex mt-1" onSubmit={handleSearch}>
             <InputFieldStyled
               borderBottom="2px solid #b3a7a7"
-              className="form-control me-1 w-50"
+              className="form-control me-1 w-50 fs-5"
               type="search"
               placeholder="Tìm kiếm"
               aria-label="Search"

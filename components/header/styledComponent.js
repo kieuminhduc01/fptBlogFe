@@ -11,14 +11,14 @@ export const DivStyled = styled.div`
   }
 `;
 export const H2Styled = styled.h2`
-  font-family: 'Lexend', sans-serif;
+  font-family: 'SVN-Housttely Signature';
   font-weight: normal;
   font-style: normal;
   color: ${(props) => props.color};
   margin-bottom: 5px;
 `;
 export const H1Styled = styled.h1`
-  font-family: 'Lexend', sans-serif;
+  font-family: 'SVN-North Carossela';
   font-weight: normal;
   font-style: normal;
   color: #960c0c;
@@ -34,20 +34,26 @@ export const HrStyled = styled.hr`
   left: ${(props) => props.left};
   right: ${(props) => props.right};
   width: ${(props) => props.width};
+  @media (min-width: 992px) {
+    width: ${(props) => props.widthLg};
+  }
+  @media (min-width: 1200px) {
+    width: ${(props) => props.widthXl};
+  }
 `;
 export const LinkStyled = styled(Link)`
-  font-family: 'Lexend', sans-serif;
-  font-weight: normal;
-  font-style: normal;
-  color: ${(props) => props.color};
+  font-family: 'Lexend', sans-serif !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  color: ${(props) => props.color}!important;
   :hover {
-    color: ${(props) => props.colorhover};
+    color: ${(props) => props.colorhover}!important;
   }
   :active {
-    color: #960c0c;
+    color: #960c0c !important;
   }
   :focus {
-    color: ${(props) => props.colorfocus};
+    color: ${(props) => props.colorfocus} !important;
   }
 `;
 export const InputFieldStyled = styled.input`

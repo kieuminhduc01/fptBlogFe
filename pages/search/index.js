@@ -32,7 +32,7 @@ export async function getServerSideProps(context) {
 const Index = ({ dataOri, keyword }) => {
   return (
     <div>
-      <div className="bg-body-secondary d-flex justify-content-center mt-md-4 mb-md-5 mt-2 mb-2">
+      <div className="bg-f8f7f7 d-flex justify-content-center mt-md-4 mb-md-5 mt-2 mb-2">
         <div className="w-94pc w-95pc-sm w-93pc-md w-92pc-lg w-90pc-xl w-90pc-xxl p-4 d-flex">
           <div className="w-50 d-flex justify-content-between">
             <div className="ff-lexend fs-20px-xxl fs-20px-xl fs-20px-lg fs-18px-md fs-18px-sm fs-16px">

@@ -1,6 +1,7 @@
 import { blogTitleAtom } from '@/atom/store';
 import MainLayout from '@/components/layout/mainLayout';
 import '@/styles/globals.css';
+import '@/styles/fonts.css';
 import '@/styles/styles.scss';
 import { UrlPath } from '@/type/urlPath';
 import 'bootstrap/dist/css/bootstrap.css';

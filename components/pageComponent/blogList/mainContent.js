@@ -13,9 +13,9 @@ const MainContent = ({ dataOri }) => {
 
   return (
     <div>
-      <div className="bg-white opacity-100 d-flex justify-content-center">
-        <div className="w-89pc w-92pc-sm w-90pc-md w-90pc-lg w-88pc-xl w-88pc-xxl row">
-          <div>
+      <div className="bg-f8f7f7 mt-3 mt-md-4 mb-5">
+        <div className="opacity-100 d-flex justify-content-center">
+          <div className="w-89pc w-92pc-sm w-90pc-md w-90pc-lg w-88pc-xl w-88pc-xxl row">
             <div className="d-flex justify-content-center">
               <div className="ff-lexend fs-46px-xxl fs-44px-xl fs-42px-lg fs-40px-md fs-36px-sm fs-30px mt-md-5 mb-2 d-md-block d-none">
                 {dataOri.items[0].category === 'GrowingInThePRWorld' &&
@@ -42,13 +42,23 @@ const MainContent = ({ dataOri }) => {
                 {dataOri.items[0].title}
               </Link>
             </div>
-            <div className="d-flex justify-content-center">
-              <div className="ff-lexend fs-22px-xxl fs-22px-xl fs-20px-lg fs-20px-md fs-18px-sm fs-16px mb-md-4 mb-3">
-                {dataOri.items[0].summary}
+            <div className="d-flex justify-content-center mt-2 mt-md-3">
+              <div className=" w-50 d-flex justify-content-center">
+                <p className=" text-center ff-lexend fs-22px-xxl fs-22px-xl fs-20px-lg fs-20px-md fs-18px-sm fs-16px mb-md-4 mb-3">
+                  {dataOri.items[0].summary}
+                </p>
+              </div>
+            </div>
+            <div className="d-flex justify-content-center mb-3 mb-md-5">
+              <div className="fs-12px-xxl fs-12px-xl fs-12px-lg fs-12px-sm fs-11px">
+                May 30, 2023
               </div>
             </div>
           </div>
-
+        </div>
+      </div>
+      <div className="opacity-100 d-flex justify-content-center ">
+        <div className="w-89pc w-92pc-sm w-90pc-md w-90pc-lg w-88pc-xl w-88pc-xxl row mt-3 mt-md-5">
           <BlogListContent dataOri={dataOri} start={1} end={7} />
         </div>
       </div>

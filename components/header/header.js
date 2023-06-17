@@ -106,6 +106,9 @@ const Header = ({ position }) => {
       case UrlPath.home.url: {
         return UrlPath.home.title;
       }
+      case UrlPath.search.url: {
+        return UrlPath.search.title;
+      }
     }
   };
   return (
@@ -153,7 +156,7 @@ const Header = ({ position }) => {
                     <div onClick={handleClickLogo}>
                       <H2Styled
                         color="#960c0c"
-                        className="fs-22px-sm fs-20px mt-22px-sm mt-20px mr-24vw-global"
+                        className="fs-28px-sm fs-24px mt-22px-sm mt-20px mr-24vw-global"
                       >
                         Phương kể bạn nghe
                       </H2Styled>
@@ -191,7 +194,7 @@ const Header = ({ position }) => {
                   <DropDown isClickAccount={isClickAccount} />
                 </div>
                 <div className="d-none d-md-flex justify-content-center">
-                  <div className="w-170px-xxl w-160px-xl w-160px-lg w-160px-md">
+                  <div className="w-180px-xxl w-170px-xl w-170px-lg w-160px-md">
                     <H2Styled
                       color="#960c0c"
                       onClick={handleClickLogo}
@@ -201,11 +204,11 @@ const Header = ({ position }) => {
                     </H2Styled>
                   </div>
                 </div>
-                <div className=" d-none d-md-flex justify-content-center">
-                  <div className="bg-white z-index-dropdown w-220px-xxl w-220px-xl w-210px-lg w-210px-md">
+                <div className=" d-none d-md-flex justify-content-center mt-1">
+                  <div className="z-index-dropdown w-220px-xxl w-220px-xl w-200px-lg w-200px-md">
                     <H1Styled
                       onClick={handleClickLogo}
-                      className=" cursor-point fs-42px-xl fs-38px-md fs-34px letter-spacing-3px-xxl letter-spacing-3px-xl letter-spacing-2px-lg letter-spacing-1px-md float-end"
+                      className="me-lg-4  cursor-point fs-42px-xl fs-38px-md fs-34px letter-spacing-3px-xxl letter-spacing-3px-xl letter-spacing-2px-lg letter-spacing-1px-md float-end"
                     >
                       Bạn nghe
                     </H1Styled>
@@ -215,15 +218,17 @@ const Header = ({ position }) => {
             </div>
             <HrStyled
               className="d-md-block d-none"
-              top="90px"
-              width="50vw"
+              top="70px"
+              width="34vw"
+              widthLg="36vw"
+              widthXl="38vw"
               height="2px"
             />
             <HrStyled
               className="d-md-block d-none"
-              top="98px"
+              top="80px"
               right="0"
-              width="50vw"
+              width="40vw"
               height="2px"
             />
           </div>
