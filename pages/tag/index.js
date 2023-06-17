@@ -1,10 +1,12 @@
 import { BASE_URL } from '@/api/request';
-import SearchBlogList from '@/components/pageComponent/search/searchBlogList';
+import BlogListTag from '@/components/pageComponent/tag/blogListTag';
 import axios from 'axios';
+import { useEffect } from 'react';
 import { StatusAlertService } from 'react-status-alert';
 
 export async function getServerSideProps(context) {
-  let keyword = context.query.keyword;
+  let tagTitle = context.query.title;
+  let id = context.query.id;
   let dataOri;
   await axios
     .post(`${BASE_URL}BlogPost/Paging`, {
@@ -16,9 +18,9 @@ export async function getServerSideProps(context) {
       },
       filter: {
         categoryIds: [],
-        tagIds: [],
+        tagIds: [id],
       },
-      keyWord: keyword,
+      keyWord: '',
     })
     .then((res) => {
       dataOri = res.data.result;
@@ -26,32 +28,31 @@ export async function getServerSideProps(context) {
     .catch((err) => {
       StatusAlertService.showError(err.response.data.Detail);
     });
-  return { props: { dataOri, keyword } };
+  return { props: { dataOri, tagTitle, id } };
 }
 
-const Index = ({ dataOri, keyword }) => {
+const Index = ({ dataOri, tagTitle, id }) => {
+  useEffect(() => {
+    console.log('id', id);
+    console.log('tagTitle', tagTitle);
+  }, []);
   return (
     <div>
       <div className="bg-f8f7f7 d-flex justify-content-center mt-md-4 mb-md-5 mt-2 mb-2">
         <div className="w-94pc w-95pc-sm w-93pc-md w-92pc-lg w-90pc-xl w-90pc-xxl p-4 d-flex">
-          <div className="w-50pc-xxl w-51pc-xl w-53pc-lg w-54pc-md w-55pc-sm w-57pc d-flex justify-content-between">
+          <div className="w-55pc-xxl w-56pc-xl w-57pc-lg w-58pc-md w-60pc-sm w-70pc d-flex justify-content-between">
             <div className="ff-lexend fs-20px-xxl fs-20px-xl fs-20px-lg fs-18px-md fs-18px-sm fs-16px">
-              Từ khóa
+              Tag
             </div>
             <div className="ff-lexend fs-34px-xxl fs-34px-xl fs-32px-lg fs-30px-md fs-28px-sm fs-26px color-960C0C">
-              {keyword}
+              {tagTitle}
             </div>
           </div>
         </div>
       </div>
       <div className=" d-flex justify-content-center">
         <div className="w-89pc w-92pc-sm w-90pc-md w-90pc-lg w-88pc-xl w-88pc-xxl row">
-          <SearchBlogList
-            dataOri={dataOri}
-            start={0}
-            end={6}
-            keyword={keyword}
-          />
+          <BlogListTag dataOri={dataOri} id={id} />
         </div>
       </div>
     </div>

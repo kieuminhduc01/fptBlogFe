@@ -34,9 +34,8 @@ export const DivBlockStyled = styled.div`
   }
   pre {
     background-color: rgb(203 203 203 / 55%);
-  }
-  code {
-    margin: 10px 10px 10px 10px;
+    border-radius: 4px;
+    padding: 10px;
   }
 `;
 export const HrStyled = styled.hr`

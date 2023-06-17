@@ -38,6 +38,9 @@ function MyApp({ Component, pageProps }) {
       case UrlPath.search.url: {
         return UrlPath.search.title;
       }
+      case UrlPath.tag.url: {
+        return UrlPath.tag.title;
+      }
       case `${UrlPath.seeThinkShare.url}/[slug]`: {
         return blogTitle;
       }

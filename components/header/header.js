@@ -1,4 +1,4 @@
-import { isPagingSearchAtom } from '@/atom/store';
+import { blogTitleAtom, isPagingSearchAtom } from '@/atom/store';
 import NarBarDesktop from '@/components/header/narBarDesktop';
 import NarBarMobile from '@/components/header/narBarMobile';
 import {
@@ -27,6 +27,7 @@ const Header = ({ position }) => {
   const [isClickAccount, setIsClickAccount] = useState(false);
   const [search, setSearch] = useState('');
   const [, setIsPagingSearch] = useAtom(isPagingSearchAtom);
+  const [blogTitle] = useAtom(blogTitleAtom);
   const router = useRouter();
   const [width, setWidth] = useState(0);
   const sideBarRef = useRef(null);
@@ -109,6 +110,18 @@ const Header = ({ position }) => {
       case UrlPath.search.url: {
         return UrlPath.search.title;
       }
+      case UrlPath.tag.url: {
+        return UrlPath.tag.title;
+      }
+      case `${UrlPath.growingInThePRWorld.url}/[slug]`: {
+        return blogTitle;
+      }
+      case `${UrlPath.seeThinkShare.url}/[slug]`: {
+        return blogTitle;
+      }
+      case `${UrlPath.myCorner.url}/[slug]`: {
+        return blogTitle;
+      }
     }
   };
   return (
@@ -162,7 +175,7 @@ const Header = ({ position }) => {
                       </H2Styled>
                     </div>
                   </div>
-                  <div className=" d-md-none float-start mt-62px-sm mt-60px mb-22px-sm mb-20px fw-bold fs-1">
+                  <div className=" d-md-none float-start mt-62px-sm mt-60px mb-22px-sm mb-20px fw-bold fs-2">
                     {getTitle(router.pathname)}
                   </div>
                   <div className="d-md-none d-flex w-100  mb-22px-sm mb-20px">

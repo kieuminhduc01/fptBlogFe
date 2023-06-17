@@ -88,7 +88,7 @@ const SearchBlogList = ({ dataOri, start, end, keyword }) => {
         ))
       ) : (
         dataOri?.items.map((item, index) => (
-          <div className="col-6 col-md-4" key={index}>
+          <div className="col-6 col-md-4 mb-3 mb-md-4" key={index}>
             <div className="pb-100pc-global w-100 height-0 position-relative overflow-hidden">
               <img
                 onClick={() => handleClickImg(item)}
@@ -103,6 +103,11 @@ const SearchBlogList = ({ dataOri, start, end, keyword }) => {
               >
                 {item.title}
               </Link>
+            </div>
+            <div className="d-flex justify-content-center">
+              <div className="fs-12px-xxl fs-12px-xl fs-12px-lg fs-12px-sm fs-10px">
+                May 30, 2023
+              </div>
             </div>
           </div>
         ))
