@@ -49,28 +49,28 @@ const MainContent = ({ BlogPost, tagIds }) => {
     const { pathname } = router;
     const parts = pathname.split('/');
     const category = parts[2];
-    axios
-      .post(`${BASE_URL}BlogPost/Paging`, {
-        perPage: 6,
-        currentPage: 1,
-        shortBy: {
-          title: 'Created',
-          isIncrease: false,
-        },
-        filter: {
-          categoryIds: [category],
-          tagIds: [tagIds],
-        },
-        keyWord: '',
-      })
-      .then((res) => {
-        const newPosts = res.data.result.items;
-        setBlogPostTags((prevPosts) => [...prevPosts, ...newPosts]);
-      })
-      .catch((err) => {
-        StatusAlertService.showError(err.response.data.Detail);
-      })
-      .finally(() => {});
+    // axios
+    //   .post(`${BASE_URL}BlogPost/Paging`, {
+    //     perPage: 6,
+    //     currentPage: 1,
+    //     shortBy: {
+    //       title: 'Created',
+    //       isIncrease: false,
+    //     },
+    //     filter: {
+    //       categoryIds: [category],
+    //       tagIds: [tagIds],
+    //     },
+    //     keyWord: '',
+    //   })
+    //   .then((res) => {
+    //     const newPosts = res.data.result.items;
+    //     setBlogPostTags((prevPosts) => [...prevPosts, ...newPosts]);
+    //   })
+    //   .catch((err) => {
+    //     StatusAlertService.showError(err.response.data.Detail);
+    //   })
+    //   .finally(() => {});
   }, []);
   useEffect(() => {
     const accountId = getCookie('accountId');
@@ -105,7 +105,11 @@ const MainContent = ({ BlogPost, tagIds }) => {
       blogPostId: BlogPost.id,
       isLike: !fillLike,
     };
-    LikeApi(dataReq)
+    const headers = {
+      Authorization: `Bearer ${getCookie('jwt_token')}`,
+    };
+    axios
+      .patch(`${BASE_URL}BlogPost/Update-Like`, dataReq, { headers })
       .then(() => {
         if (fillLike === true) {
           StatusAlertService.showAlert('Unlike thành công!');

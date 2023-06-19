@@ -10,7 +10,7 @@ import { StatusAlertService } from 'react-status-alert';
 const BlogListTag = ({ id, dataOri }) => {
   const router = useRouter();
   const [currentPage, setCurrentPage] = useState(2);
-  const [loadedPosts, setLoadedPosts] = useState(dataOri?.items.slice(0, 6));
+  const [loadedPosts, setLoadedPosts] = useState(dataOri?.slice(0, 6));
   const handleClickImg = (item) => {
     router.push(`${UrlPath.home.url}${item?.category}/${item?.slug}`);
   };
@@ -77,8 +77,8 @@ const BlogListTag = ({ id, dataOri }) => {
             {item.title}
           </div>
           <div className="d-flex justify-content-center">
-            <div className="fs-12px-xxl fs-12px-xl fs-12px-lg fs-12px-sm fs-10px">
-              May 30, 2023
+            <div className="fs-12px-xxl fs-12px-xl fs-12px-lg fs-12px-md fs-12px-sm fs-10px">
+              {item.created}
             </div>
           </div>
         </div>

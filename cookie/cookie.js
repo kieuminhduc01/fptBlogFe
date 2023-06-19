@@ -7,3 +7,4 @@ export const setCookie = (name, value, options = {}) => {
 export const getCookie = (name) => {
   return Cookies.get(name);
 };
+

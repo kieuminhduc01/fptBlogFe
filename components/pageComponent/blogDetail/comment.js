@@ -1,4 +1,3 @@
-import { CreateCommentApi } from '@/api/commentAPI';
 import { BASE_URL } from '@/api/request';
 import { messageUnauthorizedAtom, totalCommentAtom } from '@/atom/store';
 import { InputFieldStyled } from '@/components/header/styledComponent';
@@ -58,8 +57,11 @@ const Comment = ({ BlogPost }) => {
       parentId: commentIdParent,
       content: commentReplyText,
     };
-
-    CreateCommentApi(dataReq)
+    const headers = {
+      Authorization: `Bearer ${getCookie('jwt_token')}`,
+    };
+    axios
+      .post(`${BASE_URL}Comment`, dataReq, { headers })
       .then((res) => {
         axios
           .get(`${BASE_URL}Comment?blogPostId=${BlogPost.id}`)
@@ -91,7 +93,11 @@ const Comment = ({ BlogPost }) => {
       content: commentText,
     };
 
-    CreateCommentApi(dataReq)
+    const headers = {
+      Authorization: `Bearer ${getCookie('jwt_token')}`,
+    };
+    axios
+      .post(`${BASE_URL}Comment`, dataReq, { headers })
       .then((res) => {
         axios
           .get(`${BASE_URL}Comment?blogPostId=${BlogPost.id}`)

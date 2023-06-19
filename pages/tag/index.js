@@ -1,4 +1,5 @@
 import { BASE_URL } from '@/api/request';
+import { formatDate } from '@/components/convertDateTime';
 import BlogListTag from '@/components/pageComponent/tag/blogListTag';
 import axios from 'axios';
 import { useEffect } from 'react';
@@ -23,7 +24,11 @@ export async function getServerSideProps(context) {
       keyWord: '',
     })
     .then((res) => {
-      dataOri = res.data.result;
+      const dataTemp = res.data.result;
+      dataOri = dataTemp.items.map((item) => ({
+        ...item,
+        created: formatDate(item.created),
+      }));
     })
     .catch((err) => {
       StatusAlertService.showError(err.response.data.Detail);
@@ -32,10 +37,6 @@ export async function getServerSideProps(context) {
 }
 
 const Index = ({ dataOri, tagTitle, id }) => {
-  useEffect(() => {
-    console.log('id', id);
-    console.log('tagTitle', tagTitle);
-  }, []);
   return (
     <div>
       <div className="bg-f8f7f7 d-flex justify-content-center mt-md-4 mb-md-5 mt-2 mb-2">

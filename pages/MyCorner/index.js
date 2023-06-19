@@ -1,4 +1,5 @@
 import { BASE_URL } from '@/api/request';
+import { formatDate } from '@/components/convertDateTime';
 import MainContent from '@/components/pageComponent/blogList/mainContent';
 import axios from 'axios';
 import { StatusAlertService } from 'react-status-alert';
@@ -20,7 +21,11 @@ export async function getServerSideProps() {
       keyWord: '',
     })
     .then((res) => {
-      dataOri = res.data.result;
+      const dataTemp = res.data.result;
+      dataOri = dataTemp.items.map((item) => ({
+        ...item,
+        created: formatDate(item.created),
+      }));
     })
     .catch((err) => {
       StatusAlertService.showError(err.response.data.Detail);
