@@ -75,12 +75,12 @@ const MainContent = () => {
       <div className="d-flex justify-content-center align-items-end h-80vh h-92vh-sm h-94vh-md h-96vh-lg h-96vh-xl h-96vh-xxl">
         <StatusAlert />
         <div className="w-100 order-2 d-flex justify-content-between flex-column align-items-center h-67vh h-70vh-sm h-70vh-md h-70vh-lg h-70vh-xl h-70vh-xxl ">
-          <div className="w-89pc w-40pc-sm w-24pc-md w-22pc-lg w-20pc-xl w-16pc-xxl">
+          <div className="w-89pc w-60pc-sm w-39pc-md w-30pc-lg w-23pc-xl w-20pc-xxl">
             <form onSubmit={handleSubmit}>
               <div className="mb-3">
                 <input
                   type="text"
-                  placeholder="UserName"
+                  placeholder="Tên đăng Nhập"
                   className="form-control"
                   id="userName"
                   value={userName}
@@ -90,7 +90,7 @@ const MainContent = () => {
               <div className="mb-3">
                 <input
                   type="password"
-                  placeholder="Password"
+                  placeholder="Mật khẩu"
                   className="form-control"
                   id="password"
                   value={password}
@@ -100,7 +100,7 @@ const MainContent = () => {
               <div className="mb-3">
                 <input
                   type="password"
-                  placeholder="Confirm Password"
+                  placeholder="Nhập lại mật khẩu"
                   className="form-control"
                   id="confirmPassword"
                   value={confirmPassword}
@@ -130,7 +130,7 @@ const MainContent = () => {
               <div className="mb-3">
                 <input
                   type="text"
-                  placeholder="Name"
+                  placeholder="Họ tên"
                   className="form-control"
                   id="name"
                   value={name}
@@ -146,21 +146,27 @@ const MainContent = () => {
                   onChange={handleIsSendEmailChange}
                 />
                 <label
-                  className="form-check-label"
+                  className="form-check-label ff-lexend fs-6"
                   htmlFor="isSendEmailWhenHaveNewPost"
                 >
                   Gửi thông báo khi có bài viết mới
                 </label>
               </div>
-              <div className="d-flex justify-content-center">
-                <button type="submit" className="btn btn-primary">
-                  Submit
+              <div className="d-flex justify-content-center ">
+                <button
+                  type="submit"
+                  className="btn btn-primary fs-5 ff-lexend"
+                >
+                  Đăng kí
                 </button>
               </div>
             </form>
           </div>
           <div className="order-1">
-            <Link className="ff-lexend" href={UrlPath.auth.url}>
+            <Link
+              className="ff-lexend fs-5 text-decoration-underline"
+              href={UrlPath.auth.url}
+            >
               Đăng nhập
             </Link>
           </div>

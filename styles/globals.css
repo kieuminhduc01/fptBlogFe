@@ -48,7 +48,12 @@ a {
 .color-1d1b1b {
   color: #1d1b1b;
 }
-
+.border-none {
+  border: none;
+}
+.outline-none {
+  outline: none;
+}
 .height-2px-global {
   height: 2px;
 }
@@ -56,7 +61,7 @@ a {
   color: #fff;
 }
 .color-960C0C {
-  color: #960c0c;
+  color: #960c0c !important;
 }
 .color-960D0D {
   color: #960d0d;

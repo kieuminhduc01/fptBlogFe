@@ -5,21 +5,21 @@ import axios from 'axios';
 export async function getServerSideProps(context) {
   const routerData = context.query;
   const blogPost = await axios.get(`${BASE_URL}BlogPost/${routerData.slug}`);
-  const tagAll = await axios.get(`${BASE_URL}Tag/all`);
   const BlogPost = await blogPost.data.result;
-  const TagAll = await tagAll.data.result;
+  const blogPostTags = BlogPost.tags;
+  const tagIds = blogPostTags.map((tag) => tag.id);
   return {
     props: {
       BlogPost,
-      TagAll,
+      tagIds,
     },
   };
 }
 
-const Index = ({ BlogPost, TagAll }) => {
+const Index = ({ BlogPost, tagIds }) => {
   return (
     <div>
-      <MainContent BlogPost={BlogPost} TagAll={TagAll} />
+      <MainContent BlogPost={BlogPost} tagIds={tagIds} />
     </div>
   );
 };

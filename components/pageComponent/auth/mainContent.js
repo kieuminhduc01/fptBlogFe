@@ -156,11 +156,14 @@ const MainContent = () => {
                   className="ff-lexend  cursor-point "
                   onClick={handleClickForgotPass}
                 >
-                  {!isForgotPass ? 'Quên mật khẩu' : 'Đăng nhập'}
+                  {!isForgotPass && 'Quên mật khẩu'}
                 </div>
               </div>
               <div className="d-flex justify-content-center">
-                <button type="submit" className="btn btn-primary ff-lexend">
+                <button
+                  type="submit"
+                  className="btn btn-primary ff-lexend fs-5"
+                >
                   {isForgotPass ? 'Submit' : 'Đăng nhập'}
                 </button>
               </div>
@@ -171,9 +174,18 @@ const MainContent = () => {
               className="ff-lexend fs-5 text-decoration-underline"
               href={UrlPath.register.url}
             >
-              Đăng kí
+              Đăng kí ngay
             </Link>
-            <div className="ff-lexend fs-5  ms-2">ngay</div>
+            {isForgotPass && (
+              <div>
+                <p
+                  onClick={handleClickForgotPass}
+                  className=" ff-lexend ms-1  fs-5 text-decoration-underline"
+                >
+                  / Đăng nhập
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </div>

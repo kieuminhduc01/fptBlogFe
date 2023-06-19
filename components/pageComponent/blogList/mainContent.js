@@ -43,7 +43,7 @@ const MainContent = ({ dataOri }) => {
               </Link>
             </div>
             <div className="d-flex justify-content-center mt-2 mt-md-3">
-              <div className=" w-50 d-flex justify-content-center">
+              <div className=" w-50pc-xxl w-50pc-xl w-50pc-lg w-50pc-md w-70pc-sm w-80pc d-flex justify-content-center">
                 <p className=" text-center ff-lexend fs-22px-xxl fs-22px-xl fs-20px-lg fs-20px-md fs-18px-sm fs-16px mb-md-4 mb-3">
                   {dataOri.items[0].summary}
                 </p>

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { DivStyled } from '../auth/styledComponent';
 
 export const DivBlockStyled = styled.div`
   p {
@@ -51,4 +52,8 @@ export const ButtonTagStyled = styled.button`
     padding: 6px 12px;
     border: 2px solid #930c0c;
   }
+`;
+export const DivInputStyled = styled.div`
+  border: 1px solid black;
+  border-radius: 20px;
 `;

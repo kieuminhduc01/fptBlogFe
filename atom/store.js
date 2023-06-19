@@ -6,3 +6,6 @@ export const getPagingGrowingAtom = atom();
 
 export const isPagingSearchAtom = atom(false);
 
+export const totalCommentAtom = atom(0);
+
+

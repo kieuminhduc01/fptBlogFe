@@ -63,7 +63,7 @@ const BlogListContent = ({ dataOri, start, end }) => {
           </div>
           <div className="d-flex justify-content-center">
             <div className="fs-12px-xxl fs-12px-xl fs-12px-lg fs-12px-sm fs-10px">
-              May 30, 2023
+              {item.created}
             </div>
           </div>
         </div>

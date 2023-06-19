@@ -16,7 +16,11 @@ import GmailIcon from '@/components/icons/gmailIcon';
 import HeartIcon from '@/components/icons/heartIcon';
 import LinkedinIcon from '@/components/icons/linkedinIcon';
 
-import { blogTitleAtom, messageUnauthorizedAtom } from '@/atom/store';
+import {
+  blogTitleAtom,
+  messageUnauthorizedAtom,
+  totalCommentAtom,
+} from '@/atom/store';
 
 import Comment from '@/components/pageComponent/blogDetail/comment';
 import {
@@ -25,19 +29,52 @@ import {
   HrStyled,
 } from '@/components/pageComponent/blogDetail/styledComponent';
 
-const MainContent = ({ BlogPost, TagAll }) => {
+const MainContent = ({ BlogPost, tagIds }) => {
   const router = useRouter();
-  const [totalComment, setTotalComment] = useState();
+  const [totalComment, setTotalComment] = useAtom(totalCommentAtom);
   const [renderedContent, setRenderedContent] = useState('');
   const [fillLike, setFillLike] = useState(false);
   const [, setMessageUnauthorized] = useAtom(messageUnauthorizedAtom);
   const [, setBlogTitle] = useAtom(blogTitleAtom);
+  const [blogPostLike, setBlogPostLike] = useState(BlogPost.likes);
+  const [blogPostTags, setBlogPostTags] = useState();
+
   useEffect(() => {
     setRenderedContent(marked(BlogPost.content));
     setBlogTitle(BlogPost.title);
+    console.log('aádasd', BlogPost);
   }, []);
-
   useEffect(() => {
+    console.log('router', router);
+    const { pathname } = router;
+    const parts = pathname.split('/');
+    const category = parts[2];
+    axios
+      .post(`${BASE_URL}BlogPost/Paging`, {
+        perPage: 6,
+        currentPage: 1,
+        shortBy: {
+          title: 'Created',
+          isIncrease: false,
+        },
+        filter: {
+          categoryIds: [category],
+          tagIds: [tagIds],
+        },
+        keyWord: '',
+      })
+      .then((res) => {
+        const newPosts = res.data.result.items;
+        setBlogPostTags((prevPosts) => [...prevPosts, ...newPosts]);
+      })
+      .catch((err) => {
+        StatusAlertService.showError(err.response.data.Detail);
+      })
+      .finally(() => {});
+  }, []);
+  useEffect(() => {
+    const accountId = getCookie('accountId');
+
     const getComment = async () => {
       try {
         const res = await axios.get(
@@ -48,31 +85,48 @@ const MainContent = ({ BlogPost, TagAll }) => {
         StatusAlertService.showError(err.response.data.Detail);
       }
     };
-
     getComment();
+    axios
+      .get(
+        `${BASE_URL}BlogPost/Account-Blog-Post?accountId=${accountId}&blogpostId=${BlogPost.id}`,
+      )
+      .then((res) => {
+        setFillLike(res.data.result.isLiked);
+      })
+      .catch((err) => {
+        accountId !== undefined &&
+          StatusAlertService.showError(err.response.data.Detail);
+      });
   }, []);
 
   const handleToggleLike = async () => {
-    setFillLike(!fillLike);
     const dataReq = {
       accountId: getCookie('accountId'),
       blogPostId: BlogPost.id,
-      isLike: fillLike,
+      isLike: !fillLike,
     };
-
-    try {
-      await LikeApi(dataReq);
-      StatusAlertService.showSuccess('Like thành công!');
-    } catch (err) {
-      if (err.response.status === 401) {
-        setMessageUnauthorized(
-          'Bạn chưa đăng nhập, vui lòng đăng nhập để like',
-        );
-        router.push(UrlPath.auth.url);
-      } else {
-        StatusAlertService.showError(err.response.data.Detail);
-      }
-    }
+    LikeApi(dataReq)
+      .then(() => {
+        if (fillLike === true) {
+          StatusAlertService.showAlert('Unlike thành công!');
+          setBlogPostLike((prev) => prev - 1);
+        } else {
+          StatusAlertService.showSuccess('Like thành công!');
+          setBlogPostLike((prev) => prev + 1);
+        }
+        setFillLike(!fillLike);
+      })
+      .catch((err) => {
+        if (err.response.status === 401) {
+          setMessageUnauthorized(
+            'Bạn chưa đăng nhập, vui lòng đăng nhập để like',
+          );
+          router.push(UrlPath.auth.url);
+        } else {
+          StatusAlertService.showError(err.response.data.Detail);
+        }
+      })
+      .finally(() => {});
   };
   const handleClickTag = (tag) => {
     router.push(`${UrlPath.tag.url}?title=${tag.title}&id=${tag.id}`);
@@ -126,7 +180,7 @@ const MainContent = ({ BlogPost, TagAll }) => {
                   onClick={handleToggleLike}
                   className="ff-lexend fs-20px-xxl fs-20px-xl fs-20px-lg fs-20px-md fs-20px-sm fs-18px color-2c2727"
                 >
-                  {BlogPost.likes}
+                  {blogPostLike}
                   <HeartIcon fillLike={fillLike} />
                 </div>
               </div>
@@ -151,15 +205,21 @@ const MainContent = ({ BlogPost, TagAll }) => {
                   Tag:
                 </div>
                 <div>
-                  {TagAll.map((tag, index) => (
-                    <ButtonTagStyled
-                      onClick={() => handleClickTag(tag)}
-                      className=" mt-3 mt-md-3 color-1d1b1b ms-1 ms-md-2 ms-lg-2 ms-xl-3 bg-body ff-lexend fs-20px-xxl fs-20px-xl fs-20px-lg fs-20px-md fs-20px-sm fs-18px"
-                      key={index}
-                    >
-                      {tag.title}
-                    </ButtonTagStyled>
-                  ))}
+                  {BlogPost.tags.length === 0 ? (
+                    <p className=" ms-2 mt-md-1 mt-2px ff-lexend fs-22px-xxl fs-22px-xl fs-22px-lg fs-22px-md fs-22px-sm fs-20px">
+                      Bài viết không có tag nào
+                    </p>
+                  ) : (
+                    BlogPost.tags?.map((tag, index) => (
+                      <ButtonTagStyled
+                        onClick={() => handleClickTag(tag)}
+                        className=" mt-3 mt-md-3 color-1d1b1b ms-1 ms-md-2 ms-lg-2 ms-xl-3 bg-body ff-lexend fs-20px-xxl fs-20px-xl fs-20px-lg fs-20px-md fs-20px-sm fs-18px"
+                        key={index}
+                      >
+                        {tag.title}
+                      </ButtonTagStyled>
+                    ))
+                  )}
                 </div>
               </div>
               <HrStyled />
