@@ -259,32 +259,32 @@
   @if $isMultipleOf2 {
     @media (width<= 576px) {
       .fs-#{$i}px {
-        font-size: #{$i}px;
+        font-size: #{$i}px !important;
       }
     }
     @media (576px<width<= 768px) {
       .fs-#{$i}px-sm {
-        font-size: #{$i}px;
+        font-size: #{$i}px !important;
       }
     }
     @media (768px<width<= 992px) {
       .fs-#{$i}px-md {
-        font-size: #{$i}px;
+        font-size: #{$i}px !important;
       }
     }
     @media (992px<width<= 1200px) {
       .fs-#{$i}px-lg {
-        font-size: #{$i}px;
+        font-size: #{$i}px !important;
       }
     }
     @media (1200px<width<= 1400px) {
       .fs-#{$i}px-xl {
-        font-size: #{$i}px;
+        font-size: #{$i}px !important;
       }
     }
     @media (1400px<width) {
       .fs-#{$i}px-xxl {
-        font-size: #{$i}px;
+        font-size: #{$i}px !important;
       }
     }
   }

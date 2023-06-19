@@ -11,7 +11,7 @@ const BlogListContent = ({ dataOri, start, end }) => {
   const router = useRouter();
   const [currentPage, setCurrentPage] = useState(2);
   const [displayedPosts, setDisplayedPosts] = useState(
-    dataOri?.items.slice(start, end),
+    dataOri?.slice(start, end),
   );
   const handleClickImg = (item) => {
     router.push(`${UrlPath.home.url}${item?.category}/${item?.slug}`);
@@ -26,7 +26,7 @@ const BlogListContent = ({ dataOri, start, end }) => {
           isIncrease: false,
         },
         filter: {
-          categoryIds: [dataOri.items[0].category],
+          categoryIds: [dataOri[0].category],
           tagIds: [],
         },
         keyWord: '',
@@ -62,7 +62,7 @@ const BlogListContent = ({ dataOri, start, end }) => {
             </Link>
           </div>
           <div className="d-flex justify-content-center">
-            <div className="fs-12px-xxl fs-12px-xl fs-12px-lg fs-12px-sm fs-10px">
+            <div className="fs-12px-xxl fs-12px-xl fs-12px-lg fs-12px-md fs-12px-sm fs-10px">
               {item.created}
             </div>
           </div>
