@@ -1,0 +1,18 @@
+@font-face {
+  font-family: 'SVN-North Carossela';
+  src: url('/fonts/SVNn.otf') format('opentype');
+  /* Nếu font có nhiều định dạng, bạn có thể khai báo thêm như sau:
+  src: url('/fonts/myfont.ttf') format('truetype'),
+       url('/fonts/myfont.woff') format('woff'),
+       url('/fonts/myfont.woff2') format('woff2');
+  */
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'SVN-Housttely Signature';
+  src: url('/fonts/SVNh.otf') format('opentype');
+  /* Các thuộc tính font-weight và font-style tùy chọn */
+  font-weight: normal;
+  font-style: normal;
+}

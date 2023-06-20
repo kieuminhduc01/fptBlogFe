@@ -1,6 +1,9 @@
+import { blogTitleAtom, isPagingSearchAtom } from '@/atom/store';
 import NarBarDesktop from '@/components/header/narBarDesktop';
 import NarBarMobile from '@/components/header/narBarMobile';
 import {
+  DivLogoMobileBanNgheStyled,
+  DivLogoMobilePhuongKeStyled,
   DivStyled,
   H1Styled,
   H2Styled,
@@ -12,6 +15,7 @@ import ArrowLeft from '@/components/icons/arrowLeft';
 import LensIcon from '@/components/icons/lensIcon';
 import ThreeLineIcon from '@/components/icons/threeLineIcon';
 import { UrlPath } from '@/type/urlPath';
+import { useAtom } from 'jotai';
 import { useRouter } from 'next/router';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import StatusAlert from 'react-status-alert';
@@ -23,6 +27,9 @@ const Header = ({ position }) => {
   const [displayArrorwLeft, setDisplayArrorwLeft] = useState('none');
   const [rightPxArrowLeft, setRightPxArrowLeft] = useState();
   const [isClickAccount, setIsClickAccount] = useState(false);
+  const [search, setSearch] = useState('');
+  const [, setIsPagingSearch] = useAtom(isPagingSearchAtom);
+  const [blogTitle] = useAtom(blogTitleAtom);
   const router = useRouter();
   const [width, setWidth] = useState(0);
   const sideBarRef = useRef(null);
@@ -84,6 +91,10 @@ const Header = ({ position }) => {
   const handleClickAccount = () => {
     setIsClickAccount(!isClickAccount);
   };
+  const handleSearch = () => {
+    setIsPagingSearch(false);
+    router.push(`${UrlPath.search.url}?keyword=${search}`);
+  };
   const getTitle = (url) => {
     switch (url) {
       case UrlPath.growingInThePRWorld.url: {
@@ -97,6 +108,21 @@ const Header = ({ position }) => {
       }
       case UrlPath.home.url: {
         return UrlPath.home.title;
+      }
+      case UrlPath.search.url: {
+        return UrlPath.search.title;
+      }
+      case UrlPath.tag.url: {
+        return UrlPath.tag.title;
+      }
+      case `${UrlPath.growingInThePRWorld.url}/[slug]`: {
+        return blogTitle;
+      }
+      case `${UrlPath.seeThinkShare.url}/[slug]`: {
+        return blogTitle;
+      }
+      case `${UrlPath.myCorner.url}/[slug]`: {
+        return blogTitle;
       }
     }
   };
@@ -142,21 +168,16 @@ const Header = ({ position }) => {
                     >
                       <ThreeLineIcon />
                     </div>
-                    <div onClick={handleClickLogo}>
-                      <H2Styled
-                        color="#960c0c"
-                        className="fs-22px-sm fs-20px mt-22px-sm mt-20px mr-24vw-global"
-                      >
-                        Phương kể bạn nghe
-                      </H2Styled>
-                    </div>
                   </div>
-                  <div className=" d-md-none float-start mt-62px-sm mt-60px mb-22px-sm mb-20px fw-bold fs-1">
+                  <div className=" d-md-none float-start mt-62px-sm mt-60px mb-22px-sm mb-20px fw-bold fs-2">
                     {getTitle(router.pathname)}
                   </div>
                   <div className="d-md-none d-flex w-100  mb-22px-sm mb-20px">
                     <div className="d-flex padding-12px-sm padding-10px w-100 br-14px-sm br-14px bg-fafafa ">
-                      <div className="cursor-pointer mr-8px-sm mr-8px">
+                      <div
+                        onClick={handleSearch}
+                        className="cursor-point mr-8px-sm mr-8px"
+                      >
                         <LensIcon />
                       </div>
                       <InputFieldStyled
@@ -164,6 +185,8 @@ const Header = ({ position }) => {
                         type="search"
                         placeholder="Tìm kiếm"
                         aria-label="Search"
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
                       ></InputFieldStyled>
                     </div>
                   </div>
@@ -171,46 +194,48 @@ const Header = ({ position }) => {
               </div>
 
               <div>
-                <div className="float-end me-md-5 mt-md-5 mt--222px mt--240px-sm mr-30px mr-30px-sm position-relative">
+                <div className="float-end me-md-5 mt-md-5 mt--216px mt--230px-sm mr-30px mr-30px-sm position-relative">
                   <div onClick={handleClickAccount} className="cursor-point">
                     <AccountIcon height="40px" width="40px" />
                   </div>
                   <DropDown isClickAccount={isClickAccount} />
                 </div>
-                <div className="d-none d-md-flex justify-content-center">
-                  <div className="w-170px-xxl w-160px-xl w-160px-lg w-160px-md">
+                <DivLogoMobilePhuongKeStyled className=" d-flex justify-content-center">
+                  <div className="w-180px-xxl w-170px-xl w-170px-lg w-160px-md">
                     <H2Styled
                       color="#960c0c"
                       onClick={handleClickLogo}
-                      className="fs-34px-xxl fs-32px-xl fs-30px-lg fs-28px-md mt-52px-xxl mt-50px-xl mt-48px-lg mt-40px-md float-start cursor-point "
+                      className="fs-34px-xxl fs-32px-xl fs-30px-lg fs-28px-md fs-22px-sm fs-20px mt-52px-xxl mt-50px-xl mt-48px-lg mt-40px-md float-start cursor-point "
                     >
                       Phương kể
                     </H2Styled>
                   </div>
-                </div>
-                <div className=" d-none d-md-flex justify-content-center">
-                  <div className="bg-white z-index-dropdown w-220px-xxl w-220px-xl w-210px-lg w-210px-md">
+                </DivLogoMobilePhuongKeStyled>
+                <DivLogoMobileBanNgheStyled className="d-flex justify-content-center mt-md-1">
+                  <div className="z-index-dropdown w-220px-xxl w-220px-xl w-200px-lg w-200px-md">
                     <H1Styled
                       onClick={handleClickLogo}
-                      className=" cursor-point fs-42px-xl fs-38px-md fs-34px letter-spacing-3px-xxl letter-spacing-3px-xl letter-spacing-2px-lg letter-spacing-1px-md float-end"
+                      className=" me-lg-4  cursor-point fs-42px-xl fs-38px-md fs-30px-sm fs-28px letter-spacing-3px-xxl letter-spacing-3px-xl letter-spacing-2px-lg letter-spacing-1px-md float-end"
                     >
                       Bạn nghe
                     </H1Styled>
                   </div>
-                </div>
+                </DivLogoMobileBanNgheStyled>
               </div>
             </div>
             <HrStyled
               className="d-md-block d-none"
-              top="90px"
-              width="50vw"
+              top="70px"
+              width="34vw"
+              widthLg="36vw"
+              widthXl="38vw"
               height="2px"
             />
             <HrStyled
               className="d-md-block d-none"
-              top="98px"
+              top="80px"
               right="0"
-              width="50vw"
+              width="40vw"
               height="2px"
             />
           </div>

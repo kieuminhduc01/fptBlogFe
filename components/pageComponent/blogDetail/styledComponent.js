@@ -34,9 +34,8 @@ export const DivBlockStyled = styled.div`
   }
   pre {
     background-color: rgb(203 203 203 / 55%);
-  }
-  code {
-    margin: 10px 10px 10px 10px;
+    border-radius: 4px;
+    padding: 10px;
   }
 `;
 export const HrStyled = styled.hr`
@@ -52,4 +51,8 @@ export const ButtonTagStyled = styled.button`
     padding: 6px 12px;
     border: 2px solid #930c0c;
   }
+`;
+export const DivInputStyled = styled.div`
+  border: 1px solid black;
+  border-radius: 20px;
 `;

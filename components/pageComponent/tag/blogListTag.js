@@ -7,12 +7,10 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { StatusAlertService } from 'react-status-alert';
 
-const BlogListContent = ({ dataOri, start, end }) => {
+const BlogListTag = ({ id, dataOri }) => {
   const router = useRouter();
   const [currentPage, setCurrentPage] = useState(2);
-  const [displayedPosts, setDisplayedPosts] = useState(
-    dataOri?.slice(start, end),
-  );
+  const [loadedPosts, setLoadedPosts] = useState(dataOri?.slice(0, 6));
   const handleClickImg = (item) => {
     router.push(`${UrlPath.home.url}${item?.category}/${item?.slug}`);
   };
@@ -26,25 +24,26 @@ const BlogListContent = ({ dataOri, start, end }) => {
           isIncrease: false,
         },
         filter: {
-          categoryIds: [dataOri[0].category],
-          tagIds: [],
+          categoryIds: [],
+          tagIds: [id],
         },
         keyWord: '',
       })
       .then((res) => {
-        const newPosts = res.data.result.items;
-        setDisplayedPosts((prevPosts) => [...prevPosts, ...newPosts]);
+        const newPosts = res.data.result;
+        setLoadedPosts((prevPosts) => [...prevPosts, ...newPosts.items]);
+        if (newPosts.total === 0) {
+          setCurrentPage(2);
+        } else setCurrentPage((prevPage) => prevPage + 1);
       })
       .catch((err) => {
         StatusAlertService.showError(err.response.data.Detail);
-      })
-      .finally(() => {
-        setCurrentPage((prevPage) => prevPage + 1);
       });
   };
+
   return (
     <>
-      {displayedPosts?.map((item, index) => (
+      {loadedPosts?.map((item, index) => (
         <div className="col-6 col-md-4 mb-3 mb-md-4" key={index}>
           <div className="pb-100pc-global w-100 height-0 position-relative overflow-hidden">
             <img
@@ -53,13 +52,15 @@ const BlogListContent = ({ dataOri, start, end }) => {
               src={`${Server}${item?.image}`}
             />
           </div>
-          <div className="d-flex justify-content-center mt-md-2">
+          <div
+            onClick={() => handleClickImg(item)}
+            className="d-flex justify-content-center mt-2 cursor-point"
+          >
             <Link
               href={`${UrlPath.home.url}${item?.category}/${item?.slug}`}
-              className="text-center ff-lexend fs-22px-xxl fs-20px-xl fs-20px-lg fs-18px-md fs-18px-sm fs-16px"
-            >
-              {item.title}
-            </Link>
+              className="ff-lexend fs-22px-xxl fs-20px-xl fs-20px-lg fs-18px-md fs-18px-sm fs-16px cursor-point"
+            ></Link>
+            {item.title}
           </div>
           <div className="d-flex justify-content-center">
             <div className="fs-12px-xxl fs-12px-xl fs-12px-lg fs-12px-md fs-12px-sm fs-10px">
@@ -68,7 +69,6 @@ const BlogListContent = ({ dataOri, start, end }) => {
           </div>
         </div>
       ))}
-
       <div className="d-flex justify-content-center mt-4">
         <ButtonTagStyled
           onClick={handlePaging}
@@ -81,4 +81,4 @@ const BlogListContent = ({ dataOri, start, end }) => {
   );
 };
 
-export default BlogListContent;
+export default BlogListTag;

@@ -14,7 +14,12 @@ const HomeComponentMain = ({ dataOri }) => {
         <div className="vertical-line position-absolute z-index-dropdown top-260px-xxl top-270px-xl top-260px-lg right-46vw-global d-none d-md-inline-block"></div>
       </div>
       <MainContainer>
-        <Swiper pagination={true} modules={[Pagination]}>
+        <Swiper
+          pagination={true}
+          modules={[Pagination]}
+          autoplay={{ delay: 1000 }}
+          loop={true}
+        >
           {[...Array(dataOri.perPage)].map((_, index) => (
             <SwiperSlide key={index}>
               <MainContent dataOri={dataOri.items} index={index} />

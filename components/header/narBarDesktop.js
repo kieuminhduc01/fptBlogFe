@@ -1,20 +1,36 @@
-import { UrlPath } from '@/type/urlPath';
-import LensIcon from '@/components/icons/lensIcon';
+import { isPagingSearchAtom } from '@/atom/store';
 import {
   InputFieldStyled,
-  LinkStyled,
+  LinkStyled
 } from '@/components/header/styledComponent';
+import LensIcon from '@/components/icons/lensIcon';
+import { UrlPath } from '@/type/urlPath';
+import { useAtom } from 'jotai';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
 
 const NarBarDesktop = () => {
+  const router = useRouter();
+  const [, setIsPagingSearch] = useAtom(isPagingSearchAtom);
+  const [search, setSearch] = useState('');
+  const handleSearch = (e) => {
+    e.preventDefault();
+    setIsPagingSearch(false);
+    router.push(`${UrlPath.search.url}?keyword=${search}`);
+  };
   return (
     <>
       <ul className="nav mt-2 justify-content-center d-none d-md-flex">
         <li className="nav-item ms-5">
           <LinkStyled
-            color="#2c2727"
-            colorfocus="#960c0c"
-            colorhover="#960c0c"
-            className="nav-link fs-20px-xxl fs-20px-xl fs-20px-lg fs-20px-md"
+            color={
+              router.pathname === UrlPath.growingInThePRWorld.url
+                ? '#b10c0c'
+                : '#2c2727'
+            }
+            colorfocus="#b10c0c"
+            colorhover="#b10c0c"
+            className="nav-link fs-4"
             href={UrlPath.growingInThePRWorld.url}
           >
             Growing in the PR World
@@ -22,10 +38,14 @@ const NarBarDesktop = () => {
         </li>
         <li className="nav-item ms-5">
           <LinkStyled
-            colorfocus="#960c0c"
-            colorhover="#960c0c"
-            color="#2c2727"
-            className="nav-link fs-20px-xxl fs-20px-xl fs-20px-lg fs-20px-md"
+            colorfocus="#b10c0c"
+            colorhover="#b10c0c"
+            color={
+              router.pathname === UrlPath.seeThinkShare.url
+                ? '#b10c0c'
+                : '#2c2727'
+            }
+            className="nav-link fs-4"
             href={UrlPath.seeThinkShare.url}
           >
             See think share
@@ -33,25 +53,29 @@ const NarBarDesktop = () => {
         </li>
         <li className="nav-item ms-5">
           <LinkStyled
-            color="#2c2727"
-            colorfocus="#960c0c"
-            colorhover="#960c0c"
-            className="nav-link fs-20px-xxl fs-20px-xl fs-20px-lg fs-20px-md"
+            color={
+              router.pathname === UrlPath.myCorner.url ? '#b10c0c' : '#2c2727'
+            }
+            colorfocus="#b10c0c"
+            colorhover="#b10c0c"
+            className="nav-link fs-4"
             href={UrlPath.myCorner.url}
           >
             My corner
           </LinkStyled>
         </li>
         <li className="nav-item ms-5">
-          <form className="d-flex mt-1">
+          <form className="d-flex mt-1" onSubmit={handleSearch}>
             <InputFieldStyled
               borderBottom="2px solid #b3a7a7"
-              className="form-control me-1 w-50"
+              className="form-control me-1 w-50 fs-5"
               type="search"
               placeholder="Tìm kiếm"
               aria-label="Search"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
             ></InputFieldStyled>
-            <div className="cursor-pointer">
+            <div onClick={handleSearch} className="cursor-point">
               <LensIcon />
             </div>
           </form>

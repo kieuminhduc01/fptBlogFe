@@ -20,7 +20,7 @@ const Footer = () => {
                 <div className="h-102px-xxl h-100px-xl h-80px-lg h-80px-md h-50px-sm h-40px "></div>
                 <div className="d-flex justify-content-center">
                   <div className="footer-text-container">
-                    <PStyled className=" fs-40px-xxl fs-38px-xl fs-36px-lg fs-30px-md fs-24px-sm fs-20px letter-spacing-3px-xl letter-spacing-2px-xl letter-spacing-1px-lg letter-spacing-1px-md mb-4px">
+                    <PStyled className=" fs-40px-xxl fs-38px-xl fs-36px-lg fs-34px-md fs-28px-sm fs-24px letter-spacing-3px-xl letter-spacing-2px-xl letter-spacing-1px-lg letter-spacing-1px-md mb-4px">
                       Theo dõi thêm về Phương nhé!
                     </PStyled>
                   </div>

@@ -11,14 +11,14 @@ export const DivStyled = styled.div`
   }
 `;
 export const H2Styled = styled.h2`
-  font-family: 'Lexend', sans-serif;
+  font-family: 'SVN-Housttely Signature';
   font-weight: normal;
   font-style: normal;
   color: ${(props) => props.color};
   margin-bottom: 5px;
 `;
 export const H1Styled = styled.h1`
-  font-family: 'Lexend', sans-serif;
+  font-family: 'SVN-North Carossela';
   font-weight: normal;
   font-style: normal;
   color: #960c0c;
@@ -34,20 +34,36 @@ export const HrStyled = styled.hr`
   left: ${(props) => props.left};
   right: ${(props) => props.right};
   width: ${(props) => props.width};
+  @media (min-width: 576px) {
+    width: ${(props) => props.widthSm};
+  }
+  @media (min-width: 768px) {
+    top: ${(props) => props.topMd};
+    width: ${(props) => props.widthMd};
+  }
+  @media (min-width: 992px) {
+    width: ${(props) => props.widthLg};
+  }
+  @media (min-width: 1200px) {
+    width: ${(props) => props.widthXl};
+  }
+  @media (min-width: 1400px) {
+    width: ${(props) => props.widthXxl};
+  }
 `;
 export const LinkStyled = styled(Link)`
-  font-family: 'Lexend', sans-serif;
-  font-weight: normal;
-  font-style: normal;
-  color: ${(props) => props.color};
+  font-family: 'Lexend', sans-serif !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  color: ${(props) => props.color}!important;
   :hover {
-    color: ${(props) => props.colorhover};
+    color: ${(props) => props.colorhover}!important;
   }
   :active {
-    color: #960c0c;
+    color: #960c0c !important;
   }
   :focus {
-    color: ${(props) => props.colorfocus};
+    color: ${(props) => props.colorfocus} !important;
   }
 `;
 export const InputFieldStyled = styled.input`
@@ -62,5 +78,29 @@ export const InputFieldStyled = styled.input`
   }
   :active {
     outline: none;
+  }
+`;
+export const DivLogoMobilePhuongKeStyled = styled.div`
+  @media (width<= 576px) {
+    position: absolute;
+    left: 35%;
+    margin-top: -210px;
+  }
+  @media (576px<width<= 768px) {
+    position: absolute;
+    left: 40%;
+    margin-top: -220px;
+  }
+`;
+export const DivLogoMobileBanNgheStyled = styled.div`
+  @media (width<= 576px) {
+    position: absolute;
+    left: 41%;
+    margin-top: -182px;
+  }
+  @media (576px<width<= 768px) {
+    position: absolute;
+    left: 45%;
+    margin-top: -192px;
   }
 `;
