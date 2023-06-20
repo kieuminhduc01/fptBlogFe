@@ -18,17 +18,18 @@ import LinkedinIcon from '@/components/icons/linkedinIcon';
 import {
   blogTitleAtom,
   messageUnauthorizedAtom,
-  totalCommentAtom
+  totalCommentAtom,
 } from '@/atom/store';
 
 import Comment from '@/components/pageComponent/blogDetail/comment';
 import {
   ButtonTagStyled,
   DivBlockStyled,
-  HrStyled
+  HrStyled,
 } from '@/components/pageComponent/blogDetail/styledComponent';
+import BlogListContent from '../blogList/blogListContent';
 
-const MainContent = ({ BlogPost, tagIds }) => {
+const MainContent = ({ BlogPost, BlogListRelevant }) => {
   const router = useRouter();
   const [totalComment, setTotalComment] = useAtom(totalCommentAtom);
   const [renderedContent, setRenderedContent] = useState('');
@@ -36,40 +37,10 @@ const MainContent = ({ BlogPost, tagIds }) => {
   const [, setMessageUnauthorized] = useAtom(messageUnauthorizedAtom);
   const [, setBlogTitle] = useAtom(blogTitleAtom);
   const [blogPostLike, setBlogPostLike] = useState(BlogPost.likes);
-  const [blogPostTags, setBlogPostTags] = useState();
 
   useEffect(() => {
     setRenderedContent(marked(BlogPost.content));
     setBlogTitle(BlogPost.title);
-    console.log('aádasd', BlogPost);
-  }, []);
-  useEffect(() => {
-    console.log('router', router);
-    const { pathname } = router;
-    const parts = pathname.split('/');
-    const category = parts[2];
-    // axios
-    //   .post(`${BASE_URL}BlogPost/Paging`, {
-    //     perPage: 6,
-    //     currentPage: 1,
-    //     shortBy: {
-    //       title: 'Created',
-    //       isIncrease: false,
-    //     },
-    //     filter: {
-    //       categoryIds: [category],
-    //       tagIds: [tagIds],
-    //     },
-    //     keyWord: '',
-    //   })
-    //   .then((res) => {
-    //     const newPosts = res.data.result.items;
-    //     setBlogPostTags((prevPosts) => [...prevPosts, ...newPosts]);
-    //   })
-    //   .catch((err) => {
-    //     StatusAlertService.showError(err.response.data.Detail);
-    //   })
-    //   .finally(() => {});
   }, []);
   useEffect(() => {
     const accountId = getCookie('accountId');
@@ -228,7 +199,20 @@ const MainContent = ({ BlogPost, tagIds }) => {
               <HrStyled />
               <Comment BlogPost={BlogPost} />
             </div>
-            <HrStyled />
+            {BlogPost.tags.length !== 0 && (
+              <div>
+                <HrStyled />
+                <p className="ff-lexend fs-24px-xxl fs-24px-xl fs-24px-lg fs-24px-md fs-24px-sm fs-22px fw-bold">
+                  {' '}
+                  Bài viết liên quan
+                </p>
+                <div className="opacity-100 d-flex justify-content-center ">
+                  <div className="w-100 row mt-3 mt-md-5">
+                    <BlogListContent dataOri={BlogListRelevant} />
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>

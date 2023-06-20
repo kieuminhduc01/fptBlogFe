@@ -34,7 +34,7 @@ const Footer = () => {
                   />
                 </div>
               </div>
-              <div className="d-flex justify-content-center mt-36px-xxl mt-34px-xl mt-30px-lg mt-26px-md w-100">
+              <div className="d-flex justify-content-center mt-36px-xxl mt-34px-xl mt-30px-lg mt-26px-md mt-20px-sm mt-14px w-100">
                 <div className="d-flex justify-content-around w-35pc-xxl w-34pc-xl w-400px-lg w-320px-md w-300px-sm w-240px">
                   <div className="d-flex">
                     <FacebookIcon />
