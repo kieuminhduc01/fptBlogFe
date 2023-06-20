@@ -2,11 +2,13 @@ import { blogTitleAtom, isPagingSearchAtom } from '@/atom/store';
 import NarBarDesktop from '@/components/header/narBarDesktop';
 import NarBarMobile from '@/components/header/narBarMobile';
 import {
+  DivLogoMobileBanNgheStyled,
+  DivLogoMobilePhuongKeStyled,
   DivStyled,
   H1Styled,
   H2Styled,
   HrStyled,
-  InputFieldStyled,
+  InputFieldStyled
 } from '@/components/header/styledComponent';
 import AccountIcon from '@/components/icons/accountIcon';
 import ArrowLeft from '@/components/icons/arrowLeft';
@@ -166,14 +168,6 @@ const Header = ({ position }) => {
                     >
                       <ThreeLineIcon />
                     </div>
-                    <div onClick={handleClickLogo}>
-                      <H2Styled
-                        color="#960c0c"
-                        className="fs-28px-sm fs-24px mt-22px-sm mt-20px mr-24vw-global"
-                      >
-                        Phương kể bạn nghe
-                      </H2Styled>
-                    </div>
                   </div>
                   <div className=" d-md-none float-start mt-62px-sm mt-60px mb-22px-sm mb-20px fw-bold fs-2">
                     {getTitle(router.pathname)}
@@ -200,33 +194,33 @@ const Header = ({ position }) => {
               </div>
 
               <div>
-                <div className="float-end me-md-5 mt-md-5 mt--222px mt--240px-sm mr-30px mr-30px-sm position-relative">
+                <div className="float-end me-md-5 mt-md-5 mt--216px mt--230px-sm mr-30px mr-30px-sm position-relative">
                   <div onClick={handleClickAccount} className="cursor-point">
                     <AccountIcon height="40px" width="40px" />
                   </div>
                   <DropDown isClickAccount={isClickAccount} />
                 </div>
-                <div className="d-none d-md-flex justify-content-center">
+                <DivLogoMobilePhuongKeStyled className=" d-flex justify-content-center">
                   <div className="w-180px-xxl w-170px-xl w-170px-lg w-160px-md">
                     <H2Styled
                       color="#960c0c"
                       onClick={handleClickLogo}
-                      className="fs-34px-xxl fs-32px-xl fs-30px-lg fs-28px-md mt-52px-xxl mt-50px-xl mt-48px-lg mt-40px-md float-start cursor-point "
+                      className="fs-34px-xxl fs-32px-xl fs-30px-lg fs-28px-md fs-22px-sm fs-20px mt-52px-xxl mt-50px-xl mt-48px-lg mt-40px-md float-start cursor-point "
                     >
                       Phương kể
                     </H2Styled>
                   </div>
-                </div>
-                <div className=" d-none d-md-flex justify-content-center mt-1">
+                </DivLogoMobilePhuongKeStyled>
+                <DivLogoMobileBanNgheStyled className="d-flex justify-content-center mt-md-1">
                   <div className="z-index-dropdown w-220px-xxl w-220px-xl w-200px-lg w-200px-md">
                     <H1Styled
                       onClick={handleClickLogo}
-                      className="me-lg-4  cursor-point fs-42px-xl fs-38px-md fs-34px letter-spacing-3px-xxl letter-spacing-3px-xl letter-spacing-2px-lg letter-spacing-1px-md float-end"
+                      className=" me-lg-4  cursor-point fs-42px-xl fs-38px-md fs-30px-sm fs-28px letter-spacing-3px-xxl letter-spacing-3px-xl letter-spacing-2px-lg letter-spacing-1px-md float-end"
                     >
                       Bạn nghe
                     </H1Styled>
                   </div>
-                </div>
+                </DivLogoMobileBanNgheStyled>
               </div>
             </div>
             <HrStyled

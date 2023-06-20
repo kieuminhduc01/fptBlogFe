@@ -1,7 +1,7 @@
 import { isPagingSearchAtom } from '@/atom/store';
 import {
   InputFieldStyled,
-  LinkStyled,
+  LinkStyled
 } from '@/components/header/styledComponent';
 import LensIcon from '@/components/icons/lensIcon';
 import { UrlPath } from '@/type/urlPath';

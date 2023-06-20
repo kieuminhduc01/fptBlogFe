@@ -5,7 +5,6 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import StatusAlert, { StatusAlertService } from 'react-status-alert';
 
-import { LikeApi } from '@/api/likeAPI';
 import { BASE_URL } from '@/api/request';
 import { getCookie } from '@/cookie/cookie';
 import { UrlPath } from '@/type/urlPath';
@@ -19,14 +18,14 @@ import LinkedinIcon from '@/components/icons/linkedinIcon';
 import {
   blogTitleAtom,
   messageUnauthorizedAtom,
-  totalCommentAtom,
+  totalCommentAtom
 } from '@/atom/store';
 
 import Comment from '@/components/pageComponent/blogDetail/comment';
 import {
   ButtonTagStyled,
   DivBlockStyled,
-  HrStyled,
+  HrStyled
 } from '@/components/pageComponent/blogDetail/styledComponent';
 
 const MainContent = ({ BlogPost, tagIds }) => {

@@ -15,19 +15,6 @@ const BlogListTag = ({ id, dataOri }) => {
     router.push(`${UrlPath.home.url}${item?.category}/${item?.slug}`);
   };
   const handlePaging = () => {
-    console.log('aaa', {
-      perPage: 6,
-      currentPage: currentPage,
-      shortBy: {
-        title: 'Created',
-        isIncrease: false,
-      },
-      filter: {
-        categoryIds: [],
-        tagIds: [id],
-      },
-      keyWord: '',
-    });
     axios
       .post(`${BASE_URL}BlogPost/Paging`, {
         perPage: 6,
@@ -44,7 +31,6 @@ const BlogListTag = ({ id, dataOri }) => {
       })
       .then((res) => {
         const newPosts = res.data.result;
-        console.log('newPosts', res);
         setLoadedPosts((prevPosts) => [...prevPosts, ...newPosts.items]);
         if (newPosts.total === 0) {
           setCurrentPage(2);

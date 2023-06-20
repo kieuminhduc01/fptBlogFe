@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { DivStyled } from '../auth/styledComponent';
 
 export const DivBlockStyled = styled.div`
   p {

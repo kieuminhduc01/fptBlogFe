@@ -34,11 +34,21 @@ export const HrStyled = styled.hr`
   left: ${(props) => props.left};
   right: ${(props) => props.right};
   width: ${(props) => props.width};
+  @media (min-width: 576px) {
+    width: ${(props) => props.widthSm};
+  }
+  @media (min-width: 768px) {
+    top: ${(props) => props.topMd};
+    width: ${(props) => props.widthMd};
+  }
   @media (min-width: 992px) {
     width: ${(props) => props.widthLg};
   }
   @media (min-width: 1200px) {
     width: ${(props) => props.widthXl};
+  }
+  @media (min-width: 1400px) {
+    width: ${(props) => props.widthXxl};
   }
 `;
 export const LinkStyled = styled(Link)`
@@ -68,5 +78,29 @@ export const InputFieldStyled = styled.input`
   }
   :active {
     outline: none;
+  }
+`;
+export const DivLogoMobilePhuongKeStyled = styled.div`
+  @media (width<= 576px) {
+    position: absolute;
+    left: 35%;
+    margin-top: -210px;
+  }
+  @media (576px<width<= 768px) {
+    position: absolute;
+    left: 40%;
+    margin-top: -220px;
+  }
+`;
+export const DivLogoMobileBanNgheStyled = styled.div`
+  @media (width<= 576px) {
+    position: absolute;
+    left: 41%;
+    margin-top: -182px;
+  }
+  @media (576px<width<= 768px) {
+    position: absolute;
+    left: 45%;
+    margin-top: -192px;
   }
 `;

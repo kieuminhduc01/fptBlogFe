@@ -576,15 +576,22 @@
 }
 @for $i from -300 through 0 {
   $isMultipleOf2: $i % 2 == 0;
+  $percent: $i * 1%;
   @if $isMultipleOf2 {
     @media (width<= 576px) {
       .mt-#{$i}px {
         margin-top: #{$i}px;
       }
+      .mt-#{$i}pc {
+        margin-top: $percent;
+      }
     }
     @media (576px<width<= 768px) {
       .mt-#{$i}px-sm {
         margin-top: #{$i}px;
+      }
+      .mt-#{$i}pc-sm {
+        margin-top: $percent;
       }
     }
     @media (768px<width<= 992px) {

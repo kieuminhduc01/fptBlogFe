@@ -62,7 +62,7 @@ const DropDown = ({ isClickAccount }) => {
   return (
     <>
       {isClickAccount && (
-        <div className=" ml--114px-global mt-md-2 mt-1 bg-f8f7f7 z-index-dropdown position-absolute p-4 br-10px-xxl br-10px-xl br-8px-lg br-8px-md br-8px-sm br-6px">
+        <div className=" ml--114px-global mt-md-2 mt-1 bg-f8f7f7 z-index-fixed position-absolute p-4 br-10px-xxl br-10px-xl br-8px-lg br-8px-md br-8px-sm br-6px">
           <div className="d-flex justify-content-center">
             {getCookie('jwt_token') === undefined ? (
               <button

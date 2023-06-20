@@ -1,10 +1,10 @@
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
-import { debounce, DEBOUNCETIME } from '@/share/debounce';
-import { UrlPath } from '@/type/urlPath';
 import MainContainer from '@/components/content/mainContainer';
 import Footer from '@/components/footer/footer';
 import Header from '@/components/header/header';
+import { debounce, DEBOUNCETIME } from '@/share/debounce';
+import { UrlPath } from '@/type/urlPath';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 
 const MainLayout = ({ children }) => {
   const router = useRouter();
