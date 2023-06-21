@@ -12,8 +12,9 @@ export const UrlPath = {
   tag: { url: '/tag', title: 'Tag' },
 };
 export const Profile = {
-  Fb: 'https://www.facebook.com/phuongwings?mibextid=LQQJ4d',
-  In: 'https://www.linkedin.com/in/maiphuongnguyen0704/?fbclid=IwAR3HMgU5_wsNJjFQM-yW197zhdqHIbTUaYPxcXC2YbCB-Fyz8ACJaWmNFaQ',
+  facebook: 'https://www.facebook.com/phuongwings?mibextid=LQQJ4d',
+  linkedin:
+    'https://www.linkedin.com/in/maiphuongnguyen0704/?fbclid=IwAR3HMgU5_wsNJjFQM-yW197zhdqHIbTUaYPxcXC2YbCB-Fyz8ACJaWmNFaQ',
   Zl: 'https://zalo.me/0336850714',
   Gm: '',
 };

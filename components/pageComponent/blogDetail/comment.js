@@ -172,7 +172,7 @@ const Comment = ({ BlogPost }) => {
                             className="ms-1 bg-transparent"
                             onChange={handleChangeCommentReplyText}
                             onKeyDown={handleKeyDownReply}
-                            ref={inputRef} // Thêm ref ở đây
+                            ref={inputRef}
                           />
                           <div className="mt-2px" onClick={handleSubmitReply}>
                             <SentIcon className="w-32px-xxl w-30px-xl w-28px-lg w-26px-md w-24px-sm w-22px" />

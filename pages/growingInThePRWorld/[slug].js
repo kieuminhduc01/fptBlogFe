@@ -1,4 +1,5 @@
 import { BASE_URL } from '@/api/request';
+import { formatDate } from '@/components/convertDateTime';
 import MainContent from '@/components/pageComponent/blogDetail/mainContent';
 import axios from 'axios';
 
@@ -6,20 +7,39 @@ export async function getServerSideProps(context) {
   const routerData = context.query;
   const blogPost = await axios.get(`${BASE_URL}BlogPost/${routerData.slug}`);
   const BlogPost = await blogPost.data.result;
-  const blogPostTags = BlogPost.tags;
-  const tagIds = blogPostTags.map((tag) => tag.id);
+  let BlogListRelevant;
+  await axios
+    .post(`${BASE_URL}BlogPost/Relevant`, {
+      perPage: 7,
+      currentPage: 1,
+      shortBy: {
+        title: 'Created',
+        isIncrease: false,
+      },
+      blogPostId: BlogPost.id,
+    })
+    .then((res) => {
+      const dataTemp = res.data.result;
+      BlogListRelevant = dataTemp.items.map((item) => ({
+        ...item,
+        created: formatDate(item.created),
+      }));
+    })
+    .catch((err) => {
+      StatusAlertService.showError(err.response.data.Detail);
+    });
   return {
     props: {
       BlogPost,
-      tagIds,
+      BlogListRelevant,
     },
   };
 }
 
-const Index = ({ BlogPost, tagIds }) => {
+const Index = ({ BlogPost, BlogListRelevant }) => {
   return (
     <div>
-      <MainContent BlogPost={BlogPost} tagIds={tagIds} />
+      <MainContent BlogPost={BlogPost} BlogListRelevant={BlogListRelevant} />
     </div>
   );
 };

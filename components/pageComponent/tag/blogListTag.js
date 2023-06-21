@@ -69,14 +69,16 @@ const BlogListTag = ({ id, dataOri }) => {
           </div>
         </div>
       ))}
-      <div className="d-flex justify-content-center mt-4">
-        <ButtonTagStyled
-          onClick={handlePaging}
-          className="bg-body fs-22px-xxl fs-20px-xl fs-20px-lg fs-18px-md fs-18px-sm fs-16px ff-lexend mb-3 color-960C0C"
-        >
-          Đọc thêm bài viết
-        </ButtonTagStyled>
-      </div>
+      {dataOri.total > 6 && (
+        <div className="d-flex justify-content-center mt-4">
+          <ButtonTagStyled
+            onClick={handlePaging}
+            className="bg-body fs-22px-xxl fs-20px-xl fs-20px-lg fs-18px-md fs-18px-sm fs-16px ff-lexend mb-3 color-960C0C"
+          >
+            Đọc thêm bài viết
+          </ButtonTagStyled>
+        </div>
+      )}
     </>
   );
 };
