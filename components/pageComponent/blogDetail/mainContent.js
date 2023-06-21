@@ -203,7 +203,6 @@ const MainContent = ({ BlogPost, BlogListRelevant }) => {
               <div>
                 <HrStyled />
                 <p className="ff-lexend fs-24px-xxl fs-24px-xl fs-24px-lg fs-24px-md fs-24px-sm fs-22px fw-bold">
-                  {' '}
                   Bài viết liên quan
                 </p>
                 <div className="opacity-100 d-flex justify-content-center ">
