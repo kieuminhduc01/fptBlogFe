@@ -8,32 +8,34 @@ import {
 import HashLoaderCus from '@/components/spins/hashLoader';
 import { setCookie } from '@/cookie/cookie';
 import { UrlPath } from '@/type/urlPath';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { useAtom } from 'jotai';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
 import StatusAlert, { StatusAlertService } from 'react-status-alert';
-
+import * as Yup from 'yup';
+const validationSchema = Yup.object().shape({
+  userName: Yup.string()
+    .required('Vui lòng nhập Email')
+    .email('Email không hợp lệ'),
+  password: Yup.string()
+    .required('Vui lòng nhập mật khẩu')
+    .min(5, 'Mật khẩu phải có ít nhất 5 kí tự'),
+});
 const MainContent = () => {
   const router = useRouter();
-  const [userName, setUserName] = useState('');
-  const [password, setPassword] = useState('');
   const [loadingSpin, setLoadingSpin] = useState(false);
   const [isForgotPass, setIsForgotPass] = useState(false);
-  const [emailForgot, setEmailForgot] = useState('');
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(validationSchema),
+  });
   const [messageUnauthorized] = useAtom(messageUnauthorizedAtom);
-  const handleUserNameChange = (e) => {
-    setUserName(e.target.value);
-  };
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const handleUserEmailForgotChange = (e) => {
-    setEmailForgot(e.target.value);
-  };
-
   useEffect(() => {
     messageUnauthorized === ''
       ? ''
@@ -42,53 +44,49 @@ const MainContent = () => {
   const handleClickForgotPass = () => {
     setIsForgotPass(!isForgotPass);
   };
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const onSubmit = (data) => {
     setLoadingSpin(true);
     const dataReqLogin = {
-      email: userName,
-      password: password,
+      email: data.userName,
+      password: data.password,
     };
     const dataReqForgotPass = {
-      email: emailForgot,
+      email: data.userName,
     };
-    {
-      !isForgotPass
-        ? LoginApi(dataReqLogin)
-            .then((res) => {
-              setCookie('accountId', res.data.result.accountId, { expires: 7 });
-              setCookie('email', res.data.result.accountEmail, { expires: 7 });
-              setCookie('accountName', res.data.result.accountName, {
-                expires: 7,
-              });
-              setCookie('jwt_token', res.data.result.token, {
-                expires: 7,
-              });
-              StatusAlertService.showSuccess('Đăng nhập thành công!');
-              if (messageUnauthorized === '') {
-                router.push(UrlPath.home.url);
-              } else {
-                router.back();
-              }
-            })
-            .catch((err) => {
-              StatusAlertService.showError(err.response.data.Detail);
-            })
-            .finally(() => {
-              setLoadingSpin(false);
-            })
-        : ForgotPassApi(dataReqForgotPass)
-            .then(() => {
-              StatusAlertService.showSuccess(
-                'Vui lòng kiểm tra Email để lấy mật khẩu mới!',
-              );
-            })
-            .catch((err) => {
-              StatusAlertService.showError(err.response.data.Detail);
-            })
-            .finally(() => {
-              setLoadingSpin(false);
-            });
+
+    if (!isForgotPass) {
+      LoginApi(dataReqLogin)
+        .then((res) => {
+          setCookie('accountId', res.data.result.accountId, { expires: 7 });
+          setCookie('email', res.data.result.accountEmail, { expires: 7 });
+          setCookie('accountName', res.data.result.accountName, { expires: 7 });
+          setCookie('jwt_token', res.data.result.token, { expires: 7 });
+          StatusAlertService.showSuccess('Đăng nhập thành công!');
+          if (messageUnauthorized === '') {
+            router.push(UrlPath.home.url);
+          } else {
+            router.back();
+          }
+        })
+        .catch((err) => {
+          StatusAlertService.showError(err.response.data.Detail);
+        })
+        .finally(() => {
+          setLoadingSpin(false);
+        });
+    } else {
+      ForgotPassApi(dataReqForgotPass)
+        .then(() => {
+          StatusAlertService.showSuccess(
+            'Vui lòng kiểm tra Email để lấy mật khẩu mới!',
+          );
+        })
+        .catch((err) => {
+          StatusAlertService.showError(err.response.data.Detail);
+        })
+        .finally(() => {
+          setLoadingSpin(false);
+        });
     }
   };
   const handleClickLogo = () => {
@@ -150,44 +148,37 @@ const MainContent = () => {
           <div className="w-100 order-2 d-flex justify-content-between flex-column align-items-center h-45vh h-50vh-sm h-50vh-md h-50vh-lg h-53vh-xl h-53vh-xxl ">
             <StatusAlert />
             <div className="w-89pc w-50pc-sm w-33pc-md w-26pc-lg w-21pc-xl w-18pc-xxl">
-              <form onSubmit={handleSubmit}>
-                {!isForgotPass && (
-                  <div>
-                    <div className="mb-3">
-                      <input
-                        type="text"
-                        placeholder="Email"
-                        className="form-control ff-lexend fs-22px-xxl fs-20px-xl fs-20px-lg fs-18px-md fs-18px-sm fs-16px"
-                        id="userName"
-                        value={userName}
-                        onChange={handleUserNameChange}
-                      />
-                    </div>
-
-                    <div className="mb-3">
-                      <input
-                        placeholder="Mật khẩu"
-                        type="password"
-                        className="form-control ff-lexend fs-22px-xxl fs-20px-xl fs-20px-lg fs-18px-md fs-18px-sm fs-16px"
-                        id="password"
-                        value={password}
-                        onChange={handlePasswordChange}
-                      />
-                    </div>
-                  </div>
-                )}
-                {isForgotPass && (
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <div>
                   <div className="mb-3">
                     <input
                       type="text"
                       placeholder="Email"
                       className="form-control ff-lexend fs-22px-xxl fs-20px-xl fs-20px-lg fs-18px-md fs-18px-sm fs-16px"
-                      id="emailForgot"
-                      value={emailForgot}
-                      onChange={handleUserEmailForgotChange}
+                      {...register('userName')}
                     />
+                    {errors.userName && (
+                      <div className="error color-red">
+                        {errors.userName.message}
+                      </div>
+                    )}
                   </div>
-                )}
+                  {!isForgotPass && (
+                    <div className="mb-3">
+                      <input
+                        placeholder="Mật khẩu"
+                        type="password"
+                        className="form-control ff-lexend fs-22px-xxl fs-20px-xl fs-20px-lg fs-18px-md fs-18px-sm fs-16px"
+                        {...register('password')}
+                      />
+                      {errors.password && (
+                        <div className="error color-red">
+                          {errors.password.message}
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
 
                 <div
                   className="ff-lexend  cursor-point mb-3 ms-2"
