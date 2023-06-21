@@ -1,18 +1,33 @@
-import Link from 'next/link';
-import { Profile } from '@/type/urlPath';
-import { HrStyled } from '@/components/header/styledComponent';
-import FacebookIcon from '@/components/icons/facebookIcon';
-import LinkedinIcon from '@/components/icons/linkedinIcon';
+import { BASE_URL } from '@/api/request';
 import {
   DivStyled,
   FooterTextstylde,
-  PStyled,
+  PStyled
 } from '@/components/footer/styledComponent';
+import { HrStyled } from '@/components/header/styledComponent';
+import FacebookIcon from '@/components/icons/facebookIcon';
+import LinkedinIcon from '@/components/icons/linkedinIcon';
+import axios from 'axios';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import StatusAlert, { StatusAlertService } from 'react-status-alert';
 
 const Footer = () => {
+  const [proFile, setProFile] = useState();
+  useEffect(() => {
+    axios
+      .get(`${BASE_URL}Contact`)
+      .then((res) => {
+        setProFile(res.data.result);
+      })
+      .catch((err) => {
+        StatusAlertService.showError(err.response.data.Detail);
+      });
+  }, []);
   return (
     <>
       <div className="footer-bg ">
+        <StatusAlert />
         <DivStyled>
           <div className="d-flex justify-content-center">
             <div className="w-94pc w-93pc-sm w-90pc-md w-90pc-lg w-88pc-xl w-88pc-xxl">
@@ -38,7 +53,11 @@ const Footer = () => {
                 <div className="d-flex justify-content-around w-35pc-xxl w-34pc-xl w-400px-lg w-320px-md w-300px-sm w-240px">
                   <div className="d-flex">
                     <FacebookIcon />
-                    <Link legacyBehavior href={Profile.Fb} className="ms-1">
+                    <Link
+                      legacyBehavior
+                      href={proFile.facebook}
+                      className="ms-1"
+                    >
                       <FooterTextstylde
                         className=" fs-22px-xxl fs-20px-xl fs-20px-lg fs-16px-md fs-16px-sm fs-14px"
                         id="link"
@@ -50,7 +69,11 @@ const Footer = () => {
                   </div>
                   <div className="d-flex">
                     <LinkedinIcon />
-                    <Link legacyBehavior href={Profile.In} className="ms-3">
+                    <Link
+                      legacyBehavior
+                      href={proFile.linkedin}
+                      className="ms-3"
+                    >
                       <FooterTextstylde
                         className=" fs-22px-xxl fs-20px-xl fs-20px-lg fs-16px-md fs-16px-sm fs-14px"
                         id="link"
