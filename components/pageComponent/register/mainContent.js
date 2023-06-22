@@ -6,61 +6,51 @@ import {
 } from '@/components/header/styledComponent';
 import HashLoaderCus from '@/components/spins/hashLoader';
 import { UrlPath } from '@/type/urlPath';
+import { yupResolver } from '@hookform/resolvers/yup';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import StatusAlert, { StatusAlertService } from 'react-status-alert';
+import * as Yup from 'yup';
+const validationSchema = Yup.object().shape({
+  userName: Yup.string().required('Vui lòng nhập Tên đăng nhập'),
+  password: Yup.string()
+    .required('Vui lòng nhập mật khẩu')
+    .min(5, 'Mật khẩu phải có ít nhất 5 kí tự'),
+  email: Yup.string()
+    .required('Vui lòng nhập Email')
+    .email('Email không hợp lệ'),
+  confirmPassword: Yup.string()
+    .required('Vui lòng nhập mật khẩu')
+    .oneOf([Yup.ref('password')], 'Mật khẩu không khớp'),
+  name: Yup.string().required('Vui lòng nhập Họ Và Tên'),
+});
 
 const MainContent = () => {
   const router = useRouter();
-  const [userName, setUserName] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [email, setEmail] = useState('');
-  const [linkWeb, setLinkWeb] = useState('');
-  const [name, setName] = useState('');
   const [isSendEmailWhenHaveNewPost, setIsSendEmailWhenHaveNewPost] =
-    useState(false);
-
+    useState(true);
   const [loadingSpin, setLoadingSpin] = useState(false);
-
-  const handleUserNameChange = (e) => {
-    setUserName(e.target.value);
-  };
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const handleConfirmPasswordChange = (e) => {
-    setConfirmPassword(e.target.value);
-  };
-
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const handleLinkWebChange = (e) => {
-    setLinkWeb(e.target.value);
-  };
-
-  const handleNameChange = (e) => {
-    setName(e.target.value);
-  };
-
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(validationSchema),
+  });
   const handleIsSendEmailChange = (e) => {
     setIsSendEmailWhenHaveNewPost(e.target.checked);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const onSubmit = (data) => {
     setLoadingSpin(true);
     const dataReq = {
-      userName: userName,
-      password: password,
-      email: email,
-      linkWeb: linkWeb,
-      name: name,
+      userName: data.userName,
+      password: data.password,
+      email: data.email,
+      linkWeb: data.linkWeb,
+      name: data.name,
       isSendEmailWhenHaveNewPost: isSendEmailWhenHaveNewPost,
     };
     CreateAccountApi(dataReq)
@@ -134,66 +124,82 @@ const MainContent = () => {
           <StatusAlert />
           <div className="w-100 order-2 d-flex justify-content-between flex-column align-items-center h-67vh h-70vh-sm h-70vh-md h-70vh-lg h-70vh-xl h-70vh-xxl ">
             <div className="w-89pc w-60pc-sm w-39pc-md w-30pc-lg w-23pc-xl w-20pc-xxl">
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="mb-3">
                   <input
                     type="text"
                     placeholder="Tên đăng Nhập"
                     className="form-control"
-                    id="userName"
-                    value={userName}
-                    onChange={handleUserNameChange}
+                    {...register('userName')}
                   />
+                  {errors.userName && (
+                    <div className="error color-red">
+                      {errors.userName.message}
+                    </div>
+                  )}
                 </div>
                 <div className="mb-3">
                   <input
-                    type="password"
+                    type="text"
                     placeholder="Mật khẩu"
                     className="form-control"
-                    id="password"
-                    value={password}
-                    onChange={handlePasswordChange}
+                    {...register('password')}
                   />
+                  {errors.password && (
+                    <div className="error color-red">
+                      {errors.password.message}
+                    </div>
+                  )}
                 </div>
                 <div className="mb-3">
                   <input
                     type="password"
                     placeholder="Nhập lại mật khẩu"
                     className="form-control"
-                    id="confirmPassword"
-                    value={confirmPassword}
-                    onChange={handleConfirmPasswordChange}
+                    {...register('confirmPassword')}
                   />
+                  {errors.confirmPassword && (
+                    <div className="error color-red">
+                      {errors.confirmPassword.message}
+                    </div>
+                  )}
                 </div>
                 <div className="mb-3">
                   <input
                     type="email"
                     placeholder="Email"
                     className="form-control"
-                    id="email"
-                    value={email}
-                    onChange={handleEmailChange}
+                    {...register('email')}
                   />
+                  {errors.email && (
+                    <div className="error color-red">
+                      {errors.email.message}
+                    </div>
+                  )}
                 </div>
                 <div className="mb-3">
                   <input
                     type="text"
                     placeholder="LinkWeb"
                     className="form-control"
-                    id="linkWeb"
-                    value={linkWeb}
-                    onChange={handleLinkWebChange}
+                    {...register('linkWeb')}
                   />
+                  {errors.linkWeb && (
+                    <div className="error color-red">
+                      {errors.linkWeb.message}
+                    </div>
+                  )}
                 </div>
                 <div className="mb-3">
                   <input
                     type="text"
                     placeholder="Họ tên"
                     className="form-control"
-                    id="name"
-                    value={name}
-                    onChange={handleNameChange}
+                    {...register('name')}
                   />
+                  {errors.name && (
+                    <div className="error color-red">{errors.name.message}</div>
+                  )}
                 </div>
                 <div className="mb-3 form-check">
                   <input

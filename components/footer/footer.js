@@ -18,7 +18,6 @@ const Footer = () => {
       .get(`${BASE_URL}Contact`)
       .then((res) => {
         setProFile(res.data.result);
-        console.log('aaa', res.data.result.facebook);
       })
       .catch((err) => {
         StatusAlertService.showError(err.response.data.Detail);

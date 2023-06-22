@@ -1,12 +1,27 @@
 import { ChangePassApi } from '@/api/authAPI';
 import { getCookie } from '@/cookie/cookie';
 import { UrlPath } from '@/type/urlPath';
+import { yupResolver } from '@hookform/resolvers/yup';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import Modal from 'react-modal';
 import { HashLoader } from 'react-spinners';
 import { StatusAlertService } from 'react-status-alert';
+import * as Yup from 'yup';
+const validationSchema = Yup.object().shape({
+  currentPassword: Yup.string()
+    .required('Vui lòng nhập mật khẩu cũ')
+    .min(5, 'Mật khẩu phải có ít nhất 5 kí tự'),
+  newPassword: Yup.string()
+    .required('Vui lòng nhập mật khẩu mới')
+    .min(5, 'Mật khẩu phải có ít nhất 5 kí tự')
+    .notOneOf(
+      [Yup.ref('currentPassword')],
+      'Mật khẩu mới phải khác mật khẩu cũ',
+    ),
+});
 
 const customStyles = {
   content: {
@@ -20,17 +35,21 @@ const customStyles = {
 };
 const DropDown = ({ isClickAccount }) => {
   const router = useRouter();
-  const [currentPassword, setCurrentPassword] = useState('');
-  const [newPassword, setNewPassword] = useState('');
   const [modalIsOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(validationSchema),
+  });
+  const onSubmit = (data) => {
     setIsLoading(true);
     const dataReq = {
       email: getCookie('email'),
-      OldPassword: currentPassword,
-      newPassword: newPassword,
+      OldPassword: data.currentPassword,
+      newPassword: data.newPassword,
     };
     ChangePassApi(dataReq)
       .then(() => {
@@ -86,26 +105,32 @@ const DropDown = ({ isClickAccount }) => {
                   contentLabel="Example Modal"
                   id="Modal"
                 >
-                  <form onSubmit={handleSubmit}>
+                  <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="mb-3">
                       <input
                         type="text"
                         placeholder="Mật khẩu hiện tại"
                         className="form-control"
-                        id="currentPassword"
-                        value={currentPassword}
-                        onChange={(e) => setCurrentPassword(e.target.value)}
+                        {...register('currentPassword')}
                       />
+                      {errors.currentPassword && (
+                        <div className="error color-red">
+                          {errors.currentPassword.message}
+                        </div>
+                      )}
                     </div>
                     <div className="mb-3">
                       <input
                         type="password"
                         placeholder="Mật khẩu mới"
                         className="form-control"
-                        id="newPassword"
-                        value={newPassword}
-                        onChange={(e) => setNewPassword(e.target.value)}
+                        {...register('newPassword')}
                       />
+                      {errors.newPassword && (
+                        <div className="error color-red">
+                          {errors.newPassword.message}
+                        </div>
+                      )}
                     </div>
                     <div className="d-flex justify-content-center">
                       <HashLoader
