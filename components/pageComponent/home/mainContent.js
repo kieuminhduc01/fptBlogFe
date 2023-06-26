@@ -1,6 +1,7 @@
 import { Server } from '@/api/request';
 import { LinkStyled } from '@/components/pageComponent/home/styledComponent';
 import { UrlPath } from '@/type/urlPath';
+import { Category } from '@/utils/enum';
 
 const MainContent = ({ index, dataOri }) => {
   return (
@@ -16,7 +17,9 @@ const MainContent = ({ index, dataOri }) => {
                 {dataOri[index]?.summary}
               </p>
               <LinkStyled
-                href={`${UrlPath.home.url}${dataOri[index]?.category}/${dataOri[index]?.slug}`}
+                href={`${UrlPath.home.url}${
+                  Category[dataOri[index]?.category]
+                }/${dataOri[index]?.slug}`}
                 className="bg-body d-inline-block color-960D0D fs-22px-xxl fs-20px-xl fs-20px-lg fs-18px-md fs-18px-sm fs-16px  mt-42px-md"
               >
                 Đọc thêm bài viết

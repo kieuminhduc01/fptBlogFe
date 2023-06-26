@@ -86,14 +86,14 @@ const DropDown = ({ isClickAccount }) => {
             {getCookie('jwt_token') === undefined ? (
               <button
                 onClick={handleClickLogin}
-                className=" white-space-noWrap ff-lexend float-start fs-22px-xxl fs-20px-xl fs-20px-lg fs-16px-md fs-16px-sm fs-16px bg-body border-0 color-960C0C"
+                className="rounded white-space-noWrap ff-lexend float-start fs-22px-xxl fs-20px-xl fs-20px-lg fs-16px-md fs-16px-sm fs-16px bg-body border-0 color-960C0C"
               >
                 Đăng nhập
               </button>
             ) : (
               <div className="z-index-modal">
                 <button
-                  className="white-space-noWrap ff-lexend d-block fs-22px-xxl fs-20px-xl fs-20px-lg fs-16px-md fs-16px-sm fs-16px bg-body border-0 color-960C0C"
+                  className=" rounded white-space-noWrap ff-lexend d-block fs-22px-xxl fs-20px-xl fs-20px-lg fs-16px-md fs-16px-sm fs-16px bg-body border-0 color-960C0C"
                   onClick={openModal}
                 >
                   Đổi mật khẩu
@@ -148,7 +148,7 @@ const DropDown = ({ isClickAccount }) => {
                 </Modal>
                 <button
                   onClick={handleClickLogOut}
-                  className=" white-space-noWrap ff-lexend float-start fs-22px-xxl fs-20px-xl fs-20px-lg fs-16px-md fs-16px-sm fs-16px bg-body mt-2 border-0 color-960C0C"
+                  className="rounded white-space-noWrap ff-lexend float-start fs-22px-xxl fs-20px-xl fs-20px-lg fs-16px-md fs-16px-sm fs-16px bg-body mt-2 border-0 color-960C0C"
                 >
                   Đăng xuất
                 </button>

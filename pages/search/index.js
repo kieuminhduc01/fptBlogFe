@@ -1,6 +1,6 @@
 import { BASE_URL } from '@/api/request';
-import { formatDate } from '@/components/convertDateTime';
 import SearchBlogList from '@/components/pageComponent/search/searchBlogList';
+import { formatDate } from '@/utils/convertDateTime';
 import axios from 'axios';
 import { StatusAlertService } from 'react-status-alert';
 

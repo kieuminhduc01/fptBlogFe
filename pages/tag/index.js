@@ -1,5 +1,5 @@
 import { BASE_URL } from '@/api/request';
-import { formatDate } from '@/components/convertDateTime';
+import { formatDate } from '@/utils/convertDateTime';
 import BlogListTag from '@/components/pageComponent/tag/blogListTag';
 import axios from 'axios';
 import { useEffect } from 'react';

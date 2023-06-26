@@ -1,6 +1,6 @@
 import { BASE_URL } from '@/api/request';
-import { formatDate } from '@/components/convertDateTime';
 import MainContent from '@/components/pageComponent/blogDetail/mainContent';
+import { formatDate } from '@/utils/convertDateTime';
 import axios from 'axios';
 
 export async function getServerSideProps(context) {

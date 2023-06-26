@@ -2,7 +2,7 @@ import { CreateAccountApi } from '@/api/authAPI';
 import {
   H1Styled,
   H2Styled,
-  HrStyled
+  HrStyled,
 } from '@/components/header/styledComponent';
 import HashLoaderCus from '@/components/spins/hashLoader';
 import { UrlPath } from '@/type/urlPath';

@@ -1,5 +1,5 @@
 import { BASE_URL } from '@/api/request';
-import { formatDate } from '@/components/convertDateTime';
+import { formatDate } from '@/utils/convertDateTime';
 import MainContent from '@/components/pageComponent/blogList/mainContent';
 import axios from 'axios';
 import { StatusAlertService } from 'react-status-alert';

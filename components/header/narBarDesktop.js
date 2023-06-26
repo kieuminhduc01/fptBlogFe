@@ -1,7 +1,7 @@
 import { isPagingSearchAtom } from '@/atom/store';
 import {
   InputFieldStyled,
-  LinkStyled
+  LinkStyled,
 } from '@/components/header/styledComponent';
 import LensIcon from '@/components/icons/lensIcon';
 import { UrlPath } from '@/type/urlPath';
@@ -24,7 +24,8 @@ const NarBarDesktop = () => {
         <li className="nav-item ms-5">
           <LinkStyled
             color={
-              router.pathname === UrlPath.growingInThePRWorld.url
+              router.pathname === UrlPath.growingInThePRWorld.url ||
+              router.pathname === `${UrlPath.growingInThePRWorld.url}/[slug]`
                 ? '#b10c0c'
                 : '#2c2727'
             }
@@ -41,7 +42,8 @@ const NarBarDesktop = () => {
             colorfocus="#b10c0c"
             colorhover="#b10c0c"
             color={
-              router.pathname === UrlPath.seeThinkShare.url
+              router.pathname === UrlPath.seeThinkShare.url ||
+              router.pathname === `${UrlPath.seeThinkShare.url}/[slug]`
                 ? '#b10c0c'
                 : '#2c2727'
             }
@@ -54,7 +56,10 @@ const NarBarDesktop = () => {
         <li className="nav-item ms-5">
           <LinkStyled
             color={
-              router.pathname === UrlPath.myCorner.url ? '#b10c0c' : '#2c2727'
+              router.pathname === UrlPath.myCorner.url ||
+              router.pathname === `${UrlPath.myCorner.url}/[slug]`
+                ? '#b10c0c'
+                : '#2c2727'
             }
             colorfocus="#b10c0c"
             colorhover="#b10c0c"

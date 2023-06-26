@@ -1,6 +1,7 @@
 import { BASE_URL, Server } from '@/api/request';
 import { ButtonTagStyled } from '@/components/pageComponent/blogList/styledComponent';
 import { UrlPath } from '@/type/urlPath';
+import { Category } from '@/utils/enum';
 import axios from 'axios';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -55,15 +56,17 @@ const BlogListContent = ({ dataOri, start, end }) => {
           </div>
           <div className="d-flex justify-content-center mt-md-2">
             <Link
-              href={`${UrlPath.home.url}${item?.category}/${item?.slug}`}
+              href={`${UrlPath.home.url}${Category[item?.category]}/${
+                item?.slug
+              }`}
               className="text-center ff-lexend fs-22px-xxl fs-20px-xl fs-20px-lg fs-18px-md fs-18px-sm fs-16px"
             >
-              {item.title}
+              {item?.title}
             </Link>
           </div>
           <div className="d-flex justify-content-center">
             <div className="fs-12px-xxl fs-12px-xl fs-12px-lg fs-12px-md fs-12px-sm fs-10px">
-              {item.created}
+              {item?.created}
             </div>
           </div>
         </div>

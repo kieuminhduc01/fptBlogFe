@@ -18,14 +18,14 @@ import LinkedinIcon from '@/components/icons/linkedinIcon';
 import {
   blogTitleAtom,
   messageUnauthorizedAtom,
-  totalCommentAtom,
+  totalCommentAtom
 } from '@/atom/store';
 
 import Comment from '@/components/pageComponent/blogDetail/comment';
 import {
   ButtonTagStyled,
   DivBlockStyled,
-  HrStyled,
+  HrStyled
 } from '@/components/pageComponent/blogDetail/styledComponent';
 import BlogListContent from '../blogList/blogListContent';
 
@@ -112,17 +112,17 @@ const MainContent = ({ BlogPost, BlogListRelevant }) => {
         <div className="bg-white opacity-100 d-flex justify-content-center">
           <div className="w-89pc w-92pc-sm w-80pc-md w-60pc-lg w-60pc-xl w-60pc-xxl">
             <div className="d-none d-md-flex mt-50px-xxl mt-50px-xl mt-46px-lg mt-40px-md mt-30px-sm">
-              {router.pathname === '/SeeThinkShare/[slug]' && (
+              {router.pathname === '/seeThinkShare/[slug]' && (
                 <div className="cursor-point ff-lexend fs-20px-xxl fs-20px-xl fs-20px-lg fs-20px-md fs-20px-sm fs-18px color-6C6C6C">
                   See think share
                 </div>
               )}
-              {router.pathname === '/GrowingInThePRWorld/[slug]' && (
+              {router.pathname === '/growingInThePRWorld/[slug]' && (
                 <div className="cursor-point ff-lexend fs-20px-xxl fs-20px-xl fs-20px-lg fs-20px-md fs-20px-sm fs-18px color-6C6C6C">
                   Growing in the PR world
                 </div>
               )}
-              {router.pathname === '/MyCorner/[slug]' && (
+              {router.pathname === '/myCorner/[slug]' && (
                 <div className="cursor-point ff-lexend fs-20px-xxl fs-20px-xl fs-20px-lg fs-20px-md fs-20px-sm fs-18px color-6C6C6C">
                   My corner
                 </div>

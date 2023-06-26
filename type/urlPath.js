@@ -1,21 +1,13 @@
 export const UrlPath = {
   home: { url: '/', title: 'Trang Chủ' },
   growingInThePRWorld: {
-    url: '/GrowingInThePRWorld',
+    url: '/growingInThePRWorld',
     title: 'Growing In The PR World',
   },
-  seeThinkShare: { url: '/SeeThinkShare', title: 'See Think Share' },
-  myCorner: { url: '/MyCorner', title: 'My Corner' },
+  seeThinkShare: { url: '/seeThinkShare', title: 'See Think Share' },
+  myCorner: { url: '/myCorner', title: 'My Corner' },
   auth: { url: '/auth', title: 'Đăng nhập' },
   register: { url: '/register', title: 'Đăng kí tài khoản' },
   search: { url: '/search', title: 'Tìm kiếm' },
   tag: { url: '/tag', title: 'Tag' },
 };
-export const Profile = {
-  facebook: 'https://www.facebook.com/phuongwings?mibextid=LQQJ4d',
-  linkedin:
-    'https://www.linkedin.com/in/maiphuongnguyen0704/?fbclid=IwAR3HMgU5_wsNJjFQM-yW197zhdqHIbTUaYPxcXC2YbCB-Fyz8ACJaWmNFaQ',
-  Zl: 'https://zalo.me/0336850714',
-  Gm: '',
-};
-//TODO không fix cứng  mà call api
