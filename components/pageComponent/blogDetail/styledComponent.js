@@ -11,12 +11,6 @@ export const DivBlockStyled = styled.div`
     @media (min-width: 768px) {
       font-size: 20px;
     }
-    @media (min-width: 992px) {
-    }
-    @media (min-width: 1200px) {
-    }
-    @media (min-width: 1400px) {
-    }
   }
   li {
     font-size: 18px;
@@ -36,6 +30,9 @@ export const DivBlockStyled = styled.div`
     background-color: rgb(203 203 203 / 55%);
     border-radius: 4px;
     padding: 10px;
+  }
+  table {
+    width: 100%;
   }
 `;
 export const HrStyled = styled.hr`
