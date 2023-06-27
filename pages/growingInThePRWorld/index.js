@@ -5,6 +5,7 @@ import axios from 'axios';
 import { StatusAlertService } from 'react-status-alert';
 
 export async function getServerSideProps() {
+  
   let dataOri;
   await axios
     .post(`${BASE_URL}BlogPost/Paging`, {
