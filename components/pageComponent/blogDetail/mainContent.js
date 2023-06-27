@@ -18,16 +18,17 @@ import LinkedinIcon from '@/components/icons/linkedinIcon';
 import {
   blogTitleAtom,
   messageUnauthorizedAtom,
-  totalCommentAtom
+  totalCommentAtom,
 } from '@/atom/store';
 
 import Comment from '@/components/pageComponent/blogDetail/comment';
 import {
   ButtonTagStyled,
   DivBlockStyled,
-  HrStyled
+  HrStyled,
 } from '@/components/pageComponent/blogDetail/styledComponent';
 import BlogListContent from '../blogList/blogListContent';
+import Link from 'next/link';
 
 const MainContent = ({ BlogPost, BlogListRelevant }) => {
   const router = useRouter();
@@ -113,19 +114,28 @@ const MainContent = ({ BlogPost, BlogListRelevant }) => {
           <div className="w-89pc w-92pc-sm w-80pc-md w-60pc-lg w-60pc-xl w-60pc-xxl">
             <div className="d-none d-md-flex mt-50px-xxl mt-50px-xl mt-46px-lg mt-40px-md mt-30px-sm">
               {router.pathname === '/seeThinkShare/[slug]' && (
-                <div className="cursor-point ff-lexend fs-20px-xxl fs-20px-xl fs-20px-lg fs-20px-md fs-20px-sm fs-18px color-6C6C6C">
+                <Link
+                  href={UrlPath.seeThinkShare.url}
+                  className="cursor-point ff-lexend fs-20px-xxl fs-20px-xl fs-20px-lg fs-20px-md fs-20px-sm fs-18px color-6C6C6C"
+                >
                   See think share
-                </div>
+                </Link>
               )}
               {router.pathname === '/growingInThePRWorld/[slug]' && (
-                <div className="cursor-point ff-lexend fs-20px-xxl fs-20px-xl fs-20px-lg fs-20px-md fs-20px-sm fs-18px color-6C6C6C">
+                <Link
+                  href={UrlPath.growingInThePRWorld.url}
+                  className="cursor-point ff-lexend fs-20px-xxl fs-20px-xl fs-20px-lg fs-20px-md fs-20px-sm fs-18px color-6C6C6C"
+                >
                   Growing in the PR world
-                </div>
+                </Link>
               )}
               {router.pathname === '/myCorner/[slug]' && (
-                <div className="cursor-point ff-lexend fs-20px-xxl fs-20px-xl fs-20px-lg fs-20px-md fs-20px-sm fs-18px color-6C6C6C">
+                <Link
+                  href={UrlPath.myCorner.url}
+                  className=" color-6C6C6C cursor-point ff-lexend fs-20px-xxl fs-20px-xl fs-20px-lg fs-20px-md fs-20px-sm fs-18px "
+                >
                   My corner
-                </div>
+                </Link>
               )}
 
               <div>

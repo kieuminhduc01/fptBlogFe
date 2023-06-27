@@ -40,7 +40,7 @@ a {
   display: block;
 }
 .color-6C6C6C {
-  color: #6c6c6c;
+  color: #6c6c6c !important;
 }
 .color-2c2727 {
   color: #2c2727;
