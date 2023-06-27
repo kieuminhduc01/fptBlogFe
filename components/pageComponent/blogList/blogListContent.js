@@ -15,7 +15,7 @@ const BlogListContent = ({ dataOri, start, end }) => {
     dataOri?.slice(start, end),
   );
   const handleClickImg = (item) => {
-    router.push(`${UrlPath.home.url}${item?.category}/${item?.slug}`);
+    router.push(`${UrlPath.home.url}${Category[item?.category]}/${item?.slug}`);
   };
   const handlePaging = () => {
     axios
