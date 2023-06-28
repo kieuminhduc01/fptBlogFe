@@ -23,7 +23,7 @@ export async function getServerSideProps() {
       dataOri = res.data.result;
     })
     .catch((err) => {
-      StatusAlertService.showError(err.response.data.Detail);
+      StatusAlertService.showError(err.response?.data.Detail);
     });
   return { props: { dataOri } };
 }

@@ -21,10 +21,10 @@ const NarBarDesktop = ({ onClickTurnOfSidebar }) => {
               color="#ffffffd9"
               colorfocus="#B5CCC7"
               colorhover="#B5CCC7"
-              className="nav-link fs-20px-sm fs-20px"
+              className="nav-link fs-20px-sm fs-20px  pe-0"
               href={UrlPath.growingInThePRWorld.url}
             >
-              Growing in the PR World
+              GROWING IN THE PR WORLD
             </LinkStyled>
           </li>
           <li className="nav-item ">
@@ -32,10 +32,10 @@ const NarBarDesktop = ({ onClickTurnOfSidebar }) => {
               color="#ffffffd9"
               colorfocus="#B5CCC7"
               colorhover="#B5CCC7"
-              className="nav-link fs-20px-sm fs-20px"
+              className="nav-link fs-20px-sm fs-20px pe-0"
               href={UrlPath.seeThinkShare.url}
             >
-              See think share
+              SEE THINK SHARE
             </LinkStyled>
           </li>
           <li className="nav-item">
@@ -43,10 +43,10 @@ const NarBarDesktop = ({ onClickTurnOfSidebar }) => {
               color="#ffffffd9"
               colorfocus="#B5CCC7"
               colorhover="#B5CCC7"
-              className="nav-link fs-20px-sm fs-20px"
+              className="nav-link fs-20px-sm fs-20px pe-0"
               href={UrlPath.myCorner.url}
             >
-              My corner
+              MY CORNER
             </LinkStyled>
           </li>
         </ul>
