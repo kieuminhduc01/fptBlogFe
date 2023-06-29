@@ -194,3 +194,37 @@ a {
 /*//////////////////////////////////////////////////////////      XXL     //////////////////////////////////////////////////// */
 @media only screen and (min-width: 1400px) {
 }
+@media (width<= 576px) {
+  .PhuongKeXS {
+    position: absolute;
+    left: 35%;
+    margin-top: -210px;
+  }
+  .BanNgheXS {
+    position: absolute;
+    left: 41%;
+    margin-top: -182px;
+  }
+}
+@media (576px<width<= 768px) {
+  .PhuongKeSM {
+    position: absolute;
+    left: 40%;
+    margin-top: -220px;
+  }
+  .BanNgheSM {
+    position: absolute;
+    left: 45%;
+    margin-top: -192px;
+  }
+}
+
+.footer-text {
+  font-family: 'Lexend', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  text-align: left;
+  letter-spacing: 1px;
+  margin-bottom: 0;
+  margin-top: 6px;
+}
