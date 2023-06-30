@@ -5,7 +5,7 @@ const GmailIcon = () => {
         version="1.1"
         id="Capa_1"
         style={{ marginTop: '4px' }}
-        className=" w-30px-xxl w-28px-xl w-26px-lg w-24px-md w-20px-sm w-20px "
+        className=" w-32px-xxl w-28px-xl w-26px-lg w-24px-md w-20px-sm w-20px "
         x="0px"
         y="0px"
         fill="black"
