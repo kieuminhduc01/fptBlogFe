@@ -3,7 +3,7 @@ import { messageUnauthorizedAtom } from '@/atom/store';
 import {
   H1Styled,
   H2Styled,
-  HrStyled,
+  HrStyled
 } from '@/components/header/styledComponent';
 import HashLoaderCus from '@/components/spins/hashLoader';
 import { setCookie } from '@/cookie/cookie';
@@ -28,6 +28,7 @@ const MainContent = () => {
   const router = useRouter();
   const [loadingSpin, setLoadingSpin] = useState(false);
   const [isForgotPass, setIsForgotPass] = useState(false);
+  const [email, setEmail] = useState('');
   const {
     register,
     handleSubmit,
@@ -73,10 +74,10 @@ const MainContent = () => {
   const handleClickLogo = () => {
     router.push(UrlPath.home.url);
   };
-  const onSubmitForgot = (data) => {
+  const handleSubmitForgot = () => {
     setLoadingSpin(true);
     const dataReqForgotPass = {
-      email: data.userName,
+      email: email,
     };
     ForgotPassApi(dataReqForgotPass)
       .then(() => {
@@ -148,20 +149,16 @@ const MainContent = () => {
             <StatusAlert />
             <div className="w-89pc w-50pc-sm w-33pc-md w-26pc-lg w-21pc-xl w-18pc-xxl">
               {isForgotPass ? (
-                <form onSubmit={handleSubmit(onSubmitForgot)}>
+                <div>
                   <div>
                     <div className="mb-3">
                       <input
                         type="text"
                         placeholder="Email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                         className="form-control ff-lexend fs-22px-xxl fs-20px-xl fs-20px-lg fs-18px-md fs-18px-sm fs-16px"
-                        {...register('userName')}
                       />
-                      {errors.userName && (
-                        <div className="error color-red">
-                          {errors.userName.message}
-                        </div>
-                      )}
                     </div>
                   </div>
 
@@ -169,11 +166,12 @@ const MainContent = () => {
                     <button
                       type="submit"
                       className="btn btn-primary ff-lexend fs-5"
+                      onClick={handleSubmitForgot}
                     >
                       Submit
                     </button>
                   </div>
-                </form>
+                </div>
               ) : (
                 <form onSubmit={handleSubmit(onSubmitLogin)}>
                   <div>

@@ -6,7 +6,7 @@ import {
   H1Styled,
   H2Styled,
   HrStyled,
-  InputFieldStyled
+  InputFieldStyled,
 } from '@/components/header/styledComponent';
 import AccountIcon from '@/components/icons/accountIcon';
 import ArrowLeft from '@/components/icons/arrowLeft';
