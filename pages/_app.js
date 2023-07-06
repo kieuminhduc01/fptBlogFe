@@ -65,7 +65,6 @@ function MyApp({ Component, pageProps }) {
           href="https://fonts.gstatic.com"
           crossOrigin="true"
         />
-        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap" />
         <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@200;300&display=swap"></link>
         <title>{getTitle()}</title>
       </Head>

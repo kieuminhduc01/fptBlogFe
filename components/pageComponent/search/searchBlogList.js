@@ -69,7 +69,10 @@ const SearchBlogList = ({ dataOri, start, end, keyword }) => {
       ) : isPagingSearch ? (
         displayedPosts?.map((item, index) => (
           <div className="col-6 col-md-4" key={index}>
-            <div className="pb-100pc-global w-100 height-0 position-relative overflow-hidden">
+            <div
+              id="áddd"
+              className="image-container pb-100pc-global w-100 height-0 position-relative overflow-hidden"
+            >
               <img
                 onClick={() => handleClickImg(item)}
                 className="position-absolute top-0 left-0 w-100 h-100 object-fit-cover cursor-point"
@@ -89,7 +92,7 @@ const SearchBlogList = ({ dataOri, start, end, keyword }) => {
       ) : (
         dataOri?.map((item, index) => (
           <div className="col-6 col-md-4 mb-3 mb-md-4" key={index}>
-            <div className="pb-100pc-global w-100 height-0 position-relative overflow-hidden">
+            <div className="image-container pb-100pc-global w-100 height-0 position-relative overflow-hidden">
               <img
                 onClick={() => handleClickImg(item)}
                 className="position-absolute top-0 left-0 w-100 h-100 object-fit-cover cursor-point"

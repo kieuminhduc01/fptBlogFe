@@ -31,10 +31,10 @@ const NarBarDesktop = () => {
             }
             colorfocus="#b10c0c"
             colorhover="#b10c0c"
-            className="nav-link fs-4"
+            className="nav-link fs-4 underline-button pe-0 ps-0"
             href={UrlPath.growingInThePRWorld.url}
           >
-            Growing in the PR World
+            GROWING IN THE PR WORLD
           </LinkStyled>
         </li>
         <li className="nav-item ms-5">
@@ -47,10 +47,10 @@ const NarBarDesktop = () => {
                 ? '#b10c0c'
                 : '#2c2727'
             }
-            className="nav-link fs-4"
+            className="nav-link fs-4 underline-button pe-0 ps-0"
             href={UrlPath.seeThinkShare.url}
           >
-            See think share
+            SEE THINK SHARE
           </LinkStyled>
         </li>
         <li className="nav-item ms-5">
@@ -63,14 +63,14 @@ const NarBarDesktop = () => {
             }
             colorfocus="#b10c0c"
             colorhover="#b10c0c"
-            className="nav-link fs-4"
+            className="nav-link fs-4 underline-button pe-0 ps-0"
             href={UrlPath.myCorner.url}
           >
-            My corner
+            MY CORNER
           </LinkStyled>
         </li>
         <li className="nav-item ms-5">
-          <form className="d-flex mt-1" onSubmit={handleSearch}>
+          <form className="d-flex mt-1 pb-0" onSubmit={handleSearch}>
             <InputFieldStyled
               borderBottom="2px solid #b3a7a7"
               className="form-control me-1 w-50 fs-5"

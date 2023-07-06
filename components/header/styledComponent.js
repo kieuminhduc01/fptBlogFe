@@ -80,27 +80,3 @@ export const InputFieldStyled = styled.input`
     outline: none;
   }
 `;
-export const DivLogoMobilePhuongKeStyled = styled.div`
-  @media (width<= 576px) {
-    position: absolute;
-    left: 35%;
-    margin-top: -210px;
-  }
-  @media (576px<width<= 768px) {
-    position: absolute;
-    left: 40%;
-    margin-top: -220px;
-  }
-`;
-export const DivLogoMobileBanNgheStyled = styled.div`
-  @media (width<= 576px) {
-    position: absolute;
-    left: 41%;
-    margin-top: -182px;
-  }
-  @media (576px<width<= 768px) {
-    position: absolute;
-    left: 45%;
-    margin-top: -192px;
-  }
-`;

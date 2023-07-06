@@ -28,7 +28,6 @@ import {
   HrStyled,
 } from '@/components/pageComponent/blogDetail/styledComponent';
 import BlogListContent from '../blogList/blogListContent';
-import Link from 'next/link';
 
 const MainContent = ({ BlogPost, BlogListRelevant }) => {
   const router = useRouter();
@@ -40,9 +39,16 @@ const MainContent = ({ BlogPost, BlogListRelevant }) => {
   const [blogPostLike, setBlogPostLike] = useState(BlogPost.likes);
 
   useEffect(() => {
-    setRenderedContent(marked(BlogPost.content));
+    const renderer = new marked.Renderer();
+
+    renderer.image = (href, title, text) => {
+      return `<img src="${href}" alt="${text}" /><span class="centered-sub">${text}</span>`;
+    };
+
+    setRenderedContent(marked(BlogPost.content, { renderer }));
     setBlogTitle(BlogPost.title);
   }, []);
+
   useEffect(() => {
     const accountId = getCookie('accountId');
 
@@ -114,28 +120,19 @@ const MainContent = ({ BlogPost, BlogListRelevant }) => {
           <div className="w-89pc w-92pc-sm w-80pc-md w-60pc-lg w-60pc-xl w-60pc-xxl">
             <div className="d-none d-md-flex mt-50px-xxl mt-50px-xl mt-46px-lg mt-40px-md mt-30px-sm">
               {router.pathname === '/seeThinkShare/[slug]' && (
-                <Link
-                  href={UrlPath.seeThinkShare.url}
-                  className="cursor-point ff-lexend fs-20px-xxl fs-20px-xl fs-20px-lg fs-20px-md fs-20px-sm fs-18px color-6C6C6C"
-                >
+                <div className="cursor-point ff-lexend fs-20px-xxl fs-20px-xl fs-20px-lg fs-20px-md fs-20px-sm fs-18px color-6C6C6C">
                   See think share
-                </Link>
+                </div>
               )}
               {router.pathname === '/growingInThePRWorld/[slug]' && (
-                <Link
-                  href={UrlPath.growingInThePRWorld.url}
-                  className="cursor-point ff-lexend fs-20px-xxl fs-20px-xl fs-20px-lg fs-20px-md fs-20px-sm fs-18px color-6C6C6C"
-                >
+                <div className="cursor-point ff-lexend fs-20px-xxl fs-20px-xl fs-20px-lg fs-20px-md fs-20px-sm fs-18px color-6C6C6C">
                   Growing in the PR world
-                </Link>
+                </div>
               )}
               {router.pathname === '/myCorner/[slug]' && (
-                <Link
-                  href={UrlPath.myCorner.url}
-                  className=" color-6C6C6C cursor-point ff-lexend fs-20px-xxl fs-20px-xl fs-20px-lg fs-20px-md fs-20px-sm fs-18px "
-                >
+                <div className="cursor-point ff-lexend fs-20px-xxl fs-20px-xl fs-20px-lg fs-20px-md fs-20px-sm fs-18px color-6C6C6C">
                   My corner
-                </Link>
+                </div>
               )}
 
               <div>
@@ -147,7 +144,7 @@ const MainContent = ({ BlogPost, BlogListRelevant }) => {
             </div>
             <HrStyled className="d-md-block d-none" />
             <DivBlockStyled
-              className="mt-30px-xxl mt-30px-xl mt-30px-lg mt-30px-md mt-30px-sm mt-30px"
+              className="mt-30px-xxl mt-30px-xl mt-30px-lg mt-30px-md mt-30px-sm mt-30px "
               dangerouslySetInnerHTML={{ __html: renderedContent }}
             />
             <div className="mt-100px-xxl mt-100px-xl mt-90px-lg mt-90px-md mt-60px-sm mt-50px">

@@ -2,8 +2,6 @@ import { blogTitleAtom, isPagingSearchAtom } from '@/atom/store';
 import NarBarDesktop from '@/components/header/narBarDesktop';
 import NarBarMobile from '@/components/header/narBarMobile';
 import {
-  DivLogoMobileBanNgheStyled,
-  DivLogoMobilePhuongKeStyled,
   DivStyled,
   H1Styled,
   H2Styled,
@@ -200,7 +198,7 @@ const Header = ({ position }) => {
                   </div>
                   <DropDown isClickAccount={isClickAccount} />
                 </div>
-                <DivLogoMobilePhuongKeStyled className=" d-flex justify-content-center">
+                <div className=" d-flex justify-content-center PhuongKeXS PhuongKeSM">
                   <div className="w-180px-xxl w-170px-xl w-170px-lg w-160px-md">
                     <H2Styled
                       color="#960c0c"
@@ -210,8 +208,8 @@ const Header = ({ position }) => {
                       Phương kể
                     </H2Styled>
                   </div>
-                </DivLogoMobilePhuongKeStyled>
-                <DivLogoMobileBanNgheStyled className="d-flex justify-content-center mt-md-1">
+                </div>
+                <div className="d-flex justify-content-center mt-md-1 BanNgheXS BanNgheSM">
                   <div className="z-index-dropdown w-220px-xxl w-220px-xl w-200px-lg w-200px-md">
                     <H1Styled
                       onClick={handleClickLogo}
@@ -220,7 +218,7 @@ const Header = ({ position }) => {
                       Bạn nghe
                     </H1Styled>
                   </div>
-                </DivLogoMobileBanNgheStyled>
+                </div>
               </div>
             </div>
             <HrStyled
