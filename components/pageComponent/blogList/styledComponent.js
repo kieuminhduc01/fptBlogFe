@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const DivStyled = styled.div`
-  width: 100%;
   padding-bottom: 100%;
   position: relative;
   overflow: hidden;

@@ -3,6 +3,9 @@ a {
   text-decoration: none !important;
   cursor: pointer;
 }
+.w-90 {
+  width: 90%;
+}
 .underline-button {
   position: relative;
   background: none;
@@ -47,8 +50,8 @@ a {
   transform: scale(1.2);
 }
 .square-container {
-  width: 80%;
-  padding-bottom: 80%;
+  width: 50%;
+  padding-bottom: 50%;
   position: relative;
   overflow: hidden;
 }

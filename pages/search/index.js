@@ -50,7 +50,7 @@ const Index = ({ dataOri, keyword }) => {
         </div>
       </div>
       <div className=" d-flex justify-content-center">
-        <div className="w-89pc w-92pc-sm w-90pc-md w-90pc-lg w-88pc-xl w-88pc-xxl row">
+        <div className="w-89pc w-92pc-sm w-90pc-md w-88pc-lg w-84pc-xl w-80pc-xxl row">
           <SearchBlogList
             dataOri={dataOri}
             start={0}

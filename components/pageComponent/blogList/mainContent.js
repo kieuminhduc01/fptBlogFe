@@ -18,25 +18,25 @@ const MainContent = ({ dataOri }) => {
         <div className="opacity-100 d-flex justify-content-center">
           <div className="w-89pc w-92pc-sm w-90pc-md w-90pc-lg w-88pc-xl w-88pc-xxl row">
             <div className="d-flex justify-content-center">
-              <div className="ff-lexend fs-46px-xxl fs-44px-xl fs-42px-lg fs-40px-md fs-36px-sm fs-30px mt-md-5 mb-2 d-md-block d-none">
+              <div className="ff-lexend fs-36px-xxl fs-36px-xl fs-36px-lg fs-36px-md fs-34px-sm fs-30px mt-md-5 mb-2 d-md-block d-none">
                 {CategoryToTitle[dataOri[0]?.category]}
               </div>
             </div>
             <div className="d-flex justify-content-center">
-              <DivStyled className="square-container">
+              <div className="square-container">
                 <img
                   onClick={() => handleClickImg(dataOri[0])}
                   className="cursor-point w-100 h-auto"
                   src={`${Server}${dataOri[0]?.image}`}
                 />
-              </DivStyled>
+              </div>
             </div>
             <div className="d-flex justify-content-center">
               <Link
                 href={`${UrlPath.home.url}${Category[dataOri[0]?.category]}/${
                   dataOri[0]?.slug
                 }`}
-                className="ff-lexend fs-38px-xxl fs-36px-xl fs-34px-lg fs-40px-md fs-34px-sm fs-28px mt-md-4 mt-2"
+                className="ff-lexend fs-34px-xxl fs-34px-xl fs-32px-lg fs-32px-md fs-32px-sm fs-28px mt-md-4 mt-2"
               >
                 {dataOri[0]?.title}
               </Link>
@@ -57,7 +57,7 @@ const MainContent = ({ dataOri }) => {
         </div>
       </div>
       <div className="opacity-100 d-flex justify-content-center ">
-        <div className="w-89pc w-92pc-sm w-90pc-md w-90pc-lg w-88pc-xl w-88pc-xxl row mt-3 mt-md-5">
+        <div className="w-89pc w-92pc-sm w-90pc-md w-88pc-lg w-84pc-xl w-80pc-xxl row mt-3 mt-md-5">
           <BlogListContent dataOri={dataOri} start={1} end={7} />
         </div>
       </div>

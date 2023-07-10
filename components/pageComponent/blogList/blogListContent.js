@@ -2,12 +2,10 @@ import { BASE_URL } from '@/api/request';
 import { ButtonTagStyled } from '@/components/pageComponent/blogList/styledComponent';
 import BlogList from '@/components/pageComponent/common/blogList';
 import axios from 'axios';
-import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { StatusAlertService } from 'react-status-alert';
 
 const BlogListContent = ({ dataOri, start, end }) => {
-  const router = useRouter();
   const [currentPage, setCurrentPage] = useState(2);
   const [displayedPosts, setDisplayedPosts] = useState(
     dataOri?.slice(start, end),
