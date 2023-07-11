@@ -18,7 +18,7 @@ const MainContent = ({ dataOri }) => {
         <div className="opacity-100 d-flex justify-content-center">
           <div className="w-89pc w-92pc-sm w-90pc-md w-90pc-lg w-88pc-xl w-88pc-xxl row">
             <div className="d-flex justify-content-center">
-              <div className="ff-lexend fs-36px-xxl fs-36px-xl fs-36px-lg fs-36px-md fs-34px-sm fs-30px mt-md-5 mb-2 d-md-block d-none">
+              <div className="ff-lexend fs-34px-xxl fs-34px-xl fs-32px-lg fs-32px-md fs-30px-sm fs-30px mt-md-5 mb-2 d-md-block d-none">
                 {CategoryToTitle[dataOri[0]?.category]}
               </div>
             </div>
@@ -36,7 +36,7 @@ const MainContent = ({ dataOri }) => {
                 href={`${UrlPath.home.url}${Category[dataOri[0]?.category]}/${
                   dataOri[0]?.slug
                 }`}
-                className="ff-lexend fs-34px-xxl fs-34px-xl fs-32px-lg fs-32px-md fs-32px-sm fs-28px mt-md-4 mt-2"
+                className="ff-lexend fs-30px-xxl fs-30px-xl fs-30px-lg fs-30px-md fs-30px-sm fs-28px mt-md-4 mt-2"
               >
                 {dataOri[0]?.title}
               </Link>

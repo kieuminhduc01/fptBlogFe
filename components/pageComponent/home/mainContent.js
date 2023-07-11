@@ -7,10 +7,10 @@ const MainContent = ({ index, dataOri }) => {
   return (
     <>
       <div>
-        <div className="w-100 d-flex justify-content-center mt-300px-xxl mt-300px-xl mt-300px-lg mt-260px-md">
+        <div className="w-100 d-flex justify-content-center mt-260px-xxl mt-260px-xl mt-260px-lg mt-260px-md">
           <div className="w-94pc w-95pc-sm w-86pc-md w-80pc-lg w-80pc-xl w-80pc-xxl row mt-50px-xxl mt-50px-xl mt-48px-lg  mt-46px-md">
             <div className=" col-12 col-md-5">
-              <h1 className="fs-40px-xxl fs-40px-xl fs-40px-lg fs-40px-md fs-34px-sm fs-30px fw-normal ff-lexend color-960C0C ">
+              <h1 className="fs-36px-xxl fs-36px-xl fs-34px-lg fs-34px-md fs-32px-sm fs-30px fw-normal ff-lexend color-960C0C ">
                 {dataOri[index]?.title}
               </h1>
               <p className="fs-20px-xxl fs-20px-xl fs-20px-lg fs-18px-md fs-18px-sm fs-16px text-align ff-lexend">

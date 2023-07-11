@@ -203,17 +203,17 @@ const Header = ({ position }) => {
                     <H2Styled
                       color="#960c0c"
                       onClick={handleClickLogo}
-                      className="fs-34px-xxl fs-32px-xl fs-30px-lg fs-28px-md fs-22px-sm fs-20px mt-52px-xxl mt-50px-xl mt-48px-lg mt-40px-md float-start cursor-point "
+                      className="fs-28px-xxl fs-26px-xl fs-26px-lg fs-24px-md fs-20px-sm fs-20px mt-52px-xxl mt-50px-xl mt-48px-lg mt-40px-md float-start cursor-point "
                     >
                       Phương kể
                     </H2Styled>
                   </div>
                 </div>
                 <div className="d-flex justify-content-center mt-md-1 BanNgheXS BanNgheSM">
-                  <div className="z-index-dropdown w-220px-xxl w-220px-xl w-200px-lg w-200px-md">
+                  <div className="z-index-dropdown w-180px-xxl w-170px-xl w-170px-lg w-160px-md">
                     <H1Styled
                       onClick={handleClickLogo}
-                      className=" me-lg-4  cursor-point fs-42px-xl fs-38px-md fs-30px-sm fs-28px letter-spacing-3px-xxl letter-spacing-3px-xl letter-spacing-2px-lg letter-spacing-1px-md float-end"
+                      className=" me-lg-4  cursor-point fs-36px-xxl fs-34px-xl fs-34px-lg fs-32px-md fs-28px-sm fs-28px letter-spacing-3px-xxl letter-spacing-3px-xl letter-spacing-2px-lg letter-spacing-1px-md float-end"
                     >
                       Bạn nghe
                     </H1Styled>
@@ -233,7 +233,8 @@ const Header = ({ position }) => {
               className="d-md-block d-none"
               top="80px"
               right="0"
-              width="40vw"
+              width="42vw"
+              widthXl="43vw"
               height="2px"
             />
           </div>

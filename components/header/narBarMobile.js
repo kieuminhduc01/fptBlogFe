@@ -7,7 +7,7 @@ const NarBarDesktop = ({ onClickTurnOfSidebar }) => {
       <div className="container">
         <H2Styled
           color="#fff"
-          className="fs-26px-sm fs-26px mt-20px-sm mt-20px fw-bold ml-16px-sm ml-16px"
+          className="fs-26px-sm fs-24px mt-20px-sm mt-20px fw-bold ml-16px-sm ml-16px"
         >
           Phương kể bạn nghe
         </H2Styled>
@@ -21,7 +21,7 @@ const NarBarDesktop = ({ onClickTurnOfSidebar }) => {
               color="#ffffffd9"
               colorfocus="#B5CCC7"
               colorhover="#B5CCC7"
-              className="nav-link fs-20px-sm fs-20px  pe-0"
+              className="nav-link fs-20px-sm fs-18px  pe-0"
               href={UrlPath.growingInThePRWorld.url}
             >
               GROWING IN THE PR WORLD
@@ -32,7 +32,7 @@ const NarBarDesktop = ({ onClickTurnOfSidebar }) => {
               color="#ffffffd9"
               colorfocus="#B5CCC7"
               colorhover="#B5CCC7"
-              className="nav-link fs-20px-sm fs-20px pe-0"
+              className="nav-link fs-20px-sm fs-18px pe-0"
               href={UrlPath.seeThinkShare.url}
             >
               SEE THINK SHARE
@@ -43,7 +43,7 @@ const NarBarDesktop = ({ onClickTurnOfSidebar }) => {
               color="#ffffffd9"
               colorfocus="#B5CCC7"
               colorhover="#B5CCC7"
-              className="nav-link fs-20px-sm fs-20px pe-0"
+              className="nav-link fs-20px-sm fs-18px pe-0"
               href={UrlPath.myCorner.url}
             >
               MY CORNER

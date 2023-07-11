@@ -31,7 +31,7 @@ const NarBarDesktop = () => {
             }
             colorfocus="#b10c0c"
             colorhover="#b10c0c"
-            className="nav-link fs-4 underline-button pe-0 ps-0"
+            className="nav-link fs-22px-xxl fs-20px-xl fs-20px-lg fs-20px-md underline-button pe-0 ps-0"
             href={UrlPath.growingInThePRWorld.url}
           >
             GROWING IN THE PR WORLD
@@ -47,7 +47,7 @@ const NarBarDesktop = () => {
                 ? '#b10c0c'
                 : '#2c2727'
             }
-            className="nav-link fs-4 underline-button pe-0 ps-0"
+            className="nav-link fs-22px-xxl fs-20px-xl fs-20px-lg fs-20px-md underline-button pe-0 ps-0"
             href={UrlPath.seeThinkShare.url}
           >
             SEE THINK SHARE
@@ -63,7 +63,7 @@ const NarBarDesktop = () => {
             }
             colorfocus="#b10c0c"
             colorhover="#b10c0c"
-            className="nav-link fs-4 underline-button pe-0 ps-0"
+            className="nav-link fs-22px-xxl fs-20px-xl fs-20px-lg fs-20px-md underline-button pe-0 ps-0"
             href={UrlPath.myCorner.url}
           >
             MY CORNER
@@ -73,7 +73,7 @@ const NarBarDesktop = () => {
           <form className="d-flex mt-1 pb-0" onSubmit={handleSearch}>
             <InputFieldStyled
               borderBottom="2px solid #b3a7a7"
-              className="form-control me-1 w-50 fs-5"
+              className="form-control me-1 w-50 fs-20px-xxl fs-20px-xl fs-20px-lg fs-20px-md"
               type="search"
               placeholder="Tìm kiếm"
               aria-label="Search"
