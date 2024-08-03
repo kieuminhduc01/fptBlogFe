@@ -12,6 +12,7 @@
     "@hookform/resolvers": "^3.1.1",
     "axios": "^1.4.0",
     "bootstrap": "^5.3.0",
+    "https": "^1.0.0",
     "jotai": "^2.2.0",
     "js-cookie": "^3.0.5",
     "marked": "^5.0.4",

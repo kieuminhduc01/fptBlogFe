@@ -3,10 +3,16 @@ import { formatDate } from '@/utils/convertDateTime';
 import MainContent from '@/components/pageComponent/blogList/mainContent';
 import axios from 'axios';
 import { StatusAlertService } from 'react-status-alert';
+import https from 'https';
 
 export async function getServerSideProps() {
   let dataOri;
-  await axios
+  const axiosInstance = axios.create({
+    httpsAgent: new https.Agent({
+      rejectUnauthorized: false,
+    }),
+  });
+  await axiosInstance
     .post(`${BASE_URL}BlogPost/Paging`, {
       perPage: 7,
       currentPage: 1,

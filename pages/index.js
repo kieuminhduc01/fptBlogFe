@@ -1,12 +1,19 @@
-import { BASE_URL } from '@/api/request';
 import HomeComponentMain from '@/components/pageComponent/home/homeComponentMain';
 import axios from 'axios';
+import https from 'https';
 import StatusAlert, { StatusAlertService } from 'react-status-alert';
 
 export async function getServerSideProps() {
   let dataOri;
-  await axios
-    .post(`${BASE_URL}BlogPost/Paging`, {
+
+  const axiosInstance = axios.create({
+    httpsAgent: new https.Agent({
+      rejectUnauthorized: false,
+    }),
+  });
+
+  await axiosInstance
+    .post(`https://localhost:44302/api/BlogPost/Paging`, {
       perPage: 4,
       currentPage: 1,
       shortBy: {
@@ -29,6 +36,7 @@ export async function getServerSideProps() {
 }
 
 const Index = ({ dataOri }) => {
+  console.log('dataOri', dataOri);
   return (
     <>
       <StatusAlert />

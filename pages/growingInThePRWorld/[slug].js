@@ -2,13 +2,21 @@ import { BASE_URL } from '@/api/request';
 import MainContent from '@/components/pageComponent/blogDetail/mainContent';
 import { formatDate } from '@/utils/convertDateTime';
 import axios from 'axios';
+import https from 'https';
 
 export async function getServerSideProps(context) {
+  const axiosInstance = axios.create({
+    httpsAgent: new https.Agent({
+      rejectUnauthorized: false,
+    }),
+  });
   const routerData = context.query;
-  const blogPost = await axios.get(`${BASE_URL}BlogPost/${routerData.slug}`);
+  const blogPost = await axiosInstance.get(
+    `${BASE_URL}BlogPost/${routerData.slug}`,
+  );
   const BlogPost = await blogPost.data.result;
   let BlogListRelevant;
-  await axios
+  await axiosInstance
     .post(`${BASE_URL}BlogPost/Relevant`, {
       perPage: 7,
       currentPage: 1,
@@ -26,6 +34,7 @@ export async function getServerSideProps(context) {
       }));
     })
     .catch((err) => {
+      console.log('err', err);
       StatusAlertService.showError(err.response.data.Detail);
     });
   return {

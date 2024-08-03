@@ -1,15 +1,20 @@
 import { BASE_URL } from '@/api/request';
-import { formatDate } from '@/utils/convertDateTime';
 import BlogListTag from '@/components/pageComponent/tag/blogListTag';
+import { formatDate } from '@/utils/convertDateTime';
 import axios from 'axios';
-import { useEffect } from 'react';
+import https from 'https';
 import { StatusAlertService } from 'react-status-alert';
 
 export async function getServerSideProps(context) {
   let tagTitle = context.query.title;
   let id = context.query.id;
   let dataOri;
-  await axios
+  const axiosInstance = axios.create({
+    httpsAgent: new https.Agent({
+      rejectUnauthorized: false,
+    }),
+  });
+  await axiosInstance
     .post(`${BASE_URL}BlogPost/Paging`, {
       perPage: 6,
       currentPage: 1,

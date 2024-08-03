@@ -2,13 +2,19 @@ import { BASE_URL } from '@/api/request';
 import { formatDate } from '@/utils/convertDateTime';
 import MainContent from '@/components/pageComponent/blogDetail/mainContent';
 import axios from 'axios';
+import https from 'https';
 
 export async function getServerSideProps(context) {
   const routerData = context.query;
   const blogPost = await axios.get(`${BASE_URL}BlogPost/${routerData.slug}`);
   const BlogPost = await blogPost.data.result;
   let BlogListRelevant;
-  await axios
+  const axiosInstance = axios.create({
+    httpsAgent: new https.Agent({
+      rejectUnauthorized: false,
+    }),
+  });
+  await axiosInstance
     .post(`${BASE_URL}BlogPost/Relevant`, {
       perPage: 7,
       currentPage: 1,

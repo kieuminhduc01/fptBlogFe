@@ -2,12 +2,18 @@ import { BASE_URL } from '@/api/request';
 import SearchBlogList from '@/components/pageComponent/search/searchBlogList';
 import { formatDate } from '@/utils/convertDateTime';
 import axios from 'axios';
+import https from 'https';
 import { StatusAlertService } from 'react-status-alert';
 
 export async function getServerSideProps(context) {
   let keyword = context.query.keyword;
   let dataOri;
-  await axios
+  const axiosInstance = axios.create({
+    httpsAgent: new https.Agent({
+      rejectUnauthorized: false,
+    }),
+  });
+  await axiosInstance
     .post(`${BASE_URL}BlogPost/Paging`, {
       perPage: 6,
       currentPage: 1,
