@@ -6,14 +6,17 @@ import https from 'https';
 
 export async function getServerSideProps(context) {
   const routerData = context.query;
-  const blogPost = await axios.get(`${BASE_URL}BlogPost/${routerData.slug}`);
-  const BlogPost = await blogPost.data.result;
-  let BlogListRelevant;
   const axiosInstance = axios.create({
     httpsAgent: new https.Agent({
       rejectUnauthorized: false,
     }),
   });
+  const blogPost = await axiosInstance.get(
+    `${BASE_URL}BlogPost/${routerData.slug}`,
+  );
+  const BlogPost = await blogPost.data.result;
+  let BlogListRelevant;
+
   await axiosInstance
     .post(`${BASE_URL}BlogPost/Relevant`, {
       perPage: 7,

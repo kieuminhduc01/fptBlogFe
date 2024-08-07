@@ -5,12 +5,12 @@ import axios from 'axios';
 import https from 'https';
 
 export async function getServerSideProps(context) {
+  const routerData = context.query;
   const axiosInstance = axios.create({
     httpsAgent: new https.Agent({
       rejectUnauthorized: false,
     }),
   });
-  const routerData = context.query;
   const blogPost = await axiosInstance.get(
     `${BASE_URL}BlogPost/${routerData.slug}`,
   );
